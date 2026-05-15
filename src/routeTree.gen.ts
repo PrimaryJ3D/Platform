@@ -9,11 +9,81 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MembersRouteImport } from './routes/members'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as ImprintRouteImport } from './routes/imprint'
+import { Route as HocTermsRouteImport } from './routes/hoc-terms'
+import { Route as ForesightWhitepaperRouteImport } from './routes/foresight-whitepaper'
+import { Route as FellowsRouteImport } from './routes/fellows'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ApproachRouteImport } from './routes/approach'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
+import { Route as EventsHouseOfCollaborationRouteImport } from './routes/events.house-of-collaboration'
+import { Route as EventsEstonianLeapRouteImport } from './routes/events.estonian-leap'
+import { Route as EventsDeepTechCastleRouteImport } from './routes/events.deep-tech-castle'
+import { Route as EventsDavos2025RouteImport } from './routes/events.davos-2025'
 
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersRoute = MembersRouteImport.update({
+  id: '/members',
+  path: '/members',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprintRoute = ImprintRouteImport.update({
+  id: '/imprint',
+  path: '/imprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HocTermsRoute = HocTermsRouteImport.update({
+  id: '/hoc-terms',
+  path: '/hoc-terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForesightWhitepaperRoute = ForesightWhitepaperRouteImport.update({
+  id: '/foresight-whitepaper',
+  path: '/foresight-whitepaper',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FellowsRoute = FellowsRouteImport.update({
+  id: '/fellows',
+  path: '/fellows',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApproachRoute = ApproachRouteImport.update({
   id: '/approach',
   path: '/approach',
@@ -34,17 +104,68 @@ const EventsIndexRoute = EventsIndexRouteImport.update({
   path: '/events/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsHouseOfCollaborationRoute =
+  EventsHouseOfCollaborationRouteImport.update({
+    id: '/events/house-of-collaboration',
+    path: '/events/house-of-collaboration',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EventsEstonianLeapRoute = EventsEstonianLeapRouteImport.update({
+  id: '/events/estonian-leap',
+  path: '/events/estonian-leap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsDeepTechCastleRoute = EventsDeepTechCastleRouteImport.update({
+  id: '/events/deep-tech-castle',
+  path: '/events/deep-tech-castle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsDavos2025Route = EventsDavos2025RouteImport.update({
+  id: '/events/davos-2025',
+  path: '/events/davos-2025',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/fellows': typeof FellowsRoute
+  '/foresight-whitepaper': typeof ForesightWhitepaperRoute
+  '/hoc-terms': typeof HocTermsRoute
+  '/imprint': typeof ImprintRoute
+  '/media': typeof MediaRoute
+  '/members': typeof MembersRoute
+  '/privacy': typeof PrivacyRoute
+  '/reports': typeof ReportsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/team': typeof TeamRoute
+  '/events/davos-2025': typeof EventsDavos2025Route
+  '/events/deep-tech-castle': typeof EventsDeepTechCastleRoute
+  '/events/estonian-leap': typeof EventsEstonianLeapRoute
+  '/events/house-of-collaboration': typeof EventsHouseOfCollaborationRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/fellows': typeof FellowsRoute
+  '/foresight-whitepaper': typeof ForesightWhitepaperRoute
+  '/hoc-terms': typeof HocTermsRoute
+  '/imprint': typeof ImprintRoute
+  '/media': typeof MediaRoute
+  '/members': typeof MembersRoute
+  '/privacy': typeof PrivacyRoute
+  '/reports': typeof ReportsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/team': typeof TeamRoute
+  '/events/davos-2025': typeof EventsDavos2025Route
+  '/events/deep-tech-castle': typeof EventsDeepTechCastleRoute
+  '/events/estonian-leap': typeof EventsEstonianLeapRoute
+  '/events/house-of-collaboration': typeof EventsHouseOfCollaborationRoute
   '/events': typeof EventsIndexRoute
 }
 export interface FileRoutesById {
@@ -52,25 +173,190 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/fellows': typeof FellowsRoute
+  '/foresight-whitepaper': typeof ForesightWhitepaperRoute
+  '/hoc-terms': typeof HocTermsRoute
+  '/imprint': typeof ImprintRoute
+  '/media': typeof MediaRoute
+  '/members': typeof MembersRoute
+  '/privacy': typeof PrivacyRoute
+  '/reports': typeof ReportsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/team': typeof TeamRoute
+  '/events/davos-2025': typeof EventsDavos2025Route
+  '/events/deep-tech-castle': typeof EventsDeepTechCastleRoute
+  '/events/estonian-leap': typeof EventsEstonianLeapRoute
+  '/events/house-of-collaboration': typeof EventsHouseOfCollaborationRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/approach' | '/events/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/approach'
+    | '/contact'
+    | '/fellows'
+    | '/foresight-whitepaper'
+    | '/hoc-terms'
+    | '/imprint'
+    | '/media'
+    | '/members'
+    | '/privacy'
+    | '/reports'
+    | '/sitemap.xml'
+    | '/team'
+    | '/events/davos-2025'
+    | '/events/deep-tech-castle'
+    | '/events/estonian-leap'
+    | '/events/house-of-collaboration'
+    | '/events/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/approach' | '/events'
-  id: '__root__' | '/' | '/about' | '/approach' | '/events/'
+  to:
+    | '/'
+    | '/about'
+    | '/approach'
+    | '/contact'
+    | '/fellows'
+    | '/foresight-whitepaper'
+    | '/hoc-terms'
+    | '/imprint'
+    | '/media'
+    | '/members'
+    | '/privacy'
+    | '/reports'
+    | '/sitemap.xml'
+    | '/team'
+    | '/events/davos-2025'
+    | '/events/deep-tech-castle'
+    | '/events/estonian-leap'
+    | '/events/house-of-collaboration'
+    | '/events'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/approach'
+    | '/contact'
+    | '/fellows'
+    | '/foresight-whitepaper'
+    | '/hoc-terms'
+    | '/imprint'
+    | '/media'
+    | '/members'
+    | '/privacy'
+    | '/reports'
+    | '/sitemap.xml'
+    | '/team'
+    | '/events/davos-2025'
+    | '/events/deep-tech-castle'
+    | '/events/estonian-leap'
+    | '/events/house-of-collaboration'
+    | '/events/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ApproachRoute: typeof ApproachRoute
+  ContactRoute: typeof ContactRoute
+  FellowsRoute: typeof FellowsRoute
+  ForesightWhitepaperRoute: typeof ForesightWhitepaperRoute
+  HocTermsRoute: typeof HocTermsRoute
+  ImprintRoute: typeof ImprintRoute
+  MediaRoute: typeof MediaRoute
+  MembersRoute: typeof MembersRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ReportsRoute: typeof ReportsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TeamRoute: typeof TeamRoute
+  EventsDavos2025Route: typeof EventsDavos2025Route
+  EventsDeepTechCastleRoute: typeof EventsDeepTechCastleRoute
+  EventsEstonianLeapRoute: typeof EventsEstonianLeapRoute
+  EventsHouseOfCollaborationRoute: typeof EventsHouseOfCollaborationRoute
   EventsIndexRoute: typeof EventsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members': {
+      id: '/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof MembersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imprint': {
+      id: '/imprint'
+      path: '/imprint'
+      fullPath: '/imprint'
+      preLoaderRoute: typeof ImprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hoc-terms': {
+      id: '/hoc-terms'
+      path: '/hoc-terms'
+      fullPath: '/hoc-terms'
+      preLoaderRoute: typeof HocTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foresight-whitepaper': {
+      id: '/foresight-whitepaper'
+      path: '/foresight-whitepaper'
+      fullPath: '/foresight-whitepaper'
+      preLoaderRoute: typeof ForesightWhitepaperRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fellows': {
+      id: '/fellows'
+      path: '/fellows'
+      fullPath: '/fellows'
+      preLoaderRoute: typeof FellowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/approach': {
       id: '/approach'
       path: '/approach'
@@ -99,6 +385,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events/house-of-collaboration': {
+      id: '/events/house-of-collaboration'
+      path: '/events/house-of-collaboration'
+      fullPath: '/events/house-of-collaboration'
+      preLoaderRoute: typeof EventsHouseOfCollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/estonian-leap': {
+      id: '/events/estonian-leap'
+      path: '/events/estonian-leap'
+      fullPath: '/events/estonian-leap'
+      preLoaderRoute: typeof EventsEstonianLeapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/deep-tech-castle': {
+      id: '/events/deep-tech-castle'
+      path: '/events/deep-tech-castle'
+      fullPath: '/events/deep-tech-castle'
+      preLoaderRoute: typeof EventsDeepTechCastleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/davos-2025': {
+      id: '/events/davos-2025'
+      path: '/events/davos-2025'
+      fullPath: '/events/davos-2025'
+      preLoaderRoute: typeof EventsDavos2025RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,8 +420,33 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ApproachRoute: ApproachRoute,
+  ContactRoute: ContactRoute,
+  FellowsRoute: FellowsRoute,
+  ForesightWhitepaperRoute: ForesightWhitepaperRoute,
+  HocTermsRoute: HocTermsRoute,
+  ImprintRoute: ImprintRoute,
+  MediaRoute: MediaRoute,
+  MembersRoute: MembersRoute,
+  PrivacyRoute: PrivacyRoute,
+  ReportsRoute: ReportsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TeamRoute: TeamRoute,
+  EventsDavos2025Route: EventsDavos2025Route,
+  EventsDeepTechCastleRoute: EventsDeepTechCastleRoute,
+  EventsEstonianLeapRoute: EventsEstonianLeapRoute,
+  EventsHouseOfCollaborationRoute: EventsHouseOfCollaborationRoute,
   EventsIndexRoute: EventsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
