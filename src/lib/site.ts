@@ -8,6 +8,12 @@ export const SITE = {
   email: "primary@j3d.ai",
   press: "press@j3d.ai",
   castle: "castle@j3d.ai",
+  calendly: "https://calendly.com/j3dai",
+  linkedin: "https://www.linkedin.com/company/j3d-ai/",
+  // Paste your Formspree / Getform / Basin endpoint here, e.g.
+  //   "https://formspree.io/f/xxxxxxxx" or "https://getform.io/f/xxxxxxxx".
+  // While empty the contact form falls back to mailto:.
+  formEndpoint: "" as string,
 };
 
 export const NAV = [
