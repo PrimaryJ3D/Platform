@@ -22,7 +22,8 @@ const securityHeaders: Record<string, string> = {
   ].join("; "),
 };
 
-export const Route = createFileRoute("/")({
+// Catch-all so any non-asset URL serves the SPA (hash routing handles pages).
+export const Route = createFileRoute("/$")({
   server: {
     handlers: {
       GET: async () => new Response(html, { headers: securityHeaders }),
