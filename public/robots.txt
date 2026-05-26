@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /#members
+Disallow: /#fellows
+Disallow: /#imprint
+Disallow: /#privacy
+Disallow: /#hoc-terms
 
-Sitemap: https://credit-kindred-quest.lovable.app/sitemap.xml
+Sitemap: https://j3d.ai/sitemap.xml
