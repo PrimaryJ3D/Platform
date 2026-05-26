@@ -1,0 +1,12 @@
+{
+  "name": "J3D.AI",
+  "short_name": "J3D.AI",
+  "description": "Advisory and technology company — market access, AI readiness, sovereign convenings",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1E1C36",
+  "theme_color": "#997CB7",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
