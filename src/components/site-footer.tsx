@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="hairline mt-32 bg-background">
       <div className="container-x py-16">
-        <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="font-display text-2xl">
               J<sup className="text-[0.55em] -top-2 relative">3</sup>D·AI
@@ -23,10 +23,10 @@ export function SiteFooter() {
               <p className="eyebrow mb-4">{heading}</p>
               <ul className="space-y-3">
                 {items.map((item) => (
-                  <li key={item.to}>
-                    <Link to={item.to} className="text-sm text-ink-soft hover:text-foreground">
+                  <li key={item.href}>
+                    <a href={item.href} className="text-sm text-ink-soft hover:text-foreground">
                       {item.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
