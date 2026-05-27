@@ -10,12 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as HocRouteImport } from './routes/hoc'
+import { Route as EstonianLeapRouteImport } from './routes/estonian-leap'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ApproachRouteImport } from './routes/approach'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HocRoute = HocRouteImport.update({
+  id: '/hoc',
+  path: '/hoc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstonianLeapRoute = EstonianLeapRouteImport.update({
+  id: '/estonian-leap',
+  path: '/estonian-leap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApproachRoute = ApproachRouteImport.update({
+  id: '/approach',
+  path: '/approach',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -32,30 +56,68 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/estonian-leap': typeof EstonianLeapRoute
+  '/hoc': typeof HocRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/estonian-leap': typeof EstonianLeapRoute
+  '/hoc': typeof HocRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/approach': typeof ApproachRoute
+  '/contact': typeof ContactRoute
+  '/estonian-leap': typeof EstonianLeapRoute
+  '/hoc': typeof HocRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/approach'
+    | '/contact'
+    | '/estonian-leap'
+    | '/hoc'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/sitemap.xml'
-  id: '__root__' | '/' | '/$' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/$'
+    | '/approach'
+    | '/contact'
+    | '/estonian-leap'
+    | '/hoc'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/approach'
+    | '/contact'
+    | '/estonian-leap'
+    | '/hoc'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  ApproachRoute: typeof ApproachRoute
+  ContactRoute: typeof ContactRoute
+  EstonianLeapRoute: typeof EstonianLeapRoute
+  HocRoute: typeof HocRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -66,6 +128,34 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hoc': {
+      id: '/hoc'
+      path: '/hoc'
+      fullPath: '/hoc'
+      preLoaderRoute: typeof HocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estonian-leap': {
+      id: '/estonian-leap'
+      path: '/estonian-leap'
+      fullPath: '/estonian-leap'
+      preLoaderRoute: typeof EstonianLeapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/approach': {
+      id: '/approach'
+      path: '/approach'
+      fullPath: '/approach'
+      preLoaderRoute: typeof ApproachRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -88,8 +178,22 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  ApproachRoute: ApproachRoute,
+  ContactRoute: ContactRoute,
+  EstonianLeapRoute: EstonianLeapRoute,
+  HocRoute: HocRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
