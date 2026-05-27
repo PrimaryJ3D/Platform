@@ -13,7 +13,7 @@ export const SITE = {
   formEndpoint: "" as string,
 };
 
-// Minimal nav. The funnel terminates at HoC.
+// Primary nav — funnel terminates at HoC.
 export const NAV = [
   { to: "/hoc", label: "House of Collaboration" },
   { to: "/estonian-leap", label: "Estonian Leap" },
@@ -21,17 +21,45 @@ export const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-export const FOOTER_LINKS = {
+// Legacy content pages (served by catch-all from legacy HTML). Use plain string hrefs.
+export const LEGACY_LINKS = {
+  about: "/about",
+  team: "/team",
+  fellows: "/fellows",
+  reports: "/reports",
+  media: "/media",
+  foresight: "/foresight-whitepaper",
+  davos2025: "/davos-2025",
+  deepTechCastle: "/deep-tech-castle",
+  members: "/members",
+  privacy: "/privacy",
+  imprint: "/imprint",
+  hocTerms: "/hoc-terms",
+};
+
+export const FOOTER_LINKS: Record<string, { href: string; label: string; external?: boolean }[]> = {
   Platforms: [
-    { to: "/hoc", label: "House of Collaboration" },
-    { to: "/estonian-leap", label: "Estonian Leap" },
+    { href: "/hoc", label: "House of Collaboration" },
+    { href: "/estonian-leap", label: "Estonian Leap" },
+    { href: "/deep-tech-castle", label: "Deep Tech Castle" },
+    { href: "/davos-2025", label: "Davos 2025 Archive" },
+  ],
+  Intelligence: [
+    { href: "/reports", label: "Reports" },
+    { href: "/foresight-whitepaper", label: "Foresight Whitepaper" },
+    { href: "/media", label: "Media & PR" },
+    { href: "/members", label: "Members Portal" },
   ],
   Company: [
-    { to: "/approach", label: "Approach" },
-    { to: "/contact", label: "Contact" },
+    { href: "/about", label: "About" },
+    { href: "/approach", label: "Approach" },
+    { href: "/team", label: "Team" },
+    { href: "/fellows", label: "Fellows Programme" },
+    { href: "/contact", label: "Contact" },
   ],
   Legal: [
-    { to: "/privacy", label: "Privacy" },
-    { to: "/imprint", label: "Imprint" },
+    { href: "/imprint", label: "Imprint" },
+    { href: "/privacy", label: "Privacy" },
+    { href: "/hoc-terms", label: "HoC Terms" },
   ],
 };
