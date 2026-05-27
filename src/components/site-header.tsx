@@ -17,12 +17,17 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || open
-          ? "bg-background/85 backdrop-blur-xl border-b border-border"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border"
           : "bg-transparent",
       )}
     >
@@ -33,17 +38,16 @@ export function SiteHeader() {
         Skip to content
       </a>
       <div className="container-x flex h-16 items-center justify-between gap-6">
-        <Link to="/" className="font-display text-xl tracking-tight">
-          {SITE.name}
+        <Link to="/" className="font-display text-xl tracking-tight" aria-label={SITE.name}>
+          J<sup className="text-[0.55em] -top-2 relative">3</sup>D·AI
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
           {NAV.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              activeOptions={{ exact: item.to === "/" }}
-              className="text-sm text-ink-soft hover:text-foreground transition-colors data-[status=active]:text-foreground data-[status=active]:font-medium"
+              className="text-sm font-sans font-normal text-ink-soft hover:text-foreground transition-colors data-[status=active]:text-foreground data-[status=active]:font-medium"
             >
               {item.label}
             </Link>
@@ -52,10 +56,10 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <Link
-            to="/contact"
-            className="text-sm rounded-full border border-foreground/20 px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
+            to="/hoc"
+            className="inline-flex items-center gap-2 text-sm rounded-full bg-foreground text-background px-5 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors"
           >
-            Book a meeting
+            Apply for HoC 2027
           </Link>
         </div>
 
@@ -74,24 +78,23 @@ export function SiteHeader() {
       {open && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl"
+          className="lg:hidden border-t border-border bg-background"
         >
-          <nav className="container-x py-4 flex flex-col gap-1" aria-label="Mobile">
+          <nav className="container-x py-6 flex flex-col gap-1" aria-label="Mobile">
             {NAV.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                activeOptions={{ exact: item.to === "/" }}
-                className="py-3 px-2 text-base text-ink-soft hover:text-foreground rounded data-[status=active]:text-foreground data-[status=active]:font-medium"
+                className="py-3 text-lg font-display text-ink-soft hover:text-foreground data-[status=active]:text-foreground"
               >
                 {item.label}
               </Link>
             ))}
             <Link
-              to="/contact"
-              className="mt-2 inline-flex justify-center rounded-full bg-foreground text-background px-5 py-3 text-sm"
+              to="/hoc"
+              className="mt-4 inline-flex justify-center rounded-full bg-foreground text-background px-5 py-3 text-sm"
             >
-              Book a meeting
+              Apply for HoC 2027
             </Link>
           </nav>
         </div>

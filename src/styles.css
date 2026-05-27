@@ -4,11 +4,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* J3D.AI — premium editorial design system */
+/* J3D.AI Design System v0.1 — Indigo · Lavender · Ice */
 
 @theme inline {
   --font-display: "Cormorant Garamond", "Cormorant", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-rounded: "Nunito", ui-rounded, "Segoe UI", sans-serif;
+  --font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
@@ -34,71 +35,85 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-indigo: var(--indigo);
+  --color-lavender: var(--lavender);
+  --color-ice: var(--ice);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-cream: var(--cream);
-  --color-lavender: var(--lavender);
-  --color-gold: var(--gold);
 }
 
 :root {
   --radius: 0.25rem;
 
-  /* Editorial off-white + deep indigo + lavender + warm gold */
-  --background: oklch(0.985 0.005 80);              /* warm cream */
-  --foreground: oklch(0.22 0.04 280);               /* deep indigo ink */
-  --ink: oklch(0.22 0.04 280);
-  --ink-soft: oklch(0.38 0.04 280);
-  --cream: oklch(0.97 0.012 75);
-  --lavender: oklch(0.66 0.09 290);
-  --gold: oklch(0.78 0.11 75);
+  /* Core brand — converted from #2A2947 / #997CB7 / #C6F0FF */
+  --indigo:   oklch(0.244 0.057 285);   /* #2A2947 */
+  --lavender: oklch(0.622 0.099 305);   /* #997CB7 */
+  --ice:      oklch(0.951 0.034 220);   /* #C6F0FF */
+
+  --background: oklch(0.99 0.003 80);          /* light-first cream */
+  --foreground: var(--indigo);
+  --ink: var(--indigo);
+  --ink-soft: oklch(0.42 0.045 285);
 
   --card: oklch(1 0 0);
   --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
 
-  --primary: oklch(0.22 0.04 280);                  /* indigo */
+  --primary: var(--indigo);
   --primary-foreground: oklch(0.985 0.005 80);
-  --secondary: oklch(0.94 0.01 280);
+  --secondary: oklch(0.96 0.012 285);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.95 0.008 80);
-  --muted-foreground: oklch(0.45 0.03 280);         /* WCAG AA on cream */
-  --accent: oklch(0.66 0.09 290);                   /* lavender */
+  --muted: oklch(0.965 0.008 280);
+  --muted-foreground: oklch(0.48 0.03 285);
+  --accent: var(--lavender);
   --accent-foreground: oklch(0.985 0.005 80);
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.985 0.005 80);
-  --border: oklch(0.88 0.012 280);
-  --input: oklch(0.88 0.012 280);
-  --ring: oklch(0.66 0.09 290);
+  --border: oklch(0.9 0.01 285);
+  --input: oklch(0.9 0.01 285);
+  --ring: var(--lavender);
 
-  --gradient-aurora: radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.66 0.09 290 / 0.35), transparent 70%),
-                      radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.78 0.11 75 / 0.18), transparent 70%);
-  --gradient-ink: linear-gradient(180deg, oklch(0.22 0.04 280) 0%, oklch(0.16 0.05 285) 100%);
-  --shadow-elegant: 0 1px 2px oklch(0.22 0.04 280 / 0.06), 0 8px 24px -8px oklch(0.22 0.04 280 / 0.12);
-  --shadow-glow: 0 0 0 1px oklch(0.66 0.09 290 / 0.18), 0 12px 40px -10px oklch(0.66 0.09 290 / 0.35);
+  /* Signature gradients */
+  --gradient-aurora:
+    radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.622 0.099 305 / 0.28), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, oklch(0.951 0.034 220 / 0.45), transparent 70%);
+  --gradient-ink:     linear-gradient(180deg, var(--indigo) 0%, oklch(0.19 0.06 285) 100%);
+  --gradient-lav-ice: linear-gradient(135deg, var(--lavender) 0%, var(--ice) 100%);
+
+  --shadow-elegant: 0 1px 2px oklch(0.244 0.057 285 / 0.06), 0 8px 24px -8px oklch(0.244 0.057 285 / 0.12);
+  --shadow-glow:    0 0 0 1px oklch(0.622 0.099 305 / 0.18), 0 12px 40px -10px oklch(0.622 0.099 305 / 0.35);
+
+  /* Type scale — design system */
+  --fs-display: clamp(2.5rem, 6vw, 3.5rem);
+  --fs-h1: clamp(2rem, 4vw, 2.5rem);
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
 }
 
 .dark {
-  --background: oklch(0.16 0.04 285);
-  --foreground: oklch(0.96 0.008 80);
-  --ink: oklch(0.96 0.008 80);
+  --background: var(--indigo);
+  --foreground: oklch(0.97 0.008 80);
+  --ink: oklch(0.97 0.008 80);
   --ink-soft: oklch(0.78 0.02 80);
-  --card: oklch(0.20 0.04 285);
+  --card: oklch(0.20 0.05 285);
   --card-foreground: var(--ink);
-  --popover: oklch(0.20 0.04 285);
+  --popover: oklch(0.20 0.05 285);
   --popover-foreground: var(--ink);
-  --primary: oklch(0.96 0.008 80);
-  --primary-foreground: oklch(0.16 0.04 285);
-  --secondary: oklch(0.26 0.04 285);
+  --primary: oklch(0.97 0.008 80);
+  --primary-foreground: var(--indigo);
+  --secondary: oklch(0.28 0.05 285);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.24 0.04 285);
+  --muted: oklch(0.26 0.05 285);
   --muted-foreground: oklch(0.78 0.02 80);
-  --accent: oklch(0.72 0.10 290);
-  --accent-foreground: oklch(0.16 0.04 285);
+  --accent: oklch(0.72 0.10 305);
+  --accent-foreground: var(--indigo);
   --border: oklch(1 0 0 / 0.12);
   --input: oklch(1 0 0 / 0.16);
-  --ring: oklch(0.72 0.10 290);
+  --ring: oklch(0.72 0.10 305);
 }
 
 @layer base {
@@ -108,27 +123,30 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-weight: 300;
+    font-size: var(--fs-body);
+    line-height: 1.6;
   }
-  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.015em; }
-  h1 { font-weight: 500; }
-  h2 { font-weight: 500; }
+  h1, h2, h3, .font-display { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; }
   ::selection { background: var(--lavender); color: var(--primary-foreground); }
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 2px; }
+  a { text-decoration: none; }
 }
 
 @layer utilities {
-  .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
-  .eyebrow { @apply text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground; }
-  .display-1 { font-family: var(--font-display); font-weight: 500; line-height: 1.02; letter-spacing: -0.025em; font-size: clamp(2.5rem, 6vw, 5.25rem); }
-  .display-2 { font-family: var(--font-display); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; font-size: clamp(2rem, 4.5vw, 3.5rem); }
-  .display-3 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.015em; font-size: clamp(1.5rem, 3vw, 2.25rem); }
-  .lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.55; color: var(--ink-soft); }
+  .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12; }
+  .eyebrow { font-family: var(--font-rounded); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lavender); }
+  .display-1 { font-family: var(--font-display); font-weight: 500; line-height: 1.02; letter-spacing: -0.025em; font-size: var(--fs-display); }
+  .display-2 { font-family: var(--font-display); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; font-size: var(--fs-h1); }
+  .display-3 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; font-size: var(--fs-h2); }
+  .lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.55; color: var(--ink-soft); font-weight: 300; }
   .aurora-bg { background-image: var(--gradient-aurora); }
   .ink-bg { background-image: var(--gradient-ink); color: var(--primary-foreground); }
   .hairline { border-top: 1px solid var(--border); }
   .lift { transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
   .lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-elegant); }
+  .underline-link { background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .3s; }
+  .underline-link:hover { background-size: 100% 2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
