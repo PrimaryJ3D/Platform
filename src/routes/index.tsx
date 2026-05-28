@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/site";
+import heroDavos from "@/assets/hero-davos.jpg";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -20,8 +21,17 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative aurora-bg">
-        <div className="container-x pt-28 pb-24 sm:pt-40 sm:pb-32">
+      <section className="relative isolate overflow-hidden aurora-bg">
+        <img
+          src={heroDavos}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/30 via-background/60 to-background" />
+        <div className="container-x pt-28 pb-24 sm:pt-44 sm:pb-32">
           <p className="eyebrow">Estonia · Europe · Asia</p>
           <h1 className="display-1 mt-6 max-w-4xl">
             Making collaboration<br />
