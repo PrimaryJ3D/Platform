@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/site";
+import heroEstonia from "@/assets/hero-estonia.jpg";
 
 export const Route = createFileRoute("/estonian-leap")({
   component: LeapPage,
