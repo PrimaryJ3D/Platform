@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/site";
+import heroDavos from "@/assets/hero-davos.jpg";
 
 export const Route = createFileRoute("/hoc")({
   component: HoCPage,
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/hoc")({
       { property: "og:description", content: "By-invitation convening of leaders shaping cross-border collaboration." },
       { property: "og:url", content: `${SITE.url}/hoc` },
       { property: "og:type", content: "event" },
+      { property: "og:image", content: `${SITE.url}/og-hoc.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/hoc` }],
     scripts: [{
@@ -38,8 +40,18 @@ export const Route = createFileRoute("/hoc")({
 function HoCPage() {
   return (
     <>
-      <section className="aurora-bg">
-        <div className="container-x pt-28 pb-20 sm:pt-40">
+      {/* HERO with image */}
+      <section className="relative isolate overflow-hidden">
+        <img
+          src={heroDavos}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-[0.45]"
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        <div className="container-x pt-28 pb-24 sm:pt-44 sm:pb-32">
           <p className="eyebrow">Davos · January 19–23, 2027</p>
           <h1 className="display-1 mt-6 max-w-4xl">
             Better Together.
@@ -50,22 +62,25 @@ function HoCPage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href={SITE.calendly}
-              target="_blank"
-              rel="noopener"
+              href="#apply"
               className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               Apply for a delegation
               <ArrowUpRight className="h-4 w-4" />
             </a>
-            <Link to="/" className="underline-link text-sm self-center">
-              Back to J3D.AI
-            </Link>
+            <a
+              href={SITE.calendly}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center rounded-full border border-foreground/20 px-6 py-3.5 text-sm hover:bg-foreground hover:text-background transition-colors"
+            >
+              Book a briefing
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="container-x py-24">
+      <section className="container-x py-20 sm:py-24">
         <dl className="grid gap-12 sm:grid-cols-4">
           {[["5", "Days"], ["20", "Roundtables"], ["800", "Delegates"], ["312", "Insights"]].map(
             ([n, l]) => (
@@ -78,7 +93,7 @@ function HoCPage() {
         </dl>
       </section>
 
-      <section className="container-x pb-32 grid gap-16 md:grid-cols-2">
+      <section className="container-x pb-24 grid gap-16 md:grid-cols-2">
         <div>
           <p className="eyebrow">Who's in the room</p>
           <h2 className="display-3 mt-3">Heads of state. Sovereign funds. Founders.</h2>
@@ -96,24 +111,36 @@ function HoCPage() {
         </div>
       </section>
 
-      <section className="ink-bg">
-        <div className="container-x py-24 text-center text-primary-foreground">
-          <h2 className="display-2 max-w-3xl mx-auto text-primary-foreground">
-            Apply for a 2027 delegation.
-          </h2>
-          <p className="lede mt-5 !text-white/70 max-w-xl mx-auto">
-            We review applications in waves. Earlier waves get richer programming choices.
+      {/* APPLICATION — Airtable embed */}
+      <section id="apply" className="ink-bg scroll-mt-24">
+        <div className="container-x py-20 sm:py-28">
+          <div className="max-w-3xl">
+            <p className="eyebrow !text-ice">Application · 2027 cohort</p>
+            <h2 className="display-2 mt-3 text-primary-foreground">
+              Request your delegation.
+            </h2>
+            <p className="lede mt-5 !text-white/70 max-w-xl">
+              Applications are reviewed in waves. Submit below — our team will be in
+              touch within 5 business days.
+            </p>
+          </div>
+          <div className="mt-12 overflow-hidden rounded-xl border border-white/10 bg-background shadow-2xl">
+            <iframe
+              title="House of Collaboration 2027 — Application"
+              src={SITE.hocAirtable}
+              className="block w-full"
+              style={{ height: "1200px", background: "transparent" }}
+              loading="lazy"
+            />
+          </div>
+          <p className="mt-6 text-xs text-white/50">
+            Or email <a className="underline" href={`mailto:${SITE.email}`}>{SITE.email}</a> if you'd prefer a private intro.
           </p>
-          <a
-            href={SITE.calendly}
-            target="_blank"
-            rel="noopener"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-ice text-indigo px-6 py-3.5 text-sm font-medium hover:opacity-90"
-          >
-            Start your application
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
         </div>
+      </section>
+
+      <section className="container-x py-16 text-center">
+        <Link to="/" className="underline-link text-sm">← Back to J3D.AI</Link>
       </section>
     </>
   );

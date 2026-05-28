@@ -11,6 +11,8 @@ export const SITE = {
   calendly: "https://calendly.com/j3d-ai/hoc",
   linkedin: "https://www.linkedin.com/company/j3d-ai/",
   formEndpoint: "" as string,
+  // Airtable application form for House of Collaboration (Davos 2027)
+  hocAirtable: "https://airtable.com/embed/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form",
 };
 
 // Primary nav — funnel terminates at HoC.

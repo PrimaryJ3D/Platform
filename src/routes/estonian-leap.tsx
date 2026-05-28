@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/site";
+import heroEstonia from "@/assets/hero-estonia.jpg";
 
 export const Route = createFileRoute("/estonian-leap")({
   component: LeapPage,
@@ -19,8 +20,17 @@ export const Route = createFileRoute("/estonian-leap")({
 function LeapPage() {
   return (
     <>
-      <section className="aurora-bg">
-        <div className="container-x pt-28 pb-20 sm:pt-40">
+      <section className="relative isolate overflow-hidden">
+        <img
+          src={heroEstonia}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        <div className="container-x pt-28 pb-20 sm:pt-44">
           <p className="eyebrow">Programme · 2026</p>
           <h1 className="display-1 mt-6 max-w-4xl">
             Estonian Leap.
