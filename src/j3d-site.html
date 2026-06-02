@@ -79,8 +79,9 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 .nl:hover,.nl.on{color:var(--ind)}
 .nl.on::after{content:'';position:absolute;bottom:-1px;left:13px;right:13px;height:2px;background:var(--lav)}
 .dd{position:relative}
-.dd-m{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--w);border:1px solid var(--warmb);min-width:240px;padding:5px;box-shadow:0 8px 32px rgba(42,41,71,.1);z-index:100}
-.dd:hover .dd-m{display:block}
+.dd-m{display:none;position:absolute;top:100%;left:0;background:var(--w);border:1px solid var(--warmb);min-width:240px;padding:5px;box-shadow:0 8px 32px rgba(42,41,71,.1);z-index:100}
+.dd::after{content:'';position:absolute;left:0;right:0;top:100%;height:10px}
+.dd:hover .dd-m,.dd:focus-within .dd-m{display:block}
 .di{display:block;padding:9px 13px;font-family:var(--rounded);font-size:11px;font-weight:500;color:var(--tm);transition:background .12s,color .12s;white-space:nowrap}
 .di:hover{background:var(--lavk);color:var(--ind)}
 .di.ind{padding-left:22px;font-size:10px;color:var(--tm)}
@@ -89,10 +90,14 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 .nav-cta:hover{background:var(--lav)}
 .nav-mob{display:none;flex-direction:column;gap:5px;margin-left:auto}
 .nav-mob span{width:20px;height:1.5px;background:var(--ind)}
-.mob-ov{display:none;position:fixed;inset:0;z-index:899;background:rgba(30,28,54,.98);flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:80px 32px;overflow-y:auto}
+.mob-ov{display:none;position:fixed;inset:0;z-index:899;background:rgba(30,28,54,.98);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:88px 24px 32px;overflow-y:auto}
 .mob-ov.on{display:flex}
-.ml{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--w);transition:color .15s}
+.ml{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--w);transition:color .15s;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
 .ml:hover{color:var(--lavl)}
+.ml.mlsub{font-family:var(--rounded);font-size:13px;font-weight:500;color:rgba(255,255,255,.62);padding:9px 4px 9px 18px;letter-spacing:.02em}
+.ml.mlsub:hover{color:var(--lavl)}
+.ml.mlcta{margin-top:18px;background:var(--lav);color:var(--w);text-align:center;font-family:var(--rounded);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 18px;border-bottom:none}
+.ml.mlcta:hover{background:var(--lavl);color:var(--w)}
 
 /* ── PAGE SYSTEM ──────────────────────────────────── */
 .pg{display:none;padding-top:100px}
@@ -297,7 +302,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 @media(max-width:768px){
   .pg{padding-top:90px}.hero{margin-top:-90px;min-height:calc(88vh + 90px)}.sec-ph{margin-top:-90px;padding-top:calc(60px + 90px)}
   .con{padding:0 20px}
-  .nav-links{display:none}.nav-mob{display:flex}
+  .nav-links{display:none}.nav-mob{display:flex}.nav-cta{display:none}.nav-search-btn{display:none}
   .hero-inner{padding:60px 20px 52px}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .sec{padding:60px 0}.sec-sm{padding:40px 0}
@@ -485,7 +490,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <!-- ═══ NAV ════════════════════════════════════════ -->
 <!-- ── ANNOUNCEMENT STRIP ───────────────────────────────────── -->
 <div id="announce-strip" style="background:var(--lav);height:38px;display:flex;align-items:center;justify-content:center;gap:16px;position:fixed;top:0;left:0;right:0;z-index:902;padding:0 52px">
-  <span style="font-family:var(--rounded);font-size:11px;font-weight:600;color:#fff;letter-spacing:.04em">House of Collaboration 2027 (-) applications now open.</span>
+  <span style="font-family:var(--rounded);font-size:11px;font-weight:600;color:#fff;letter-spacing:.04em">House of Collaboration 2027 &mdash; applications now open.</span>
   <a href="https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:11px;font-weight:700;color:#fff;text-decoration:underline;white-space:nowrap;letter-spacing:.04em">Join the Delegation &rarr;</a>
 </div>
 <nav id="nav">
@@ -570,20 +575,30 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <div class="mob-ov" id="mob-ov">
   <a href="#" class="ml" onclick="go('home');cM();return false">Home</a>
   <a href="#" class="ml" onclick="go('about');cM();return false">About</a>
+
   <a href="#" class="ml" onclick="go('approach');cM();return false">Case Studies</a>
-  <a href="#" class="ml" onclick="go('hoc');cM();return false">House of Collaboration</a>
+  <a href="#" class="ml mlsub" onclick="goAnchor('approach','p-1');cM();return false">Platforms</a>
+  <a href="#" class="ml mlsub" onclick="goAnchor('approach','p-2');cM();return false">Advisory</a>
+  <a href="#" class="ml mlsub" onclick="goAnchor('approach','p-3');cM();return false">Technology</a>
+
   <a href="#" class="ml" onclick="go('events');cM();return false">Platforms</a>
-  <a href="#" class="ml" style="font-size:18px" onclick="goAnchor('events','salons');cM();return false">&nbsp; Salons</a>
-  <a href="#" class="ml" style="font-size:18px" onclick="go('hoc');cM();return false">&nbsp; House of Collaboration</a>
-  <a href="#" class="ml" style="font-size:18px" onclick="go('estonian-leap');cM();return false">&nbsp; Estonian Leap</a>
-  <a href="#" class="ml" style="font-size:18px" onclick="go('deep-tech-castle');cM();return false">&nbsp; Deep Tech Castle</a>
+  <a href="#" class="ml mlsub" onclick="go('hoc');cM();return false">House of Collaboration</a>
+  <a href="#" class="ml mlsub" onclick="go('estonian-leap');cM();return false">Estonian Leap</a>
+  <a href="#" class="ml mlsub" onclick="go('deep-tech-castle');cM();return false">Deep Tech Castle</a>
+  <a href="#" class="ml mlsub" onclick="goAnchor('events','salons');cM();return false">Salons</a>
+
   <a href="#" class="ml" onclick="go('reports');cM();return false">Reports</a>
   <a href="#" class="ml" onclick="go('media');cM();return false">Media &amp; PR</a>
+
   <a href="#" class="ml" onclick="go('team');cM();return false">Team</a>
-  <a href="#" class="ml" onclick="go('fellows');cM();return false">Fellows</a>
+  <a href="#" class="ml mlsub" onclick="go('team');cM();return false">Team Members</a>
+  <a href="#" class="ml mlsub" onclick="go('fellows');cM();return false">Fellows Programme</a>
+
   <a href="#" class="ml" onclick="go('contact');cM();return false">Contact</a>
-  <a href="#" class="ml" style="font-size:18px;color:var(--ice)" onclick="go('members');cM();return false">Members Portal</a>
-  <a href="https://calendly.com/j3d-ai/hoc" target="_blank" class="ml" style="font-size:14px;color:var(--lavl)">Apply for HoC 2027 &rarr;</a>
+  <a href="#" class="ml mlsub" onclick="go('contact');cM();return false">Contact Us</a>
+  <a href="#" class="ml mlsub" onclick="go('members');cM();return false">Members Portal</a>
+
+  <a href="https://calendly.com/j3d-ai/hoc" target="_blank" rel="noopener" class="ml mlcta" onclick="go('hoc');cM();return false">Apply for HoC 2027 &rarr;</a>
 </div>
 
 
@@ -2359,9 +2374,12 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
             <div class="tm"><div class="tm-ph"><img src="./assets/speakers/veloz.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9bd762f3efdd40a91da0_10.png" alt="Prof. Dr. Tomas Veloz" onerror="this.style.opacity=0" loading="lazy"></div><div class="tm-b"><div class="tm-office">Remote</div><div class="tm-name">Prof. Dr. Tomas Veloz</div><div class="tm-role">Founder, FIDSTA &middot; Vrije Universiteit Brussel</div></div></div>
 
-            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">ST</div></div><div class="tm-b"><div class="tm-office">Remote</div><div class="tm-name">Sarthak Thakkar</div><div class="tm-role">Sales Associate &amp; Media Assets</div></div></div>
-            <div class="tm"><div class="tm-ph"><img src="./assets/team/loic.jpg" data-webflow="https://cdn.prod.website-files.com/64bf9f696defc0a4753a5a85/6908fcb30f0a689538ac5bbc_8.png" alt="Loic Claveau" onerror="this.style.opacity=0" loading="lazy"></div><div class="tm-b"><div class="tm-office">Sweden</div><div class="tm-name">Loic Claveau</div><div class="tm-role">Fractional CMO</div></div></div>
-            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">KK</div></div><div class="tm-b"><div class="tm-office">Tallinn</div><div class="tm-name">Karl Kreevald</div><div class="tm-role">Legal Counsel</div></div></div>
+            <div class="tm"><div class="tm-ph"><img src="./assets/team/loic.jpg" data-webflow="https://cdn.prod.website-files.com/64bf9f696defc0a4753a5a85/6908fcb30f0a689538ac5bbc_8.png" alt="Loic Claveau" onerror="this.style.opacity=0" loading="lazy"></div><div class="tm-b"><div class="tm-office">Marketing &middot; Stockholm, Sweden</div><div class="tm-name">Loic Claveau</div><div class="tm-role">Chief Marketing Officer (CMO)</div></div></div>
+            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">ST</div></div><div class="tm-b"><div class="tm-office">Marketing &middot; Mumbai, India</div><div class="tm-name">Sarthak Thakkar</div><div class="tm-role">Marketing Associate (Pre-Sales) &amp; CRM / HubSpot Manager</div></div></div>
+            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">RR</div></div><div class="tm-b"><div class="tm-office">Finance &middot; Tallinn, Estonia</div><div class="tm-name">Rain Ruus</div><div class="tm-role">Finance Lead</div></div></div>
+            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">KK</div></div><div class="tm-b"><div class="tm-office">Legal &middot; Tallinn, Estonia</div><div class="tm-name">Karl Kreevald</div><div class="tm-role">Legal Counsel</div></div></div>
+            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">NS</div></div><div class="tm-b"><div class="tm-office">Partnerships &middot; Tallinn, Estonia</div><div class="tm-name">Nadim Mostak Sany</div><div class="tm-role">Fellow of Partnerships</div></div></div>
+            <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">NM</div></div><div class="tm-b"><div class="tm-office">Communications &middot; Delhi, India</div><div class="tm-name">Nandini Mathur</div><div class="tm-role">Fellow of Communications</div></div></div>
             <div class="tm"><div class="tm-ph" style="background:linear-gradient(135deg,var(--ind),var(--ind3))"><div class="tm-initials">AM</div></div><div class="tm-b"><div class="tm-office">Ho Chi Minh City</div><div class="tm-name">An Mai</div><div class="tm-role">Vietnam Operations &middot; President, IMT Solutions</div></div></div>
           </div>
         </div>
