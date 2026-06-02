@@ -79,8 +79,9 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 .nl:hover,.nl.on{color:var(--ind)}
 .nl.on::after{content:'';position:absolute;bottom:-1px;left:13px;right:13px;height:2px;background:var(--lav)}
 .dd{position:relative}
-.dd-m{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--w);border:1px solid var(--warmb);min-width:240px;padding:5px;box-shadow:0 8px 32px rgba(42,41,71,.1);z-index:100}
-.dd:hover .dd-m{display:block}
+.dd-m{display:none;position:absolute;top:100%;left:0;background:var(--w);border:1px solid var(--warmb);min-width:240px;padding:5px;box-shadow:0 8px 32px rgba(42,41,71,.1);z-index:100}
+.dd::after{content:'';position:absolute;left:0;right:0;top:100%;height:10px}
+.dd:hover .dd-m,.dd:focus-within .dd-m{display:block}
 .di{display:block;padding:9px 13px;font-family:var(--rounded);font-size:11px;font-weight:500;color:var(--tm);transition:background .12s,color .12s;white-space:nowrap}
 .di:hover{background:var(--lavk);color:var(--ind)}
 .di.ind{padding-left:22px;font-size:10px;color:var(--tm)}
