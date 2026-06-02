@@ -90,10 +90,14 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 .nav-cta:hover{background:var(--lav)}
 .nav-mob{display:none;flex-direction:column;gap:5px;margin-left:auto}
 .nav-mob span{width:20px;height:1.5px;background:var(--ind)}
-.mob-ov{display:none;position:fixed;inset:0;z-index:899;background:rgba(30,28,54,.98);flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:80px 32px;overflow-y:auto}
+.mob-ov{display:none;position:fixed;inset:0;z-index:899;background:rgba(30,28,54,.98);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:88px 24px 32px;overflow-y:auto}
 .mob-ov.on{display:flex}
-.ml{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--w);transition:color .15s}
+.ml{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--w);transition:color .15s;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
 .ml:hover{color:var(--lavl)}
+.ml.mlsub{font-family:var(--rounded);font-size:13px;font-weight:500;color:rgba(255,255,255,.62);padding:9px 4px 9px 18px;letter-spacing:.02em}
+.ml.mlsub:hover{color:var(--lavl)}
+.ml.mlcta{margin-top:18px;background:var(--lav);color:var(--w);text-align:center;font-family:var(--rounded);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 18px;border-bottom:none}
+.ml.mlcta:hover{background:var(--lavl);color:var(--w)}
 
 /* ── PAGE SYSTEM ──────────────────────────────────── */
 .pg{display:none;padding-top:100px}
