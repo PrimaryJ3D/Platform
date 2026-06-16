@@ -3876,9 +3876,10 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var hits=SEARCH_INDEX.filter(function(item){
       return item.t.toLowerCase().indexOf(ql)>-1||item.d.toLowerCase().indexOf(ql)>-1;
     });
-    if(!hits.length){out.innerHTML='<div class="srch-empty">No results for "'+q+'"</div>';return;}
+    function _esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+    if(!hits.length){out.innerHTML='<div class="srch-empty">No results for "'+_esc(q)+'"</div>';return;}
     out.innerHTML=hits.slice(0,8).map(function(item){
-      return '<div class="srch-item" onclick="'+(item.a?'goAnchor(\''+item.p+'\',\''+item.a+'\')':'go(\''+item.p+'\')')+';toggleSearch()"><span>'+item.t+'</span><small>'+item.d+'</small></div>';
+      return '<div class="srch-item" onclick="'+(item.a?'goAnchor(\''+item.p+'\',\''+item.a+'\')':'go(\''+item.p+'\')')+';toggleSearch()"><span>'+_esc(item.t)+'</span><small>'+_esc(item.d)+'</small></div>';
     }).join('');
   };
   document.addEventListener('keydown',function(e){
