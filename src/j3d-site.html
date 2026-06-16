@@ -2258,6 +2258,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       setTimeout(function(){document.getElementById('srch-input').focus();},50);
     }
   };
+  function escHtml(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   window.runSearch=function(q){
     var out=document.getElementById('srch-results');
     if(!q||q.length<2){out.innerHTML='';return;}
@@ -2265,9 +2266,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var hits=SEARCH_INDEX.filter(function(item){
       return item.t.toLowerCase().indexOf(ql)>-1||item.d.toLowerCase().indexOf(ql)>-1;
     });
-    if(!hits.length){out.innerHTML='<div class="srch-empty">No results for "'+q+'"</div>';return;}
+    if(!hits.length){out.innerHTML='<div class="srch-empty">No results for "'+escHtml(q)+'"</div>';return;}
     out.innerHTML=hits.slice(0,8).map(function(item){
-      return '<div class="srch-item" onclick="'+(item.a?'goAnchor(\''+item.p+'\',\''+item.a+'\')':'go(\''+item.p+'\')')+';toggleSearch()"><span>'+item.t+'</span><small>'+item.d+'</small></div>';
+      return '<div class="srch-item" onclick="'+(item.a?'goAnchor(\''+escHtml(item.p)+'\',\''+escHtml(item.a)+'\')':'go(\''+escHtml(item.p)+'\')')+';toggleSearch()"><span>'+escHtml(item.t)+'</span><small>'+escHtml(item.d)+'</small></div>';
     }).join('');
   };
   document.addEventListener('keydown',function(e){
@@ -2292,28 +2293,31 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <script>
 (function(){
   var PC={'LinkedIn':'#0077B5','X':'#1A1A1A','Twitter':'#1DA1F2','Instagram':'#E1306C','Other':'#997CB7'};
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+  function safeUrl(u){try{var p=new URL(String(u),window.location.origin);return (p.protocol==='https:'||p.protocol==='http:'||p.protocol==='mailto:')?p.href:'';}catch(e){return '';}}
   function renderPost(r){
     var f=r.fields||{};
-    var name=f['Author Name']||'Anonymous';
+    var name=String(f['Author Name']||'Anonymous');
     var initials=name.split(' ').map(function(w){return w[0]||'';}).slice(0,2).join('').toUpperCase();
-    var platform=f['Platform']||'Other';
+    var platform=String(f['Platform']||'Other');
     var color=PC[platform]||'#997CB7';
     var date=f['Post Date']?new Date(f['Post Date']).toLocaleDateString('en-GB',{month:'short',year:'numeric'}):'';
-    var content=(f['Post Content']||'').substring(0,240)+((f['Post Content']||'').length>240?'…':'');
-    var url=f['Post URL']||'';
-    var photo=f['Author Photo URL']||'';
-    var title=f['Author Title']||'';
+    var rawContent=String(f['Post Content']||'');
+    var content=rawContent.substring(0,240)+(rawContent.length>240?'…':'');
+    var url=safeUrl(f['Post URL']||'');
+    var photo=safeUrl(f['Author Photo URL']||'');
+    var title=String(f['Author Title']||'');
     var avatar=photo
-      ?'<img src="'+photo+'" alt="'+name+'" style="width:40px;height:40px;border-radius:50%;object-fit:cover" onerror="this.style.display='none'">'
-      :'<div style="width:40px;height:40px;border-radius:50%;background:'+color+';display:flex;align-items:center;justify-content:center;font-family:var(--rounded);font-size:14px;font-weight:700;color:#fff">'+initials+'</div>';
+      ?'<img src="'+esc(photo)+'" alt="'+esc(name)+'" style="width:40px;height:40px;border-radius:50%;object-fit:cover" onerror="this.style.display=\'none\'">'
+      :'<div style="width:40px;height:40px;border-radius:50%;background:'+esc(color)+';display:flex;align-items:center;justify-content:center;font-family:var(--rounded);font-size:14px;font-weight:700;color:#fff">'+esc(initials)+'</div>';
     return '<div style="border:1px solid var(--warmb);padding:22px;background:var(--w);display:flex;flex-direction:column;gap:12px">'
       +'<div style="display:flex;align-items:center;gap:12px">'+avatar
-      +'<div><div style="font-family:var(--rounded);font-size:12px;font-weight:700;color:var(--ind)">'+name+'</div>'
-      +(title?'<div style="font-family:var(--rounded);font-size:10px;color:var(--tmut);font-weight:500">'+title+'</div>':'')
-      +'</div><div style="margin-left:auto;font-family:var(--rounded);font-size:10px;font-weight:700;color:'+color+';text-transform:uppercase;letter-spacing:.05em">'+platform+'</div></div>'
-      +'<p style="font-size:13px;font-weight:300;color:var(--tm);line-height:1.7;margin:0">'+content+'</p>'
-      +(url?'<a href="'+url+'" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:10px;font-weight:700;color:var(--lav);text-transform:uppercase;letter-spacing:.06em">View post →</a>':'')
-      +(date?'<div style="font-family:var(--rounded);font-size:10px;color:var(--tmut);font-weight:500">'+date+'</div>':'')
+      +'<div><div style="font-family:var(--rounded);font-size:12px;font-weight:700;color:var(--ind)">'+esc(name)+'</div>'
+      +(title?'<div style="font-family:var(--rounded);font-size:10px;color:var(--tmut);font-weight:500">'+esc(title)+'</div>':'')
+      +'</div><div style="margin-left:auto;font-family:var(--rounded);font-size:10px;font-weight:700;color:'+esc(color)+';text-transform:uppercase;letter-spacing:.05em">'+esc(platform)+'</div></div>'
+      +'<p style="font-size:13px;font-weight:300;color:var(--tm);line-height:1.7;margin:0">'+esc(content)+'</p>'
+      +(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:10px;font-weight:700;color:var(--lav);text-transform:uppercase;letter-spacing:.06em">View post →</a>':'')
+      +(date?'<div style="font-family:var(--rounded);font-size:10px;color:var(--tmut);font-weight:500">'+esc(date)+'</div>':'')
       +'</div>';
   }
   fetch('/api/social-wall')
