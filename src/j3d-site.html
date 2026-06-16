@@ -3881,8 +3881,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var btn=document.getElementById('mob-btn');
     if(btn)btn.addEventListener('click',window.tM);
     var hash=window.location.hash.replace('#','');
-    if(hash&&document.getElementById('pg-'+hash)){
-      window.go(hash);
+    var aliased=(typeof SLUG_IN!=='undefined'&&SLUG_IN[hash])?SLUG_IN[hash]:hash;
+    if(aliased&&document.getElementById('pg-'+aliased)){
+      window.go(aliased);
     } else {
       revealPage('home');
     }
