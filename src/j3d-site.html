@@ -3738,7 +3738,11 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     'media':'media','team':'team','fellows':'fellows','members':'members','contact':'contact','imprint':'contact','privacy':'contact',
     'hoc-terms':'hoc'
   };
+  /* slug aliases: pretty URL <-> internal page id */
+  var SLUG_OUT={'approach':'case-studies','events':'platforms'};
+  var SLUG_IN={'case-studies':'approach','platforms':'events'};
   window.go=function(page){
+    if(SLUG_IN[page])page=SLUG_IN[page];
     PAGES.forEach(function(p){
       var el=document.getElementById('pg-'+p);
       if(el)el.classList.remove('on');
@@ -3755,7 +3759,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var navEl=document.getElementById('nl-'+activeNav);
     if(navEl)navEl.classList.add('on');
     window.scrollTo(0,0);
-    try{history.pushState(null,'','#'+page);}catch(e){}
+    var slug=SLUG_OUT[page]||page;
+    try{history.pushState(null,'','#'+slug);}catch(e){}
   };
   window.goAnchor=function(page,anchor){
     window.go(page);
