@@ -584,17 +584,17 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 
 /* testimonial slider — harmonized cards */
 .tsi-wrap{overflow:hidden;position:relative;width:100%;margin:0 -4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.tsi-track{display:flex;align-items:stretch;gap:18px;width:max-content;animation:tsiScroll 90s linear infinite;padding:4px}
+.tsi-track{display:flex;align-items:stretch;gap:16px;width:max-content;animation:tsiScroll 110s linear infinite;padding:4px}
 .tsi-track:hover{animation-play-state:paused}
-.tsi-card{display:flex;flex-direction:column;width:320px;min-width:320px;height:240px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:22px;flex-shrink:0;box-sizing:border-box}
-.tsi-card .tsi-q{font-family:var(--serif);font-size:28px;line-height:1;color:var(--lav);margin-bottom:10px}
-.tsi-card .tsi-t{font-size:13px;font-weight:300;color:rgba(255,255,255,.72);font-style:italic;line-height:1.6;margin:0 0 16px;flex:1;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.tsi-card .tsi-meta{border-top:1px solid rgba(255,255,255,.1);padding-top:12px;display:flex;align-items:center;gap:10px}
-.tsi-card .tsi-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--lav),#2A5BFF);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;font-family:var(--rounded)}
-.tsi-card .tsi-nm{font-family:var(--serif);font-size:14px;font-weight:600;color:rgba(255,255,255,.92);line-height:1.2;margin-bottom:2px}
-.tsi-card .tsi-rl{font-family:var(--rounded);font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tsi-card{display:flex!important;flex-direction:column!important;width:260px!important;min-width:260px!important;max-width:260px!important;height:210px!important;background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.08)!important;padding:16px!important;flex-shrink:0!important;box-sizing:border-box!important;overflow:hidden!important;border-radius:2px}
+.tsi-card>div:first-child,.tsi-card .tsi-q{font-family:var(--serif)!important;font-size:22px!important;line-height:1!important;color:var(--lav)!important;margin-bottom:6px!important}
+.tsi-card p,.tsi-card .tsi-t{font-family:var(--rounded)!important;font-size:11.5px!important;font-weight:300!important;color:rgba(255,255,255,.72)!important;font-style:italic!important;line-height:1.55!important;margin:0 0 10px!important;flex:1 1 auto!important;display:-webkit-box!important;-webkit-line-clamp:5!important;-webkit-box-orient:vertical!important;overflow:hidden!important;word-break:break-word!important;text-overflow:ellipsis!important}
+.tsi-card .tsi-meta,.tsi-card>div:last-child{border-top:1px solid rgba(255,255,255,.1)!important;padding-top:10px!important;display:flex!important;align-items:center!important;gap:10px!important;margin-top:auto!important;flex-shrink:0!important}
+.tsi-card .tsi-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--lav),#2A5BFF);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;font-family:var(--rounded)}
+.tsi-card .tsi-nm,.tsi-card .tsi-meta>div>div:first-child,.tsi-card>div:last-child>div>div:first-child{font-family:var(--serif)!important;font-size:12px!important;font-weight:600!important;color:rgba(255,255,255,.92)!important;line-height:1.2!important;margin-bottom:2px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;max-width:190px!important}
+.tsi-card .tsi-rl,.tsi-card .tsi-meta>div>div:last-child,.tsi-card>div:last-child>div>div:last-child{font-family:var(--rounded)!important;font-size:9.5px!important;color:rgba(255,255,255,.45)!important;line-height:1.3!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important;font-style:normal!important;font-weight:400!important;max-width:190px!important}
 @keyframes tsiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@media(max-width:768px){.tsi-card{width:280px;min-width:280px;height:230px;padding:18px}}
+@media(max-width:768px){.tsi-card{width:240px!important;min-width:240px!important;max-width:240px!important;height:200px!important;padding:14px!important}}
 </style>
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
 <link rel="canonical" href="https://j3d.ai/">
