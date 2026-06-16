@@ -845,7 +845,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         <div class="ev-card-b">
           <div class="ev-tag">Annual Flagship &nbsp;&middot;&nbsp; Davos</div>
           <div class="ev-title">House of Collaboration &mdash; Davos 2027</div>
-          <div class="ev-meta">18-22 Jan 2027 &nbsp;&middot;&nbsp; Talstrasse 52, Davos</div>
+          <div class="ev-meta">18-22 Jan 2027 &nbsp;&middot;&nbsp; Davos, CH</div>
           <p class="ev-desc">The premier public-private partnership execution platform at Davos week. 860+ delegates. 70+ countries. USD 3T.</p>
           <div class="ev-link">View Programme &rarr;</div>
         </div>
@@ -1046,7 +1046,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         <div style="border:1px solid var(--warmb);padding:24px 28px" class="rv d1">
           <div style="font-family:var(--rounded);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lav);margin-bottom:10px">DACH Operations</div>
           <div class="C Csm" style="color:var(--ind);margin-bottom:4px">Munich, Germany</div>
-          <p style="font-family:var(--rounded);font-size:12px;font-weight:500;color:var(--tmut)">Strategy, events &amp; DACH advisory &nbsp;&middot;&nbsp; Glockenbachviertel</p>
+          <p style="font-family:var(--rounded);font-size:12px;font-weight:500;color:var(--tmut)">Strategy, events &amp; DACH advisory &nbsp;&middot;&nbsp; O2 Tower</p>
         </div>
         <div style="border:1px solid var(--warmb);padding:24px 28px" class="rv d2">
           <div style="font-family:var(--rounded);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lav);margin-bottom:10px">Gulf Operations</div>
@@ -1128,7 +1128,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         <div class="d-chip"><b>70+</b><span>Countries</span></div>
         <div class="d-chip"><b>&euro;3T</b><span>GDP</span></div>
       </div>
-      <div class="d-acts"><a class="btn btn-ice" href="#hoc-results">View Results</a><a class="btn btn-outl" href="https://www.j3d.ai/davos-house-of-collaboration">HoC overview</a></div>
+      <div class="d-acts"><a class="btn btn-ice" href="#hoc-results">View Results</a><a class="btn btn-outl" href="#" onclick="go('hoc');return false">HoC overview</a></div>
     </div>
     <div class="d-stack">
       <div class="d-stack-c"><b>5</b><span>Days &middot; Jan 18&ndash;22, 2026</span></div>
@@ -1207,7 +1207,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   <section class="d-cta"><div class="con d-cta-inner">
     <div class="d-cta-eye">Get Started</div>
     <h2 class="d-cta-h">Apply to House of Collaboration 2027 &mdash; the universal edition.</h2>
-    <div class="d-cta-a"><a class="btn btn-ice" href="https://calendly.com/j3d-ai/davos" target="_blank">Book your slot</a><a class="btn btn-outl" href="https://www.j3d.ai/davos-house-of-collaboration">HoC overview</a></div>
+    <div class="d-cta-a"><a class="btn btn-ice" href="https://calendly.com/j3d-ai/davos" target="_blank">Book your slot</a><a class="btn btn-outl" href="#" onclick="go('hoc');return false">HoC overview</a></div>
   </div></section>
 </div>
 
@@ -2402,8 +2402,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       </div>
 
       <!-- Archive note -->
-      <p style="font-size:11px;color:rgba(255,255,255,.28);margin-top:18px">Looking for the 2025 edition? <a href="#" style="color:var(--ice);font-weight:600" onclick="go('davos-2025');return false">View the Davos 2025 archive &rarr;</a></p>
-    </div>
+      </div>
   </div>
 
   <!-- STATS -->
@@ -3739,10 +3738,10 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <!-- ═══ MAIN SCRIPT ════════════════════════════════════════════ -->
 <script>
 (function(){
-  var PAGES=['home','about','approach','events','hoc','davos-2025','estonian-leap','deep-tech-castle','foresight-whitepaper','reports','media','team','fellows','members','cs-hoc','cs-estonian-leap','cs-castle','cs-syntaigration','cs-vietnam-retreat','cs-gyeonggi','cs-europe-china','cs-fundraising','cs-allianz','cs-foresight','contact','imprint','privacy','hoc-terms'];
+  var PAGES=['home','about','approach','events','hoc','estonian-leap','deep-tech-castle','foresight-whitepaper','reports','media','team','fellows','members','cs-hoc','cs-estonian-leap','cs-castle','cs-syntaigration','cs-vietnam-retreat','cs-gyeonggi','cs-europe-china','cs-fundraising','cs-allianz','cs-foresight','contact','imprint','privacy','hoc-terms'];
   var NAV_MAP={
     'home':'home','about':'about','approach':'approach','cs-hoc':'approach','cs-estonian-leap':'approach','cs-castle':'approach','cs-syntaigration':'approach','cs-vietnam-retreat':'approach','cs-gyeonggi':'approach','cs-europe-china':'approach','cs-fundraising':'approach','cs-allianz':'approach','cs-foresight':'approach',
-    'events':'events','hoc':'hoc','davos-2025':'hoc',
+    'events':'events','hoc':'hoc',
     'estonian-leap':'events','deep-tech-castle':'events',
     'foresight-whitepaper':'reports','reports':'reports',
     'media':'media','team':'team','fellows':'fellows','members':'members','contact':'contact','imprint':'contact','privacy':'contact',
@@ -3848,7 +3847,6 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     {t:'Apply to HoC 2027',d:'Secure your invitation to House of Collaboration',p:'hoc'},
     {t:'J3D.AI Academy',d:'Education and capacity-building arm',p:'approach'},
     {t:'VAY Score',d:'AI readiness benchmarking methodology',p:'approach',a:'p-2'},
-    {t:'Davos 2025 Archive',d:'Previous House of Collaboration edition',p:'davos-2025'},
     {t:'Terms & Privacy',d:'Legal, terms and conditions',p:'terms'},
   ];
 
