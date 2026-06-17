@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /#members
-Disallow: /#fellows
-Disallow: /#imprint
-Disallow: /#privacy
-Disallow: /#hoc-terms
 
 Sitemap: https://j3d.ai/sitemap.xml
