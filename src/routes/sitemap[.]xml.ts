@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const BASE_URL = "https://j3d-ai.lovable.app";
+const BASE_URL = "https://j3d.ai";
 
 // Premium React routes + legacy HTML pages served via catch-all.
 const entries: { path: string; priority: string; changefreq?: string }[] = [
