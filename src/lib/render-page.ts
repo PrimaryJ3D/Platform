@@ -13,6 +13,29 @@ const PAGES: Record<string, PageMeta> = {
     title: "J3D.AI — Advisory, AI Readiness & Sovereign Convening",
     description:
       "J3D.AI: advisory, AI readiness scoring, and sovereign convening for organizations navigating the AI transition across Europe and Asia.",
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "J3D.AI Labs OÜ",
+        alternateName: "J3D.AI",
+        url: BASE_URL,
+        logo: `${BASE_URL}/favicon.svg`,
+        image: `${BASE_URL}/og-j3d.jpg`,
+        email: "primary@j3d.ai",
+        address: { "@type": "PostalAddress", addressLocality: "Tallinn", addressCountry: "EE" },
+        sameAs: ["https://www.linkedin.com/company/j3d-ai/"],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "J3D.AI",
+        url: BASE_URL,
+        description:
+          "Advisory, AI readiness, and sovereign convening for organizations navigating the AI transition.",
+        publisher: { "@type": "Organization", name: "J3D.AI Labs OÜ" },
+      },
+    ],
   },
   "/about": {
     title: "About — J3D.AI",
