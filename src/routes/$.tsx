@@ -9,11 +9,22 @@ const deepLinkScript = `
   try {
     var p = (location.pathname || '/').replace(/^\\//, '').replace(/\\/$/, '');
     if (!p) return;
+    /* Immediately hide pg-home (which ships with class="pg on") so HoC/about/
+       events content can't bleed through while we wait for window.go to load. */
+    var hideAll = function(){
+      var nodes = document.querySelectorAll('div.pg');
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].classList.remove('on');
+        nodes[i].style.display = 'none';
+      }
+    };
+    hideAll();
     var attempts = 0;
     var t = setInterval(function(){
       attempts++;
+      hideAll();
       if (typeof window.go === 'function') { window.go(p); clearInterval(t); }
-      else if (attempts > 60) { clearInterval(t); }
+      else if (attempts > 80) { clearInterval(t); }
     }, 50);
   } catch (e) {}
 })();</script>`;
