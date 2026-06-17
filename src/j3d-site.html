@@ -2428,9 +2428,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         </div>
       </div>
     </div>
-      </div>
-    </div>
   </section>
+
 
   <!-- ══ D. VOICES ══ -->
   <section class="sec" style="background:#FFFFFF">
@@ -3826,16 +3825,20 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   var SLUG_IN={'case-studies':'approach','platforms':'events'};
   window.go=function(page){
     if(SLUG_IN[page])page=SLUG_IN[page];
-    PAGES.forEach(function(p){
-      var el=document.getElementById('pg-'+p);
-      if(el)el.classList.remove('on');
+    /* Hide ALL .pg elements (defensive: belt-and-suspenders against any
+       stray inline style or class that might leave a previous page visible) */
+    document.querySelectorAll('div.pg').forEach(function(el){
+      el.classList.remove('on');
+      el.style.display='none';
     });
     var target=document.getElementById('pg-'+page);
+    if(!target){
+      target=document.getElementById('pg-contact');
+      page='contact';
+    }
     if(target){
       target.classList.add('on');
-    } else {
-      var ct=document.getElementById('pg-contact');
-      if(ct)ct.classList.add('on');
+      target.style.display='block';
     }
     document.querySelectorAll('.nl').forEach(function(a){a.classList.remove('on');});
     var activeNav=NAV_MAP[page]||page;
