@@ -54,16 +54,17 @@ const PAGES: Record<string, PageMeta> = {
     description: "Press, talks, and media coverage of J3D.AI's work across Europe and Asia.",
   },
   "/foresight-whitepaper": {
-    title: "Inside Davos Foresight Whitepaper — Our World in 2125 — J3D.AI",
+    title: "Davos Foresight Whitepaper: Our World in 2125 — J3D.AI",
     description:
-      "Inside Davos Foresight Whitepaper: Our World in 2125 — a long-form foresight publication by J3D.AI.",
+      "Davos Foresight Whitepaper — Our World in 2125: a long-form foresight publication by J3D.AI.",
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: "Inside Davos Foresight Whitepaper — Our World in 2125",
+      headline: "Davos Foresight Whitepaper — Our World in 2125",
       author: { "@type": "Organization", name: "J3D.AI" },
       publisher: { "@type": "Organization", name: "J3D.AI" },
       datePublished: "2025-01-25",
+      image: `${BASE_URL}/og-j3d.jpg`,
       url: `${BASE_URL}/foresight-whitepaper`,
     },
   },
