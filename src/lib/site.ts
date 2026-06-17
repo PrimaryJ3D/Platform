@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Making collaboration more profitable than competition.",
   description:
     "J3D.AI is an Estonian advisory and technology firm. We convene the world's most consequential leaders, score AI readiness, and unlock market access across Europe and Asia.",
-  url: "https://j3d-ai.lovable.app",
+  url: "https://j3d.ai",
   email: "primary@j3d.ai",
   press: "press@j3d.ai",
   castle: "castle@j3d.ai",

@@ -59,34 +59,28 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ROOT_TITLE = `${SITE.name} — Advisory, AI Readiness & Sovereign Convening`;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#2A2947" },
-      { title: `${SITE.name} — ${SITE.tagline}` },
+      { title: ROOT_TITLE },
       { name: "description", content: SITE.description },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: `${SITE.name} — ${SITE.tagline}` },
+      { property: "og:title", content: ROOT_TITLE },
       { property: "og:description", content: SITE.description },
       { property: "og:image", content: `${SITE.url}/og-j3d.jpg` },
       { property: "og:image:width", content: "1216" },
       { property: "og:image:height", content: "640" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@J3DAI" },
-      { name: "twitter:title", content: `${SITE.name} — ${SITE.tagline}` },
+      { name: "twitter:title", content: ROOT_TITLE },
       { name: "twitter:description", content: SITE.description },
       { name: "twitter:image", content: `${SITE.url}/og-j3d.jpg` },
-      { title: "J3D.AI" },
-      { property: "og:title", content: "J3D.AI" },
-      { name: "twitter:title", content: "J3D.AI" },
-      { name: "description", content: "We deliver market access advisory, AI readiness implementation, and public-private sovereign convenings." },
-      { property: "og:description", content: "We deliver market access advisory, AI readiness implementation, and public-private sovereign convenings." },
-      { name: "twitter:description", content: "We deliver market access advisory, AI readiness implementation, and public-private sovereign convenings." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/mWTzqfBVTQZ00JPT7nZRtG55h4m2/social-images/social-1781718817505-Dark_on_White_1000_x_1000.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/mWTzqfBVTQZ00JPT7nZRtG55h4m2/social-images/social-1781718817505-Dark_on_White_1000_x_1000.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -109,8 +103,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           alternateName: SITE.name,
           url: SITE.url,
           email: SITE.email,
+          logo: `${SITE.url}/favicon.svg`,
+          image: `${SITE.url}/og-j3d.jpg`,
           address: { "@type": "PostalAddress", addressLocality: "Tallinn", addressCountry: "EE" },
           sameAs: [SITE.linkedin],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: SITE.name,
+          url: SITE.url,
+          description: SITE.description,
+          publisher: { "@type": "Organization", name: SITE.fullName },
         }),
       },
     ],
