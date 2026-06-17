@@ -1,0 +1,25 @@
+# J3D.AI
+
+> J3D.AI is an advisory and technology company offering market access advisory, AI readiness scoring, and sovereign convening for organizations navigating the AI transition across Europe and Asia.
+
+## Pages
+
+- [Home](/): Overview of J3D.AI's advisory, AI readiness, and convening work.
+- [About](/about): Mission, company background, and leadership.
+- [Approach](/approach): How J3D.AI works with clients and partners.
+- [Team](/team): The people behind J3D.AI.
+- [Fellows](/fellows): J3D.AI fellows program.
+- [Reports](/reports): Publications and research.
+- [Foresight Whitepaper](/foresight-whitepaper): Long-form foresight publication.
+- [Media](/media): Press, talks, and media coverage.
+- [House of Collaboration](/hoc): HoC 2027 program — applications open.
+- [Estonian Leap](/estonian-leap): Estonia-focused initiative.
+- [Davos 2025](/davos-2025): Davos 2025 convening recap.
+- [Deep Tech Castle](/deep-tech-castle): Deep Tech Castle convening.
+- [Contact](/contact): How to reach J3D.AI.
+
+## Optional
+
+- [Privacy](/privacy): Privacy policy.
+- [Imprint](/imprint): Legal imprint.
+- [HoC Terms](/hoc-terms): House of Collaboration terms.
