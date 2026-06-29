@@ -617,6 +617,110 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 .tsi-card>*[style]{all:unset}
 .tsi-card>.tsi-meta{display:flex!important;align-items:center!important;gap:8px!important;border-top:1px solid rgba(255,255,255,.12)!important;padding-top:8px!important;margin-top:auto!important;flex-shrink:0!important;width:100%!important}
 .tsi-card>.tsi-meta>div:last-child{min-width:0;flex:1 1 auto;overflow:hidden}
+
+/* ── A11y / contrast / overflow / mobile polish ─────────── */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:1000}
+.skip-link:focus{left:8px;top:8px;width:auto;height:auto;padding:10px 14px;background:var(--ind);color:#fff;border-radius:4px}
+
+/* Embedded media is fluid */
+iframe,video,embed,object{max-width:100%}
+
+/* Prevent any element from forcing horizontal scroll */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas,iframe{max-width:100%}
+table{max-width:100%}
+pre,code{white-space:pre-wrap;word-break:break-word}
+
+/* Footer contrast (WCAG AA on dark indigo background) */
+.ft-logo-wrap p{color:rgba(255,255,255,.78)}
+.ft-t{color:rgba(255,255,255,.92)}
+.ft-ls a,.ft-ls button{color:rgba(255,255,255,.78)}
+.ft-ls a:hover,.ft-ls button:hover{color:#fff}
+.ft-soc a{color:rgba(255,255,255,.82);border-color:rgba(255,255,255,.28)}
+.ft-bot{color:rgba(255,255,255,.7)}
+.ft-bot a{color:rgba(255,255,255,.78)}
+
+/* Hero sub & small labels readability on dark */
+.hero-sub{color:rgba(255,255,255,.82)}
+.hst-l{color:rgba(255,255,255,.7)}
+.d-sub{color:rgba(255,255,255,.84)}
+.d-cta-s{color:rgba(255,255,255,.82)}
+
+/* Fluid headline scaling site-wide */
+.Cxl{font-size:clamp(34px,6vw,72px);line-height:1.05}
+.Clg{font-size:clamp(28px,4.6vw,56px);line-height:1.08}
+.Cmd{font-size:clamp(24px,3.4vw,40px);line-height:1.14}
+.Csm{font-size:clamp(22px,2.8vw,32px);line-height:1.2}
+
+/* Subpage default top spacing */
+.pg{padding-top:108px}
+
+/* Mobile-first overrides */
+@media(max-width:900px){
+  /* Tap targets >= 44px */
+  .nl{font-size:13px;padding:14px 12px}
+  .nav-mob{width:44px;height:44px;justify-content:center;align-items:center}
+  .ml{font-size:18px;padding:14px 4px;min-height:44px;display:flex;align-items:center}
+  .ml.mlsub{font-size:14px;padding:14px 4px 14px 18px;min-height:44px}
+  .di{padding:14px 16px;font-size:13px;min-height:44px;display:flex;align-items:center}
+  .ft-ls a,.ft-ls button{padding:10px 0;font-size:13px;min-height:44px;display:flex;align-items:center}
+  .ft-soc a{width:44px;height:44px}
+  .btn,.nav-cta{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+
+  /* Generous body line-height */
+  body{line-height:1.7}
+
+  /* Hero / section type */
+  .hero-h{font-size:clamp(30px,7.5vw,46px);line-height:1.08}
+  .hero-sub{font-size:15px;line-height:1.78;max-width:100%}
+
+  /* Containers: extra side padding never overflows */
+  .con,#pg-hoc .con,#pg-estonian-leap .con{padding:0 20px;max-width:100%}
+
+  /* Generic overflow guard for the two priority pages */
+  #pg-hoc,#pg-estonian-leap,#pg-deep-tech-castle,
+  #pg-hoc *,#pg-estonian-leap *{max-width:100%}
+  #pg-hoc img,#pg-hoc iframe,#pg-estonian-leap img,#pg-estonian-leap iframe{width:100%;height:auto}
+
+  /* Common HoC/Leap grids collapse cleanly */
+  .hoc-hero-grid,.hoc-stats-grid,.hoc-reasons-grid,.hoc-bda-grid,
+  .hoc-tiers-grid,.hoc-quotes-grid,.hoc-archetypes-grid,.hoc-floor-grid,
+  .hoc-leap-grid,.hoc-contrast-row,.hoc-contrast-head{
+    grid-template-columns:1fr!important;gap:14px!important
+  }
+
+  /* Tables / wide blocks become scroll-wrapped instead of overflowing the page */
+  .scroll-x,.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* HoC day rows reflow */
+  .hoc-day-summary{grid-template-columns:64px 1fr 24px!important;gap:10px!important;padding:14px!important}
+
+  /* Footer stack + readable */
+  .ft-g{grid-template-columns:1fr!important;gap:28px}
+
+  /* Announcement strip never overlaps content */
+  .ann{position:sticky!important;top:0}
+}
+
+@media(max-width:480px){
+  .hero-h{font-size:clamp(26px,8.5vw,38px)}
+  .nl{font-size:12px}
+}
+
+/* Section rhythm harmonisation */
+.sec{padding:clamp(56px,8vw,96px) 0}
+.sec-sm{padding:clamp(40px,6vw,64px) 0}
+.sec-xs{padding:clamp(28px,4vw,40px) 0}
+hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32px) 0}
+
+/* Brand-gradient placeholder treatment (used in place of stock imagery) */
+.brand-treat{background:radial-gradient(ellipse at 25% 25%,rgba(198,240,255,.18),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(153,124,183,.3),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 60%,var(--ind3) 100%);position:relative;overflow:hidden}
+.brand-treat::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+
+/* Initials monogram avatars */
+.mono-init{text-transform:uppercase}
+.spk-ph,.tm-ph{background:linear-gradient(135deg,var(--ind3),var(--lavd))}
+
 </style>
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
 <link rel="canonical" href="https://j3d.ai/">
