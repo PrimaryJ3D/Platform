@@ -617,6 +617,116 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 .tsi-card>*[style]{all:unset}
 .tsi-card>.tsi-meta{display:flex!important;align-items:center!important;gap:8px!important;border-top:1px solid rgba(255,255,255,.12)!important;padding-top:8px!important;margin-top:auto!important;flex-shrink:0!important;width:100%!important}
 .tsi-card>.tsi-meta>div:last-child{min-width:0;flex:1 1 auto;overflow:hidden}
+
+/* ── A11y / contrast / overflow / mobile polish ─────────── */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:1000}
+
+/* Contain decorative absolute positioned children that bleed past the viewport */
+#pg-hoc,#pg-estonian-leap,#pg-deep-tech-castle,#pg-home,.pg{overflow-x:clip}
+#pg-estonian-leap > *,#pg-hoc > *{overflow-x:clip}
+.est-boulder,.mesh-g1,.mesh-g2,.mesh-g3,.d-hero-glow,.cta-glow{max-width:100vw}
+
+.skip-link:focus{left:8px;top:8px;width:auto;height:auto;padding:10px 14px;background:var(--ind);color:#fff;border-radius:4px}
+
+/* Embedded media is fluid */
+iframe,video,embed,object{max-width:100%}
+
+/* Prevent any element from forcing horizontal scroll */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas,iframe{max-width:100%}
+table{max-width:100%}
+pre,code{white-space:pre-wrap;word-break:break-word}
+
+/* Footer contrast (WCAG AA on dark indigo background) */
+.ft-logo-wrap p{color:rgba(255,255,255,.78)}
+.ft-t{color:rgba(255,255,255,.92)}
+.ft-ls a,.ft-ls button{color:rgba(255,255,255,.78)}
+.ft-ls a:hover,.ft-ls button:hover{color:#fff}
+.ft-soc a{color:rgba(255,255,255,.82);border-color:rgba(255,255,255,.28)}
+.ft-bot{color:rgba(255,255,255,.7)}
+.ft-bot a{color:rgba(255,255,255,.78)}
+
+/* Hero sub & small labels readability on dark */
+.hero-sub{color:rgba(255,255,255,.82)}
+.hst-l{color:rgba(255,255,255,.7)}
+.d-sub{color:rgba(255,255,255,.84)}
+.d-cta-s{color:rgba(255,255,255,.82)}
+
+/* Fluid headline scaling site-wide */
+.Cxl{font-size:clamp(34px,6vw,72px);line-height:1.05}
+.Clg{font-size:clamp(28px,4.6vw,56px);line-height:1.08}
+.Cmd{font-size:clamp(24px,3.4vw,40px);line-height:1.14}
+.Csm{font-size:clamp(22px,2.8vw,32px);line-height:1.2}
+
+/* Subpage default top spacing */
+.pg{padding-top:108px}
+
+/* Mobile-first overrides */
+@media(max-width:900px){
+  /* Tap targets >= 44px */
+  .nl{font-size:13px;padding:14px 12px}
+  .nav-mob{width:44px;height:44px;justify-content:center;align-items:center}
+  .ml{font-size:18px;padding:14px 4px;min-height:44px;display:flex;align-items:center}
+  .ml.mlsub{font-size:14px;padding:14px 4px 14px 18px;min-height:44px}
+  .di{padding:14px 16px;font-size:13px;min-height:44px;display:flex;align-items:center}
+  .ft-ls a,.ft-ls button{padding:10px 0;font-size:13px;min-height:44px;display:flex;align-items:center}
+  .ft-soc a{width:44px;height:44px}
+  .btn,.nav-cta{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+
+  /* Generous body line-height */
+  body{line-height:1.7}
+
+  /* Hero / section type */
+  .hero-h{font-size:clamp(30px,7.5vw,46px);line-height:1.08}
+  .hero-sub{font-size:15px;line-height:1.78;max-width:100%}
+
+  /* Containers: extra side padding never overflows */
+  .con,#pg-hoc .con,#pg-estonian-leap .con{padding:0 20px;max-width:100%}
+
+  /* Generic overflow guard for the two priority pages */
+  #pg-hoc,#pg-estonian-leap,#pg-deep-tech-castle,
+  #pg-hoc *,#pg-estonian-leap *{max-width:100%}
+  #pg-hoc img,#pg-hoc iframe,#pg-estonian-leap img,#pg-estonian-leap iframe{width:100%;height:auto}
+
+  /* Common HoC/Leap grids collapse cleanly */
+  .hoc-hero-grid,.hoc-stats-grid,.hoc-reasons-grid,.hoc-bda-grid,
+  .hoc-tiers-grid,.hoc-quotes-grid,.hoc-archetypes-grid,.hoc-floor-grid,
+  .hoc-leap-grid,.hoc-contrast-row,.hoc-contrast-head{
+    grid-template-columns:1fr!important;gap:14px!important
+  }
+
+  /* Tables / wide blocks become scroll-wrapped instead of overflowing the page */
+  .scroll-x,.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+
+  /* HoC day rows reflow */
+  .hoc-day-summary{grid-template-columns:64px 1fr 24px!important;gap:10px!important;padding:14px!important}
+
+  /* Footer stack + readable */
+  .ft-g{grid-template-columns:1fr!important;gap:28px}
+
+  /* Announcement strip never overlaps content */
+  .ann{position:sticky!important;top:0}
+}
+
+@media(max-width:480px){
+  .hero-h{font-size:clamp(26px,8.5vw,38px)}
+  .nl{font-size:12px}
+}
+
+/* Section rhythm harmonisation */
+.sec{padding:clamp(56px,8vw,96px) 0}
+.sec-sm{padding:clamp(40px,6vw,64px) 0}
+.sec-xs{padding:clamp(28px,4vw,40px) 0}
+hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32px) 0}
+
+/* Brand-gradient placeholder treatment (used in place of stock imagery) */
+.brand-treat{background:radial-gradient(ellipse at 25% 25%,rgba(198,240,255,.18),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(153,124,183,.3),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 60%,var(--ind3) 100%);position:relative;overflow:hidden}
+.brand-treat::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+
+/* Initials monogram avatars */
+.mono-init{text-transform:uppercase}
+.spk-ph,.tm-ph{background:linear-gradient(135deg,var(--ind3),var(--lavd))}
+
 </style>
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
 <link rel="canonical" href="https://j3d.ai/">
@@ -2147,7 +2257,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       <!-- Deep Tech Castle -->
       <div style="border:1px solid var(--warmb);overflow:hidden" class="rv d2">
         <div class="g2" style="gap:0">
-          <div style="overflow:hidden;aspect-ratio:16/9"><img src="https://images.pexels.com/photos/2774557/pexels-photo-2774557.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Deep Tech Castle" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>
+          <div role="img" aria-label="Deep Tech Castle" style="overflow:hidden;aspect-ratio:16/9;position:relative;background:radial-gradient(ellipse at 30% 25%,rgba(198,240,255,.22),transparent 55%),radial-gradient(ellipse at 75% 80%,rgba(153,124,183,.32),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 55%,var(--ind3) 100%);display:flex;align-items:flex-end;justify-content:flex-start;padding:24px"><div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none"></div><div style="position:relative;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,3.4vw,32px);color:rgba(255,255,255,.92);line-height:1.1;letter-spacing:-.01em">Deep Tech<br><span style="color:var(--ice)">Castle.</span></div></div>
           <div style="padding:40px">
             <div class="ev-tag">Invitation-only Retreat &nbsp;&middot;&nbsp; Germany</div>
             <h2 class="C Csm" style="color:var(--ind);margin:6px 0 12px">Deep Tech Castle - 3rd Edition</h2>
@@ -3050,7 +3160,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <!-- ═══ DEEP TECH CASTLE ════════════════════════ -->
 <div id="pg-deep-tech-castle" class="pg">
   <div style="background:linear-gradient(135deg,var(--ind2),var(--ind));min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
-    <div style="position:absolute;inset:0"><img src="https://images.pexels.com/photos/2774557/pexels-photo-2774557.jpeg?auto=compress&cs=tinysrgb&w=1400&q=80" alt="Deep Tech Castle" style="width:100%;height:100%;object-fit:cover;opacity:.22" loading="lazy"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(198,240,255,.18),transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(153,124,183,.32),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 60%,var(--ind3) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,28,54,.96),rgba(30,28,54,.5))"></div>
     <div class="hero-grid"></div>
     <div class="con" style="position:relative;z-index:1;padding-bottom:48px">
@@ -3093,14 +3203,14 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     <div class="con">
       <div class="ctr rv" style="margin-bottom:28px"><span class="ey">Past Speakers</span><h2 class="C Csm" style="color:var(--ind)">Voices of the cohort.</h2></div>
       <div class="g4">
-        <div class="spk rv"><div class="spk-ph"><img src="./assets/speakers/blechinger.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/6820261ce5524b06138e20eb_38.png" alt="Prof. Blechinger" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Prof. Dr. Gerhard Blechinger</div><div class="spk-role">Rector, Salzburg University of Applied Sciences</div></div>
-        <div class="spk rv d1"><div class="spk-ph"><img src="./assets/speakers/ternes.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff967a8a8bcc5c734d2ddd_1.png" alt="Prof. Anabel Ternès" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Prof. Dr. Anabel Tern&egrave;s von Hattburg</div><div class="spk-role">President, Club of Budapest</div></div>
-        <div class="spk rv d2"><div class="spk-ph"><img src="./assets/speakers/nohl.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9753e1c40d89484165ac_3.png" alt="Dr. Karsten Nohl" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Dr. Karsten Nohl</div><div class="spk-role">Founder, Security Research Labs</div></div>
-        <div class="spk rv d3"><div class="spk-ph"><img src="./assets/speakers/pylarinou.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9788916e908e90489730_4.png" alt="Dr. Efi Pylarinou" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Dr. Efi Pylarinou</div><div class="spk-role">Global fintech &amp; blockchain leader</div></div>
-        <div class="spk rv"><div class="spk-ph"><img src="./assets/speakers/poikonen.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9aee3f60a77eb2d01f02_6.png" alt="Dr. Hanna Poikonen" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Dr. Hanna Poikonen</div><div class="spk-role">Neuroscientist, ETH Zurich &middot; WiseMotion</div></div>
-        <div class="spk rv d1"><div class="spk-ph"><img src="./assets/speakers/servadei.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9b353600f832b2e0bbad_7.png" alt="Dr. Lorenzo Servadei" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Dr. Lorenzo Servadei</div><div class="spk-role">Head of AI for Chip Design, Sony AI</div></div>
-        <div class="spk rv d2"><div class="spk-ph"><img src="./assets/speakers/veloz.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9bd762f3efdd40a91da0_10.png" alt="Prof. Dr. Tomas Veloz" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Prof. Dr. Tomas Veloz</div><div class="spk-role">Founder FIDSTA &middot; Foresight &amp; Interdisciplinary AI</div></div>
-        <div class="spk rv d3"><div class="spk-ph"><img src="./assets/speakers/kapasi.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/68049215300130b06e1926e4_IMG-02.png" alt="Dr. Sabine Kapasi" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="spk-name">Dr. Sabine Kapasi</div><div class="spk-role">UN Global Strategy Lead &middot; Planetary health</div></div>
+        <div class="spk rv"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Prof. Blechinger" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">GB</span></div><div class="spk-name">Prof. Dr. Gerhard Blechinger</div><div class="spk-role">Rector, Salzburg University of Applied Sciences</div></div>
+        <div class="spk rv d1"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Prof. Anabel Ternès" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">AT</span></div><div class="spk-name">Prof. Dr. Anabel Tern&egrave;s von Hattburg</div><div class="spk-role">President, Club of Budapest</div></div>
+        <div class="spk rv d2"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Dr. Karsten Nohl" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">KN</span></div><div class="spk-name">Dr. Karsten Nohl</div><div class="spk-role">Founder, Security Research Labs</div></div>
+        <div class="spk rv d3"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Dr. Efi Pylarinou" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">EP</span></div><div class="spk-name">Dr. Efi Pylarinou</div><div class="spk-role">Global fintech &amp; blockchain leader</div></div>
+        <div class="spk rv"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Dr. Hanna Poikonen" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">HP</span></div><div class="spk-name">Dr. Hanna Poikonen</div><div class="spk-role">Neuroscientist, ETH Zurich &middot; WiseMotion</div></div>
+        <div class="spk rv d1"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Dr. Lorenzo Servadei" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">LS</span></div><div class="spk-name">Dr. Lorenzo Servadei</div><div class="spk-role">Head of AI for Chip Design, Sony AI</div></div>
+        <div class="spk rv d2"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Prof. Dr. Tomas Veloz" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">TV</span></div><div class="spk-name">Prof. Dr. Tomas Veloz</div><div class="spk-role">Founder FIDSTA &middot; Foresight &amp; Interdisciplinary AI</div></div>
+        <div class="spk rv d3"><div class="spk-ph"><span class="mono-init" role="img" aria-label="Dr. Sabine Kapasi" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">SK</span></div><div class="spk-name">Dr. Sabine Kapasi</div><div class="spk-role">UN Global Strategy Lead &middot; Planetary health</div></div>
       </div>
     </div>
   </section>
@@ -3350,7 +3460,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         <button class="team-toggle" onclick="toggleTeam(this)"><span class="tt-label">Core Team &amp; Extended Network</span><span class="tt-arrow">&#9650;</span></button>
         <div class="team-panel">
           <div class="g4" style="gap:16px">
-            <div class="tm"><div class="tm-ph"><img src="./assets/team/loic.jpg" data-webflow="https://cdn.prod.website-files.com/64bf9f696defc0a4753a5a85/6908fcb30f0a689538ac5bbc_8.png" alt="Loic Claveau" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="tm-b"><div class="tm-office">Marketing &middot; Stockholm, Sweden</div><div class="tm-name">Loic Claveau</div><div class="tm-role">Chief Marketing Officer (CMO)</div></div></div>
+            <div class="tm"><div class="tm-ph"><span class="mono-init" role="img" aria-label="Loic Claveau" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">LC</span></div><div class="tm-b"><div class="tm-office">Marketing &middot; Stockholm, Sweden</div><div class="tm-name">Loic Claveau</div><div class="tm-role">Chief Marketing Officer (CMO)</div></div></div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">ST</div></div><div class="tm-b"><div class="tm-office">Marketing &middot; Mumbai, India</div><div class="tm-name">Sarthak Thakkar</div><div class="tm-role">Marketing Associate (Pre-Sales) &amp; CRM / HubSpot Manager</div></div></div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">NM</div></div><div class="tm-b"><div class="tm-office">Partnerships &middot; Tallinn, Estonia</div><div class="tm-name">Nadim Mostak Sany</div><div class="tm-role">Fellow of Partnerships</div></div></div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">NM</div></div><div class="tm-b"><div class="tm-office">Communications &middot; Delhi, India</div><div class="tm-name">Nandini Mathur</div><div class="tm-role">Fellow of Communications</div></div></div>
@@ -3358,7 +3468,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
               <div class="tm-ph"><div class="tm-initials">UW</div></div><div class="tm-b"><div class="tm-office">Design &middot; London</div><div class="tm-name">Umer Wassem</div><div class="tm-role">Design Lead</div></div>
             </div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">KK</div></div><div class="tm-b"><div class="tm-office">Legal &middot; Tallinn, Estonia</div><div class="tm-name">Karl Kreevald</div><div class="tm-role">Legal Counsel</div></div></div>
-            <div class="tm"><div class="tm-ph"><img src="./assets/speakers/veloz.jpg" data-webflow="https://cdn.prod.website-files.com/648194ad5e3f2aa7628a2aa1/67ff9bd762f3efdd40a91da0_10.png" alt="Prof. Dr. Tomas Veloz" onerror="if(this.dataset.webflow&&this.src!==this.dataset.webflow){this.src=this.dataset.webflow;}else{this.style.opacity=0;this.onerror=null;}" loading="lazy"></div><div class="tm-b"><div class="tm-office">Algorithms &middot; Brussels</div><div class="tm-name">Prof. Dr. Tomas Veloz</div><div class="tm-role">Founder, FIDSTA &middot; Vrije Universiteit Brussel</div></div></div>
+            <div class="tm"><div class="tm-ph"><span class="mono-init" role="img" aria-label="Prof. Dr. Tomas Veloz" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--serif);font-weight:600;color:#fff;background:linear-gradient(135deg,var(--ind3),var(--lavd));letter-spacing:.04em">TV</span></div><div class="tm-b"><div class="tm-office">Algorithms &middot; Brussels</div><div class="tm-name">Prof. Dr. Tomas Veloz</div><div class="tm-role">Founder, FIDSTA &middot; Vrije Universiteit Brussel</div></div></div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">RR</div></div><div class="tm-b"><div class="tm-office">Finance &middot; Tallinn, Estonia</div><div class="tm-name">Rain Ruus</div><div class="tm-role">Finance Lead</div></div></div>
             <div class="tm"><div class="tm-ph"><div class="tm-initials">AM</div></div><div class="tm-b"><div class="tm-office">Ho Chi Minh City</div><div class="tm-name">An Mai</div><div class="tm-role">Asia Markets &middot; President, IMT Solutions</div></div></div>
           </div>
