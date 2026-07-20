@@ -215,7 +215,20 @@ function escapeAttr(s: string): string {
 const deepLinkScript = `
 <script>(function(){
   try {
-    var p = (location.pathname || '/').replace(/^\\//, '').replace(/\\/$/, '');
+    var path = (location.pathname || '/').replace(/\\/+$/, '') || '/';
+    var isHome = path === '/';
+    /* Strip any stray hash on non-home routes so the URL is always
+       exactly the pathname (e.g. /residency, never /residency#anything). */
+    var scrubHash = function(){
+      if (!isHome && location.hash) {
+        try { history.replaceState(null, '', path); } catch (e) {}
+      }
+    };
+    scrubHash();
+    if (!isHome) {
+      window.addEventListener('hashchange', scrubHash);
+    }
+    var p = path.replace(/^\\//, '');
     if (!p) return;
     var hideAll = function(){
       var nodes = document.querySelectorAll('div.pg');
@@ -229,8 +242,11 @@ const deepLinkScript = `
     var t = setInterval(function(){
       attempts++;
       hideAll();
-      if (typeof window.go === 'function') { window.go(p); clearInterval(t); }
-      else if (attempts > 80) { clearInterval(t); }
+      if (typeof window.go === 'function') {
+        window.go(p);
+        scrubHash();
+        clearInterval(t);
+      } else if (attempts > 80) { clearInterval(t); }
     }, 50);
   } catch (e) {}
 })();</script>`;
