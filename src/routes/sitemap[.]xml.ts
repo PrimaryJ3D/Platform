@@ -6,6 +6,7 @@ const BASE_URL = "https://j3d.ai";
 const entries: { path: string; priority: string; changefreq?: string }[] = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/hoc", priority: "1.0", changefreq: "weekly" },
+  { path: "/residency", priority: "1.0", changefreq: "weekly" },
   { path: "/estonian-leap", priority: "0.9", changefreq: "monthly" },
   { path: "/approach", priority: "0.8", changefreq: "monthly" },
   { path: "/contact", priority: "0.8", changefreq: "monthly" },
