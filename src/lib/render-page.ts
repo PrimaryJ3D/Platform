@@ -137,7 +137,7 @@ const PAGES: Record<string, PageMeta> = {
   "/residency": {
     title: "HoC 2027 Residency — J3D.AI",
     description:
-      "Take your residency at House of Collaboration 2027, Davos. Full week, speaking slot, place to stay. Only 42 exist.",
+      "Join the residency at House of Collaboration 2027, Davos. Full week, speaking slot, place to stay. Limited slots - first come, first served.",
     schema: {
       "@context": "https://schema.org",
       "@type": "Event",
