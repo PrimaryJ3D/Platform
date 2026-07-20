@@ -3974,7 +3974,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       <h2 style="font-family:var(--serif);font-weight:300;color:#F5F0E6;font-size:clamp(34px,4.4vw,56px);line-height:1;letter-spacing:-.02em;margin:0 0 20px;max-width:900px">
         The price rises with every tier <span style="font-style:italic;color:var(--ice)">and never comes back.</span>
       </h2>
-      <p style="font-family:var(--body);font-size:14px;color:rgba(245,240,230,.65);margin:0 0 40px">All prices CHF, incl. 8.1% VAT.</p>
+      <p style="font-family:var(--body);font-size:14px;color:rgba(245,240,230,.65);margin:0 0 40px">All prices in CHF, excluding VAT. Swiss VAT (8.1%) is added at checkout.</p>
 
       <div style="border:1px solid rgba(245,240,230,.18);overflow:hidden">
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;background:rgba(245,240,230,.06);padding:16px 24px;border-bottom:1px solid rgba(245,240,230,.18)">
@@ -4273,10 +4273,11 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     if(navEl)navEl.classList.add('on');
     window.scrollTo(0,0);
     try{
-      if(here==='/residency'){/* handled above */}
-      else if(page==='residency'){history.replaceState(null,'','/residency');}
-      else if(here==='/'){history.pushState(null,'',page==='home'?'/':'/#'+slug);}
-      else{history.pushState(null,'','#'+slug);}
+      /* Only rewrite the URL when we're on the homepage. On standalone
+         routes (e.g. /residency) never append a hash - the URL must stay
+         exactly the pathname. Cross-boundary nav is handled above via
+         a full location.href change. */
+      if(here==='/'){history.pushState(null,'',page==='home'?'/':'/#'+slug);}
     }catch(e){}
   };
   window.goAnchor=function(page,anchor){
