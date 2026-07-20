@@ -134,6 +134,36 @@ const PAGES: Record<string, PageMeta> = {
       url: `${BASE_URL}/hoc`,
     },
   },
+  "/residency": {
+    title: "HoC 2027 Residency — J3D.AI",
+    description:
+      "Take your residency at House of Collaboration 2027, Davos. Full week, speaking slot, place to stay. Only 42 exist.",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: "House of Collaboration 2027 Residency",
+      description:
+        "The HoC 2027 Residency: your full week on the programme, a speaking slot, and a place to stay - curated end to end. Only 42 residencies exist.",
+      startDate: "2027-01-17",
+      endDate: "2027-01-21",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: "Davos",
+        address: { "@type": "PostalAddress", addressLocality: "Davos", addressCountry: "CH" },
+      },
+      organizer: { "@type": "Organization", name: "J3D.AI", url: BASE_URL },
+      offers: {
+        "@type": "Offer",
+        url: "https://buytickets.at/houseofcollaborationdavos2027",
+        priceCurrency: "CHF",
+        price: "4200",
+        availability: "https://schema.org/LimitedAvailability",
+      },
+      url: `${BASE_URL}/residency`,
+    },
+  },
   "/deep-tech-castle": {
     title: "Deep Tech Castle — J3D.AI",
     description: "Where zebracorns convene: cybersecurity meets philosophy at C-suite level.",
