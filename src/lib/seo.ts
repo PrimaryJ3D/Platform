@@ -11,7 +11,7 @@ export function pageHead({
   path: string;
   ogType?: string;
 }) {
-  const fullTitle = `${title} — ${SITE.name}`;
+  const fullTitle = `${title} - ${SITE.name}`;
   const url = `${SITE.url}${path}`;
   return {
     meta: [

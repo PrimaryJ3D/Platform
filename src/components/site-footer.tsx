@@ -34,7 +34,7 @@ export function SiteFooter() {
           ))}
         </div>
         <div className="hairline mt-16 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} {SITE.fullName} — Tallinn, Estonia.</p>
+          <p>© {new Date().getFullYear()} {SITE.fullName} - Tallinn, Estonia.</p>
           <a href={SITE.linkedin} target="_blank" rel="noopener" className="underline-link">
             LinkedIn
           </a>
