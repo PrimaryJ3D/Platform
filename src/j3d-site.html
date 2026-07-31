@@ -846,11 +846,11 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
   .hoc-days{grid-template-columns:1fr}
   .hoc-res-list{grid-template-columns:1fr}
   .hoc-modal-card{grid-template-columns:1fr}
-  .hoc-modal-img{aspect-ratio:4/3}
+  .hoc-modal-img{aspect-ratio:1/1}
   .hoc-sp{flex:0 0 156px;width:156px}
 }
 /* Speaker photo containment - authoritative, wins over generic responsive img rules */
-.hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background:#E4E2DC;display:block}
+.hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background-color:#E4E2DC;display:block}
 .hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 25%!important;display:block!important}
 </style>
 
@@ -2681,7 +2681,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     <div class="hoc-modal-bd" data-close></div>
     <div class="hoc-modal-card">
       <button type="button" class="hoc-modal-x" data-close aria-label="Close">&times;</button>
-      <div class="hoc-modal-img"><img id="hocModalImg" src="" alt=""></div>
+      <div class="hoc-modal-img" id="hocModalImg"></div>
       <div class="hoc-modal-body">
         <h3 id="hocModalName"></h3>
         <p class="hoc-modal-title" id="hocModalTitle"></p>
@@ -4324,8 +4324,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
     var modal=document.getElementById('hocModal');
     function openModal(sp){
-      document.getElementById('hocModalImg').src=sp.p;
-      document.getElementById('hocModalImg').alt=sp.n;
+      var mi=document.getElementById('hocModalImg');
+      applySprite(mi,list.indexOf(sp));mi.setAttribute('role','img');mi.setAttribute('aria-label',sp.n);
       document.getElementById('hocModalName').textContent=sp.n;
       document.getElementById('hocModalTitle').textContent=sp.t;
       document.getElementById('hocModalBio').textContent=sp.b;
