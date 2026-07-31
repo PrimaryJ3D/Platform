@@ -807,10 +807,14 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
   .hoc-days{grid-template-columns:1fr}
   .hoc-res-list{grid-template-columns:1fr}
   .hoc-modal-card{grid-template-columns:1fr}
-  .hoc-modal-img img{aspect-ratio:4/3}
+  .hoc-modal-img{aspect-ratio:4/3}
   .hoc-sp{flex:0 0 156px;width:156px}
 }
+/* Speaker photo containment - authoritative, wins over generic responsive img rules */
+.hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background:#E4E2DC;display:block}
+.hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 22%!important;display:block!important}
 </style>
+
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
 <link rel="canonical" href="https://j3d.ai/">
 <meta property="og:type" content="website">
