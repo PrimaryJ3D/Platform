@@ -121,8 +121,8 @@ const PAGES: Record<string, PageMeta> = {
       "@type": "Event",
       name: "House of Collaboration 2027",
       description: "Curated, sovereign convening for leaders working at the AI frontier.",
-      startDate: "2027-01-18",
-      endDate: "2027-01-22",
+      startDate: "2027-01-17",
+      endDate: "2027-01-21",
       eventStatus: "https://schema.org/EventScheduled",
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       location: {
@@ -137,13 +137,13 @@ const PAGES: Record<string, PageMeta> = {
   "/residency": {
     title: "HoC 2027 Residency — J3D.AI",
     description:
-      "Join the residency at House of Collaboration 2027, Davos. Full week, speaking slot, place to stay. Limited slots - first come, first served.",
+      "Join the residency at House of Collaboration 2027, Davos. Full week, a slot on the programme, place to stay. Limited slots - first come, first served.",
     schema: {
       "@context": "https://schema.org",
       "@type": "Event",
       name: "House of Collaboration 2027 Residency",
       description:
-        "The HoC 2027 Residency: your full week on the programme, a speaking slot, and a place to stay - curated end to end. Only 42 residencies exist.",
+        "The HoC 2027 Residency: your full week on the programme, a slot on the programme, and a place to stay - curated end to end. Only 42 residencies exist.",
       startDate: "2027-01-17",
       endDate: "2027-01-21",
       eventStatus: "https://schema.org/EventScheduled",
@@ -156,9 +156,7 @@ const PAGES: Record<string, PageMeta> = {
       organizer: { "@type": "Organization", name: "J3D.AI", url: BASE_URL },
       offers: {
         "@type": "Offer",
-        url: "https://buytickets.at/houseofcollaborationdavos2027",
-        priceCurrency: "CHF",
-        price: "4200",
+        url: "https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form",
         availability: "https://schema.org/LimitedAvailability",
       },
       url: `${BASE_URL}/residency`,
