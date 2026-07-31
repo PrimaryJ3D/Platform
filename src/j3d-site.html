@@ -846,11 +846,11 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
   .hoc-days{grid-template-columns:1fr}
   .hoc-res-list{grid-template-columns:1fr}
   .hoc-modal-card{grid-template-columns:1fr}
-  .hoc-modal-img{aspect-ratio:4/3}
+  .hoc-modal-img{aspect-ratio:1/1}
   .hoc-sp{flex:0 0 156px;width:156px}
 }
 /* Speaker photo containment - authoritative, wins over generic responsive img rules */
-.hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background:#E4E2DC;display:block}
+.hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background-color:#E4E2DC;display:block}
 .hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 25%!important;display:block!important}
 </style>
 
@@ -2660,7 +2660,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     <div class="con">
       <span class="ey" style="color:var(--ice)">The residency</span>
       <h2 class="C Csm hoc-h2 hoc-h2-l">42 residencies. <em style="color:var(--ice)">That is the House.</em></h2>
-      <p class="hoc-lede hoc-lede-l">The residency is the main programme of House of Collaboration 2027. Only 42 exist, and they are secured first; week passes follow later. Pricing moves as tiers close, so early is better.</p>
+      <p class="hoc-lede hoc-lede-l">The residency is the main programme of House of Collaboration 2027. Only 42 exist, and they are allocated in order of application. Earlier applications secure the best conditions.</p>
       <ul class="hoc-res-list">
         <li>All daytime programming sessions across the five days</li>
         <li>A slot on the programme to share your insights</li>
@@ -2676,12 +2676,23 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     </div>
   </section>
 
+  <!-- 9. FINAL CTA -->
+  <section class="sec hoc-sec" style="background:#F5F0E6">
+    <div class="con" style="text-align:center">
+      <h2 class="C Csm hoc-h2" style="margin-left:auto;margin-right:auto">42 residencies. <em>That is all.</em></h2>
+      <p class="hoc-lede" style="margin-left:auto;margin-right:auto">Davos, 17-21 January 2027. Allocated in order of application - first come, first served.</p>
+      <div style="margin-top:26px">
+        <a class="hoc-btn" href="https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form" target="_blank" rel="noopener">Secure your residency</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SPEAKER MODAL -->
   <div class="hoc-modal" id="hocModal" role="dialog" aria-modal="true" aria-labelledby="hocModalName" hidden>
     <div class="hoc-modal-bd" data-close></div>
     <div class="hoc-modal-card">
       <button type="button" class="hoc-modal-x" data-close aria-label="Close">&times;</button>
-      <div class="hoc-modal-img"><img id="hocModalImg" src="" alt=""></div>
+      <div class="hoc-modal-img" id="hocModalImg"></div>
       <div class="hoc-modal-body">
         <h3 id="hocModalName"></h3>
         <p class="hoc-modal-title" id="hocModalTitle"></p>
@@ -3893,7 +3904,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         <span style="font-style:italic;color:var(--lav)">42 residencies.</span> That is all.
       </h2>
       <p style="font-family:var(--body);font-size:15px;color:rgba(42,41,71,.7);max-width:560px;margin:0 auto 32px;line-height:1.7">
-        Prices only move upward. The next tier closes the moment its allocation is taken.
+        Allocated in order of application. Limited slots - first come, first served.
       </p>
       <a href="https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form" target="_blank" rel="noopener"
          style="background:var(--ind);color:#F5F0E6;padding:20px 40px;font-family:var(--rounded);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.22em;text-decoration:none;display:inline-block">
@@ -4270,7 +4281,17 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <script>
 (function(){
+  var SPRITE='/__l5e/assets-v1/8006272c-41db-4699-bd65-5669445ebf2b/speakers-sprite.jpg';
+  function applySprite(el,i){
+    var col=i%8,row=Math.floor(i/8);
+    el.style.aspectRatio='1 / 1';
+    el.style.backgroundImage='url('+SPRITE+')';
+    el.style.backgroundRepeat='no-repeat';
+    el.style.backgroundSize='800% 600%';
+    el.style.backgroundPosition=(col*100/7)+'% '+(row*100/5)+'%';
+  }
   function initHoc(){
+
     var reel=document.getElementById('hocReel');
     var dataEl=document.getElementById('hocSpeakerData');
     if(!reel||!dataEl||reel.dataset.ready)return;
@@ -4282,8 +4303,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       b.type='button';b.className='hoc-sp';b.setAttribute('role','listitem');
       b.setAttribute('aria-label','View profile of '+sp.n);
       var wrap=document.createElement('div');wrap.className='hoc-sp-img';
-      var img=document.createElement('img');img.src=sp.p;img.alt=sp.n+' - '+sp.t;img.loading='lazy';
-      wrap.appendChild(img);
+      applySprite(wrap,i);wrap.setAttribute('role','img');wrap.setAttribute('aria-label',sp.n+' - '+sp.t);
+
       if(sp.h){var tag=document.createElement('span');tag.className='hoc-sp-host';tag.textContent='Host';wrap.appendChild(tag)}
       var n=document.createElement('div');n.className='hoc-sp-n';n.textContent=sp.n;
       var t=document.createElement('div');t.className='hoc-sp-t';t.textContent=sp.t;
@@ -4314,8 +4335,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
     var modal=document.getElementById('hocModal');
     function openModal(sp){
-      document.getElementById('hocModalImg').src=sp.p;
-      document.getElementById('hocModalImg').alt=sp.n;
+      var mi=document.getElementById('hocModalImg');
+      applySprite(mi,list.indexOf(sp));mi.setAttribute('role','img');mi.setAttribute('aria-label',sp.n);
       document.getElementById('hocModalName').textContent=sp.n;
       document.getElementById('hocModalTitle').textContent=sp.t;
       document.getElementById('hocModalBio').textContent=sp.b;
