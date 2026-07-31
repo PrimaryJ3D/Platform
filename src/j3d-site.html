@@ -352,7 +352,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   .ft-g{grid-template-columns:1fr!important}
   .ft-bot{flex-direction:column;gap:6px}
   /* Mobile HoC hero */
-  #pg-hoc > div:first-child{min-height:calc(78vh + 100px)!important;margin-top:-100px!important}
+  #pg-hoc > section:first-child{min-height:calc(78vh + 100px)!important;margin-top:-100px!important}
   .hoc-hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}
   .hoc-hero-meta{padding-top:0!important}
   /* HoC revamp - mobile */
@@ -659,7 +659,8 @@ pre,code{white-space:pre-wrap;word-break:break-word}
 .Csm{font-size:clamp(22px,2.8vw,32px);line-height:1.2}
 
 /* Subpage default top spacing */
-.pg{padding-top:108px}
+.pg{padding-top:100px}
+.pg:not(.on){display:none!important}
 
 /* Mobile-first overrides */
 @media(max-width:640px){
@@ -762,6 +763,17 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 .hoc-recap{margin:0}
 .hoc-recap-img{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/3;background:rgba(42,41,71,.06)}
 .hoc-recap figcaption{margin-top:10px;font-family:var(--rounded);font-size:12px;line-height:1.5;color:var(--tm)}
+/* proof metrics */
+.hoc-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(42,41,71,.14);border:1px solid rgba(42,41,71,.14)}
+.hoc-stat{background:#fff;padding:26px 22px}
+.hoc-stat b{display:block;font-family:var(--serif);font-size:clamp(28px,3.4vw,42px);line-height:1;color:var(--ind);font-weight:600}
+.hoc-stat span{display:block;margin-top:8px;font-family:var(--rounded);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tm)}
+.hoc-stats-cap{margin:16px 0 0;font-family:var(--rounded);font-size:12px;line-height:1.6;color:var(--tm)}
+/* voices from the room */
+.hoc-quotes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.hoc-quote{background:#fff;border:1px solid rgba(42,41,71,.14);padding:28px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.hoc-quote p{margin:0;font-family:var(--serif);font-size:clamp(16px,1.5vw,19px);line-height:1.5;color:var(--ind);font-style:italic}
+.hoc-quote cite{font-style:normal;font-family:var(--rounded);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);line-height:1.6}
 /* era divider */
 .hoc-era{display:flex;align-items:center;gap:16px;margin:0 0 6px}
 .hoc-era-l{height:1px;flex:1;background:rgba(42,41,71,.16)}
@@ -800,7 +812,7 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 .hoc-sp{flex:0 0 190px;width:190px;background:#fff;border:1px solid rgba(42,41,71,.1);padding:0 0 14px;text-align:left;cursor:pointer;font:inherit;position:relative;transition:border-color .15s,transform .15s}
 .hoc-sp:hover{border-color:var(--lav);transform:translateY(-2px)}
 .hoc-sp-img{position:relative;width:100%;max-width:100%;aspect-ratio:1/1;overflow:hidden;background:#E4E2DC}
-.hoc-sp-img img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.hoc-sp-img img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
 .hoc-sp-host{position:absolute;top:8px;left:8px;background:var(--lav);color:#fff;font-family:var(--rounded);font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 8px}
 .hoc-sp-n{font-family:var(--rounded);font-size:13px;font-weight:700;color:var(--ind);margin:12px 14px 4px;line-height:1.3}
 .hoc-sp-t{font-family:var(--rounded);font-size:11.5px;color:var(--tm);margin:0 14px;line-height:1.45}
@@ -820,7 +832,7 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 .hoc-modal-bd{position:absolute;inset:0;background:rgba(30,28,54,.72);backdrop-filter:blur(4px)}
 .hoc-modal-card{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;box-shadow:0 24px 60px rgba(30,28,54,.35);max-height:90vh;overflow:auto}
 .hoc-modal-img{background:#E4E2DC;position:relative;aspect-ratio:1/1;overflow:hidden}
-.hoc-modal-img img{width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 20%;display:block}
+.hoc-modal-img img{width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 25%;display:block}
 .hoc-modal-body{padding:24px 24px 26px}
 .hoc-modal-body h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ind);margin:0 0 6px;line-height:1.2}
 .hoc-modal-title{font-family:var(--rounded);font-size:12.5px;color:var(--lav);font-weight:700;margin:0 0 14px;line-height:1.45}
@@ -839,7 +851,7 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 }
 /* Speaker photo containment - authoritative, wins over generic responsive img rules */
 .hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background:#E4E2DC;display:block}
-.hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 22%!important;display:block!important}
+.hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 25%!important;display:block!important}
 </style>
 
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
@@ -2574,23 +2586,43 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     </div>
   </section>
 
-  <!-- 3. 2027 PROGRAMME -->
-  <section class="sec hoc-sec" style="background:#fff" id="hoc-programme">
+  <!-- 3. DAVOS 2026 PROOF -->
+  <section class="sec hoc-sec" style="background:#fff">
     <div class="con">
-      <div class="hoc-era"><span class="hoc-era-b">Upcoming - Davos 2027</span><span class="hoc-era-l"></span></div>
-      <span class="ey">2027 Programme · Tentative</span>
-      <h2 class="C Csm hoc-h2">Davos 2027: five days. <em>Five distinct arcs.</em></h2>
-      <p class="hoc-lede">Tentative agenda for 17-21 January 2027. The full programme is published in Q4 2026.</p>
-      <div class="hoc-acc" id="hocDays"><details><summary><span class="hoc-acc-k">Sun 17 Jan</span><span class="hoc-acc-t">Cybernetic Roundtables<small>Futures 100</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">Closed-door roundtables on cybernetic governance, opening the week with the Futures 100 - the operators, investors and policymakers setting the agenda for the next decade.</div></details><details><summary><span class="hoc-acc-k">Mon 18 Jan</span><span class="hoc-acc-t">Frequency Circle<small>Health & Longevity</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">A day on human performance, health systems and longevity capital, connecting clinicians, biotech founders and health ministries.</div></details><details><summary><span class="hoc-acc-k">Tue 19 Jan</span><span class="hoc-acc-t">New Nordics & NB8<small>Ports · FinTech · Deep Tech</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">The Nordic-Baltic Eight arc: ports and logistics corridors, fintech infrastructure and deep tech sovereignty, with ministerial and industry participation.</div></details><details><summary><span class="hoc-acc-k">Wed 20 Jan</span><span class="hoc-acc-t">Europe Bridges<small>Africa · SEA · India · LatAM</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">Cross-border bridge-building between Europe and Africa, Southeast Asia, India and Latin America - trade, technology transfer and joint ventures.</div></details><details><summary><span class="hoc-acc-k">Thu 21 Jan</span><span class="hoc-acc-t">Wealth & Capital Day<small>Decacorns, Unicorns & Soonicorns</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">The capital close: family offices, sovereign funds and growth investors meeting the founders scaling from soonicorn to decacorn.</div></details></div>
+      <div class="hoc-era"><span class="hoc-era-b">Past edition - Davos 2026</span><span class="hoc-era-l"></span></div>
+      <span class="ey">Davos 2026 - Proof</span>
+      <h2 class="C Csm hoc-h2">What last year's room <em>delivered.</em></h2>
+      <div class="hoc-stats-grid">
+        <div class="hoc-stat"><b>850+</b><span>Delegates</span></div>
+        <div class="hoc-stat"><b>USD 3T</b><span>GDP in the room</span></div>
+        <div class="hoc-stat"><b>120+</b><span>Speakers</span></div>
+        <div class="hoc-stat"><b>19</b><span>Curated sessions</span></div>
+        <div class="hoc-stat"><b>25+</b><span>Partner organisations</span></div>
+        <div class="hoc-stat"><b>100M+</b><span>Media impressions</span></div>
+      </div>
+      <p class="hoc-stats-cap">As covered by The New York Times, Estonian MFA, Blick, Xinhua and EBC.</p>
     </div>
   </section>
 
-  <!-- 4. SELECT SPEAKERS -->
+  <!-- 4. VOICES FROM THE ROOM -->
+  <section class="sec hoc-sec" style="background:#F8F5EE">
+    <div class="con">
+      <span class="ey">Davos 2026</span>
+      <h2 class="C Csm hoc-h2">Voices from <em>the room.</em></h2>
+      <div class="hoc-quotes-grid">
+        <blockquote class="hoc-quote"><p>&ldquo;Estonia's governance discipline and energy capacity position it as Europe's AI infrastructure leader.&rdquo;</p><cite>H.E. Erkki Keldo, Minister of Economic Affairs, Estonia</cite></blockquote>
+        <blockquote class="hoc-quote"><p>&ldquo;Europe must step up both in security and economic strength. The Nordics show what is possible - innovation, competitiveness, and unity shaping a stronger European future.&rdquo;</p><cite>H.E. Jessica Rosencrantz, Minister for EU Affairs, Sweden</cite></blockquote>
+        <blockquote class="hoc-quote"><p>&ldquo;Digital identity is like a credit card - people thought it was unsafe, then it became essential. We are at the same inflection point with digital government.&rdquo;</p><cite>Taavi R&otilde;ivas, Former PM of Estonia; Chairman, Auve Tech</cite></blockquote>
+        <blockquote class="hoc-quote"><p>&ldquo;Europe should not build another foundation model. It should invest in applied AI that creates value.&rdquo;</p><cite>Sean Kask, Chief AI Strategy Officer, SAP</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SELECT SPEAKERS -->
   <section class="sec hoc-sec" style="background:#F8F5EE" id="hoc-speakers">
     <div class="con">
       <div class="hoc-reel-head">
         <div>
-          <div class="hoc-era"><span class="hoc-era-b">Past edition - Davos 2026</span><span class="hoc-era-l"></span></div>
           <span class="ey">Davos 2026</span>
           <h2 class="C Csm hoc-h2">Select speakers - <em>Davos 2026.</em></h2>
         </div>
@@ -2603,7 +2635,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     </div>
   </section>
 
-  <!-- 5. WHO WAS IN THE ROOM -->
+  <!-- 6. WHO WAS IN THE ROOM -->
   <section class="sec hoc-sec" style="background:#fff">
     <div class="con">
       <span class="ey">Davos 2026</span>
@@ -2612,14 +2644,25 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     </div>
   </section>
 
-  <!-- 6. RESIDENCY -->
+  <!-- 7. DAVOS 2027 PROGRAMME -->
+  <section class="sec hoc-sec" style="background:#fff" id="hoc-programme">
+    <div class="con">
+      <div class="hoc-era"><span class="hoc-era-b">Upcoming - Davos 2027</span><span class="hoc-era-l"></span></div>
+      <span class="ey">2027 Programme · Tentative</span>
+      <h2 class="C Csm hoc-h2">Davos 2027: five days. <em>Five distinct arcs.</em></h2>
+      <p class="hoc-lede">Tentative agenda for 17-21 January 2027. The full programme is published in Q4 2026.</p>
+      <div class="hoc-acc" id="hocDays"><details><summary><span class="hoc-acc-k">Sun 17 Jan</span><span class="hoc-acc-t">Cybernetic Roundtables<small>Futures 100</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">Closed-door roundtables on cybernetic governance, opening the week with the Futures 100 - the operators, investors and policymakers setting the agenda for the next decade.</div></details><details><summary><span class="hoc-acc-k">Mon 18 Jan</span><span class="hoc-acc-t">Frequency Circle<small>Health & Longevity</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">A day on human performance, health systems and longevity capital, connecting clinicians, biotech founders and health ministries.</div></details><details><summary><span class="hoc-acc-k">Tue 19 Jan</span><span class="hoc-acc-t">New Nordics & NB8<small>Ports · FinTech · Deep Tech</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">The Nordic-Baltic Eight arc: ports and logistics corridors, fintech infrastructure and deep tech sovereignty, with ministerial and industry participation.</div></details><details><summary><span class="hoc-acc-k">Wed 20 Jan</span><span class="hoc-acc-t">Europe Bridges<small>Africa · SEA · India · LatAM</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">Cross-border bridge-building between Europe and Africa, Southeast Asia, India and Latin America - trade, technology transfer and joint ventures.</div></details><details><summary><span class="hoc-acc-k">Thu 21 Jan</span><span class="hoc-acc-t">Wealth & Capital Day<small>Decacorns, Unicorns & Soonicorns</small></span><span class="hoc-acc-x" aria-hidden="true">+</span></summary><div class="hoc-acc-d">The capital close: family offices, sovereign funds and growth investors meeting the founders scaling from soonicorn to decacorn.</div></details></div>
+    </div>
+  </section>
+
+  <!-- 8. RESIDENCY -->
   <section class="sec hoc-sec sec-dark hoc-res" id="hoc-residency">
     <div class="con">
       <span class="ey" style="color:var(--ice)">The residency</span>
       <h2 class="C Csm hoc-h2 hoc-h2-l">42 residencies. <em style="color:var(--ice)">That is the House.</em></h2>
       <p class="hoc-lede hoc-lede-l">The residency is the main programme of House of Collaboration 2027. Only 42 exist, and they are secured first; week passes follow later. Pricing moves as tiers close, so early is better.</p>
       <ul class="hoc-res-list">
-        <li>17-21 January 2027, all daytime programming sessions</li>
+        <li>All daytime programming sessions across the five days</li>
         <li>A slot on the programme to share your insights</li>
         <li>A place to stay in Davos, four minutes from the Congress Centre</li>
         <li>Curated introductions across governments, capital and industry</li>
@@ -3950,7 +3993,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     if(page==='residency' && here!=='/residency'){location.assign('/residency');return;}
     if(page!=='residency' && here==='/residency'){location.assign('/#'+slug);return;}
     /* Hide ALL .pg elements */
-    document.querySelectorAll('div.pg').forEach(function(el){
+    document.querySelectorAll('.pg').forEach(function(el){
       el.classList.remove('on');
       el.style.display='none';
     });
