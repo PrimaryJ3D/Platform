@@ -59,7 +59,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const ROOT_TITLE = `${SITE.name} — Advisory, AI Readiness & Sovereign Convening`;
+const ROOT_TITLE = `${SITE.name} - Advisory, AI Readiness & Sovereign Convening`;
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({

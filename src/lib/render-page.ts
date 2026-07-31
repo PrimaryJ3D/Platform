@@ -10,7 +10,7 @@ type PageMeta = {
 
 const PAGES: Record<string, PageMeta> = {
   "/": {
-    title: "J3D.AI — Advisory, AI Readiness & Sovereign Convening",
+    title: "J3D.AI - Advisory, AI Readiness & Sovereign Convening",
     description:
       "J3D.AI: advisory, AI readiness scoring, and sovereign convening for organizations navigating the AI transition across Europe and Asia.",
     schema: [
@@ -38,29 +38,29 @@ const PAGES: Record<string, PageMeta> = {
     ],
   },
   "/about": {
-    title: "About — J3D.AI",
+    title: "About - J3D.AI",
     description:
       "An advisory and technology company built on the conviction that collaboration should be more profitable than competition.",
   },
   "/approach": {
-    title: "Our Approach — J3D.AI",
+    title: "Our Approach - J3D.AI",
     description:
       "Cybernetic foresight, technology mastery, and wisdom: how J3D.AI works with clients and partners across borders.",
   },
   "/team": {
-    title: "Team — J3D.AI",
+    title: "Team - J3D.AI",
     description: "The people behind J3D.AI's advisory, AI readiness, and convening practice.",
   },
   "/fellows": {
-    title: "Fellows — J3D.AI",
+    title: "Fellows - J3D.AI",
     description: "J3D.AI Fellows: a curated network of practitioners shaping AI policy and practice.",
   },
   "/members": {
-    title: "Members Portal — J3D.AI",
+    title: "Members Portal - J3D.AI",
     description: "Members portal for J3D.AI clients, fellows, and convening participants.",
   },
   "/reports": {
-    title: "Reports — J3D.AI",
+    title: "Reports - J3D.AI",
     description:
       "Intelligence from the world's most consequential conversations. Publications and research from J3D.AI.",
     schema: {
@@ -73,17 +73,17 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/media": {
-    title: "Media — J3D.AI",
+    title: "Media - J3D.AI",
     description: "Press, talks, and media coverage of J3D.AI's work across Europe and Asia.",
   },
   "/foresight-whitepaper": {
-    title: "Davos Foresight Whitepaper: Our World in 2125 — J3D.AI",
+    title: "Davos Foresight Whitepaper: Our World in 2125 - J3D.AI",
     description:
-      "Davos Foresight Whitepaper — Our World in 2125: a long-form foresight publication by J3D.AI.",
+      "Davos Foresight Whitepaper - Our World in 2125: a long-form foresight publication by J3D.AI.",
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: "Davos Foresight Whitepaper — Our World in 2125",
+      headline: "Davos Foresight Whitepaper - Our World in 2125",
       author: { "@type": "Organization", name: "J3D.AI" },
       publisher: { "@type": "Organization", name: "J3D.AI" },
       datePublished: "2025-01-25",
@@ -92,7 +92,7 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/davos-2025": {
-    title: "Davos 2025 — Peace as Policy — J3D.AI",
+    title: "Davos 2025 - Peace as Policy - J3D.AI",
     description: "Davos 2025: Peace as Policy. Cross-border collaboration convened by J3D.AI.",
     schema: {
       "@context": "https://schema.org",
@@ -113,7 +113,7 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/hoc": {
-    title: "House of Collaboration 2027 — J3D.AI",
+    title: "House of Collaboration 2027 - J3D.AI",
     description:
       "House of Collaboration: rooms where decisions happen. Applications for HoC 2027 are open.",
     schema: {
@@ -135,7 +135,7 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/residency": {
-    title: "HoC 2027 Residency — J3D.AI",
+    title: "HoC 2027 Residency - J3D.AI",
     description:
       "Join the residency at House of Collaboration 2027, Davos. Full week, a slot on the programme, place to stay. Limited slots - first come, first served.",
     schema: {
@@ -163,7 +163,7 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/deep-tech-castle": {
-    title: "Deep Tech Castle — J3D.AI",
+    title: "Deep Tech Castle - J3D.AI",
     description: "Where zebracorns convene: cybersecurity meets philosophy at C-suite level.",
     schema: {
       "@context": "https://schema.org",
@@ -182,25 +182,25 @@ const PAGES: Record<string, PageMeta> = {
     },
   },
   "/estonian-leap": {
-    title: "Estonian Leap — J3D.AI",
+    title: "Estonian Leap - J3D.AI",
     description:
       "Estonian Leap: a country embedded, not hosted. A blueprint for digital and economic transition.",
   },
   "/contact": {
-    title: "Contact — J3D.AI",
+    title: "Contact - J3D.AI",
     description: "Start a conversation with J3D.AI.",
   },
   "/privacy": {
-    title: "Privacy Policy — J3D.AI",
+    title: "Privacy Policy - J3D.AI",
     description:
       "GDPR-compliant disclosure of how J3D.AI Labs OÜ collects, processes, and stores personal data.",
   },
   "/imprint": {
-    title: "Imprint — J3D.AI",
+    title: "Imprint - J3D.AI",
     description: "Legal imprint for J3D.AI Labs OÜ.",
   },
   "/hoc-terms": {
-    title: "House of Collaboration — Terms & Policy — J3D.AI",
+    title: "House of Collaboration - Terms & Policy - J3D.AI",
     description:
       "Booking conditions, code of conduct, and event-specific policies for all HoC programmes.",
   },
@@ -298,7 +298,7 @@ export function isKnownPath(pathname: string): boolean {
 
 export function renderNotFoundPage(pathname: string): string {
   const safePath = escapeAttr(pathname || "/");
-  const title = "Page not found — J3D.AI";
+  const title = "Page not found - J3D.AI";
   const desc = "The page you are looking for doesn't exist.";
   return `<!doctype html>
 <html lang="en">
