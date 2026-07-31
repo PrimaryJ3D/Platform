@@ -4282,8 +4282,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       b.type='button';b.className='hoc-sp';b.setAttribute('role','listitem');
       b.setAttribute('aria-label','View profile of '+sp.n);
       var wrap=document.createElement('div');wrap.className='hoc-sp-img';
-      var img=document.createElement('img');img.src=sp.p;img.alt=sp.n+' - '+sp.t;img.loading='lazy';
-      wrap.appendChild(img);
+      applySprite(wrap,i);wrap.setAttribute('role','img');wrap.setAttribute('aria-label',sp.n+' - '+sp.t);
+
       if(sp.h){var tag=document.createElement('span');tag.className='hoc-sp-host';tag.textContent='Host';wrap.appendChild(tag)}
       var n=document.createElement('div');n.className='hoc-sp-n';n.textContent=sp.n;
       var t=document.createElement('div');t.className='hoc-sp-t';t.textContent=sp.t;
