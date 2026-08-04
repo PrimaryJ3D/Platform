@@ -852,6 +852,12 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 /* Speaker photo containment - authoritative, wins over generic responsive img rules */
 .hoc-sp-img,.hoc-modal-img{position:relative;width:100%;aspect-ratio:1/1!important;height:auto!important;overflow:hidden!important;background-color:#E4E2DC;display:block}
 .hoc-sp-img img,.hoc-modal-img img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:50% 25%!important;display:block!important}
+
+/* ── HEADER MOBILE HARDENING (flash/scroll fixes) ── */
+@media(max-width:768px){
+  #nav{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  #announce-strip{height:34px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
 </style>
 
 <!-- ── SEO / OG / TWITTER ──────────────────────────────────── -->
@@ -880,6 +886,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 </script>
 <!-- ── COOKIE CONSENT CSS (Orest Bida v3) ─────────────────── -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script>(function(){try{var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;if(!h)h="home";h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
@@ -4230,6 +4237,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   });
 
   document.addEventListener('DOMContentLoaded',function(){
+    try{document.documentElement.removeAttribute('data-pre');}catch(e){}
     var btn=document.getElementById('mob-btn');
     if(btn)btn.addEventListener('click',window.tM);
     var hash=window.location.hash.replace('#','');
