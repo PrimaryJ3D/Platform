@@ -68,5 +68,7 @@ export const FOOTER_LINKS: Record<string, { href: string; label: string; externa
     { href: "/privacy-policy", label: "Privacy Policy" },
     { href: "/terms-and-conditions", label: "Terms & Conditions" },
     { href: "/cancellation", label: "Cancellation Policy" },
+    { href: "#cookie-settings", label: "Cookie settings" },
+
   ],
 };
