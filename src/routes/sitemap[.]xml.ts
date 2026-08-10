@@ -19,9 +19,10 @@ const entries: { path: string; priority: string; changefreq?: string }[] = [
   { path: "/davos-2025", priority: "0.6" },
   { path: "/deep-tech-castle", priority: "0.6" },
   { path: "/members", priority: "0.5" },
-  { path: "/privacy", priority: "0.3" },
-  { path: "/imprint", priority: "0.3" },
-  { path: "/hoc-terms", priority: "0.3" },
+  { path: "/imprint", priority: "0.3", changefreq: "yearly" },
+  { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
+  { path: "/terms-and-conditions", priority: "0.3", changefreq: "yearly" },
+  { path: "/cancellation", priority: "0.3", changefreq: "yearly" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

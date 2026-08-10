@@ -34,9 +34,10 @@ export const LEGACY_LINKS = {
   davos2025: "/davos-2025",
   deepTechCastle: "/deep-tech-castle",
   members: "/members",
-  privacy: "/privacy",
+  privacy: "/privacy-policy",
   imprint: "/imprint",
-  hocTerms: "/hoc-terms",
+  hocTerms: "/terms-and-conditions",
+  cancellation: "/cancellation",
 };
 
 export const FOOTER_LINKS: Record<string, { href: string; label: string; external?: boolean }[]> = {
@@ -61,7 +62,8 @@ export const FOOTER_LINKS: Record<string, { href: string; label: string; externa
   ],
   Legal: [
     { href: "/imprint", label: "Imprint" },
-    { href: "/privacy", label: "Privacy" },
-    { href: "/hoc-terms", label: "HoC Terms" },
+    { href: "/privacy-policy", label: "Privacy Policy" },
+    { href: "/terms-and-conditions", label: "Terms & Conditions" },
+    { href: "/cancellation", label: "Cancellation Policy" },
   ],
 };
