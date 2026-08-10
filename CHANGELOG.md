@@ -2,6 +2,15 @@
 
 ## 2026-08-10 - Content update: HoC programme, speakers, Estonian Leap, landing page
 
+### Added (whitepaper + cookie pass)
+- Foresight Whitepaper lead-gen band ("Our World in 2125") on /hoc (after the Residency/Delegate cards and application form, before the FAQ) and on /reports, using the frame-based HubSpot EU embed (portal 139812302, form 807243db-52cf-4ecf-b3eb-b098a6454511) with a 3-second direct-PDF fallback.
+- Speaker photos for Dr. Carlos Nobre, Indrani Pal-Chaudhuri, Dr. Clara Guerra and Angelina Usanova (CDN assets, `p` field).
+- Footer "Cookie settings" link on every page, calling `J3DCookies.reopen()`.
+
+### Changed (whitepaper + cookie pass)
+- Angelina Usanova bio now leads with the Angelina Usanova Foundation; all "Miss Eco" references removed.
+- Cookie banner: Accept and Decline are now equal-weight buttons of identical size; the consent button is relabelled "Accept" since it also grants `ad_storage`.
+
 ### Added
 - HoC 2027 programme: "Nordics and NB8 Summit" day (Oceans, Ports, Energy, Deep Tech, Resilience).
 - Middle East-Europe bridge segment, placed before Africa in the regional sequence.
