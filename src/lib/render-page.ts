@@ -24,7 +24,11 @@ const PAGES: Record<string, PageMeta> = {
         image: `${BASE_URL}/og-j3d.jpg`,
         email: "primary@j3d.ai",
         address: { "@type": "PostalAddress", addressLocality: "Tallinn", addressCountry: "EE" },
-        sameAs: ["https://www.linkedin.com/company/j3d-ai/"],
+        sameAs: [
+          "https://www.linkedin.com/company/j3d-ai/",
+          "https://www.linkedin.com/company/hocdavos/",
+          "https://www.youtube.com/@J3DAI",
+        ],
       },
       {
         "@context": "https://schema.org",

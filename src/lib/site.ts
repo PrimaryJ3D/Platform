@@ -10,6 +10,8 @@ export const SITE = {
   castle: "castle@j3d.ai",
   calendly: "https://calendly.com/j3d-ai/hoc",
   linkedin: "https://www.linkedin.com/company/j3d-ai/",
+  hocLinkedin: "https://www.linkedin.com/company/hocdavos/",
+  youtube: "https://www.youtube.com/@J3DAI",
   formEndpoint: "" as string,
   // Airtable application form for House of Collaboration (Davos 2027)
   hocAirtable: "https://airtable.com/embed/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form",
