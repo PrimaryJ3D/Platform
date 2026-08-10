@@ -13,7 +13,10 @@ export const Route = createFileRoute("/$")({
       GET: async ({ request }) => {
         const url = new URL(request.url);
         const pathname = url.pathname;
-        const redirect = getRedirect(pathname);
+        const canonical = normalizePath(pathname);
+        const redirect =
+          getRedirect(pathname) ??
+          (isKnownPath(pathname) && canonical !== pathname ? canonical : null);
         if (redirect) {
           return new Response(null, {
             status: 301,
