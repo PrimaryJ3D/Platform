@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { isKnownPath, renderNotFoundPage, renderPage, securityHeaders } from "@/lib/render-page";
+import {
+  getRedirect,
+  isKnownPath,
+  renderNotFoundPage,
+  renderPage,
+  securityHeaders,
+} from "@/lib/render-page";
 
 export const Route = createFileRoute("/$")({
   server: {
@@ -7,6 +13,13 @@ export const Route = createFileRoute("/$")({
       GET: async ({ request }) => {
         const url = new URL(request.url);
         const pathname = url.pathname;
+        const redirect = getRedirect(pathname);
+        if (redirect) {
+          return new Response(null, {
+            status: 301,
+            headers: { Location: redirect + url.search, "Cache-Control": "public, max-age=3600" },
+          });
+        }
         if (!isKnownPath(pathname)) {
           return new Response(renderNotFoundPage(pathname), {
             status: 404,
