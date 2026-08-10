@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   getRedirect,
   isKnownPath,
+  normalizePath,
   renderNotFoundPage,
   renderPage,
   securityHeaders,
