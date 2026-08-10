@@ -393,5 +393,6 @@ export const securityHeaders: Record<string, string> = {
     "connect-src 'self' https: https://www.google-analytics.com https://region1.analytics.google.com https://api.airtable.com https://js-eu1.hs-scripts.com",
     "object-src 'none'",
     "base-uri 'self'",
+    "upgrade-insecure-requests",
   ].join("; "),
 };
