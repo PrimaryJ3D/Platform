@@ -4590,66 +4590,35 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   var FORM_ID   = '807243db-52cf-4ecf-b3eb-b098a6454511';
   /* ──────────────────────────────────────────────────────────────────── */
   var PDF = 'https://docs.j3d.ai/hubfs/Davos%20-%20Foresight%20Whitepaper%20-%20Our%20World%20in%202125.pdf';
-  var HS_SRC = 'https://js-eu1.hsforms.net/forms/embed/v2.js';
+  var HS_SRC = 'https://js-eu1.hsforms.net/forms/embed/' + PORTAL_ID + '.js';
 
   function copy(){
     return '<div class="wpb"><div class="wpb-in">'
       + '<div><span class="wpb-ey">Intelligence</span>'
       + '<h2 class="wpb-h2">Our World in 2125</h2>'
       + '<p class="wpb-sub">The Davos Foresight Whitepaper - a hundred-year view of the transitions shaping the next decade, drawn from the rooms we convene.</p></div>'
-      + '<div class="wpb-card"><div class="wpb-slot"></div>'
+      + '<div class="wpb-card">'
+      + '<div class="hs-form-frame" data-region="eu1" data-form-id="' + FORM_ID + '" data-portal-id="' + PORTAL_ID + '"></div>'
       + '<p class="wpb-fallback">The form could not load. <a href="' + PDF + '" target="_blank" rel="noopener">Download the whitepaper directly</a>.</p>'
       + '<p class="wpb-privacy">We\'ll email you the whitepaper. See our <a href="/privacy-policy">privacy policy</a>.</p>'
-      + '<div class="wpb-ok"><p>Check your inbox - the whitepaper is on its way.</p>'
-      + '<a href="' + PDF + '" target="_blank" rel="noopener">Download the whitepaper</a></div></div>'
-      + '</div></div>';
+      + '</div></div></div>';
   }
-  function nativeForm(){
-    return '<form class="wpb-grid" novalidate>'
-      + '<div class="wpb-f"><label for="">First name</label><input type="text" name="firstname" autocomplete="given-name" required></div>'
-      + '<div class="wpb-f"><label>Last name</label><input type="text" name="lastname" autocomplete="family-name" required></div>'
-      + '<div class="wpb-f full"><label>Business email</label><input type="email" name="email" autocomplete="email" required></div>'
-      + '<div class="wpb-f full"><label>Organisation</label><input type="text" name="company" autocomplete="organization" required></div>'
-      + '<label class="wpb-consent"><input type="checkbox" required><span>I agree to J3D.AI Labs O&Uuml; contacting me about its research and convenings. You can unsubscribe at any time. See our <a href="/privacy-policy">privacy policy</a>.</span></label>'
-      + '<button class="wpb-btn" type="submit">Get the whitepaper</button></form>';
-  }
-  function success(card){
-    var f = card.querySelector('.wpb-slot'); if(f) f.style.display='none';
-    card.querySelector('.wpb-ok').style.display='block';
-  }
-  function loadHs(cb,fail){
-    if(window.hbspt && window.hbspt.forms) return cb();
-    var existing=document.querySelector('script[data-foresight-hubspot]');
-    if(existing){
-      existing.addEventListener('load',cb,{once:true});
-      existing.addEventListener('error',fail,{once:true});
-      return;
-    }
+  /* load the HubSpot embed script exactly once for the whole page */
+  function loadHs(){
+    if(document.querySelector('script[data-foresight-hubspot]')) return;
     var s=document.createElement('script');
-    s.src=HS_SRC; s.async=true; s.dataset.foresightHubspot='1';
-    s.onload=cb; s.onerror=fail; document.head.appendChild(s);
+    s.src=HS_SRC; s.defer=true; s.dataset.foresightHubspot='1';
+    document.head.appendChild(s);
   }
   function mount(el){
     if(el.dataset.wpbDone) return; el.dataset.wpbDone='1';
     el.innerHTML = copy();
-    var card = el.querySelector('.wpb-card'), slot = el.querySelector('.wpb-slot');
+    var frame = el.querySelector('.hs-form-frame');
     var fallback = el.querySelector('.wpb-fallback');
-    var onHoc = !!el.closest('#pg-hoc');
-    slot.id = onHoc ? 'foresight-form' : 'foresight-form-reports';
-    var timer=setTimeout(function(){
-      if(!slot.querySelector('form,iframe')) fallback.style.display='block';
+    loadHs();
+    setTimeout(function(){
+      if(!frame.querySelector('iframe,form')) fallback.style.display='block';
     },3000);
-    loadHs(function(){
-      if(!window.hbspt || !window.hbspt.forms){ fallback.style.display='block'; return; }
-      window.hbspt.forms.create({
-        region: "eu1",
-        portalId: "139812302",
-        formId: "807243db-52cf-4ecf-b3eb-b098a6454511",
-        target: '#'+slot.id,
-        onFormReady:function(){ clearTimeout(timer); fallback.style.display='none'; },
-        onFormSubmitted:function(){ success(card); }
-      });
-    },function(){ clearTimeout(timer); fallback.style.display='block'; });
   }
   function scan(){ document.querySelectorAll('[data-wp-band]').forEach(mount); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',scan); else scan();
@@ -4657,6 +4626,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   document.addEventListener('click', function(){ setTimeout(scan,60); });
 })();
 </script>
+
 
 </body>
 </html>
