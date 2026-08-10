@@ -9,6 +9,10 @@
 - Footer social links: YouTube (@J3DAI) and House of Collaboration LinkedIn; both added to the Organization JSON-LD `sameAs`.
 - `si` sprite-index field on speaker records so sprite crops stay locked to their original positions.
 
+### Added (final batch)
+- Official House of Collaboration 2027 light logo (`HoC27-Light.svg`, CDN asset) at the top of the HoC and Residency pages and in the footer lockup while those pages are active.
+- Luma social link (https://lu.ma/davos27) in the footer and in the Organization JSON-LD `sameAs`.
+
 ### Changed
 - Renamed "Europe Bridges" to "European Bridges Summit" site-wide.
 - Final programme day is now the "Wealth, Capital and Technology Summit" (AI, Quantum, decacorns, unicorns, soonicorns, intergenerational wealth transfer).

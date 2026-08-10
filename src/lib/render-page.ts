@@ -28,6 +28,7 @@ const PAGES: Record<string, PageMeta> = {
           "https://www.linkedin.com/company/j3d-ai/",
           "https://www.linkedin.com/company/hocdavos/",
           "https://www.youtube.com/@J3DAI",
+          "https://lu.ma/davos27",
         ],
       },
       {

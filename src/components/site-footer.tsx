@@ -45,6 +45,9 @@ export function SiteFooter() {
             <a href={SITE.youtube} target="_blank" rel="noopener" className="underline-link">
               YouTube
             </a>
+            <a href={SITE.luma} target="_blank" rel="noopener" className="underline-link">
+              Luma
+            </a>
           </div>
         </div>
       </div>
