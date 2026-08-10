@@ -47,3 +47,10 @@
 
 ### Changed (bios)
 - Bio opening sentences realigned with updated titles for Dr. Eva-Maria Hempe (Executive Director, Public Sector, NVIDIA), Dr. Nele Leosk (ITU BDT candidacy now leads the bio) and Martina Fuchs (The Frequency School co-founding now leads the bio). Remainder of each bio unchanged.
+
+### Added (whitepaper + bio pass)
+- Foresight Whitepaper lead-gen band ("Our World in 2125") as a single shared component rendered into every `[data-wp-band]` mount: on /hoc it sits after the Residency/Delegate Pass cards and application CTAs, and it is reused on /reports. HubSpot EU drop-in (`PORTAL_ID_HERE` / `FORM_ID_HERE` constants, `//js-eu1.hsforms.net/forms/embed/v2.js`); while the IDs are placeholders a styled native fallback form renders. Success state shows "Check your inbox - the whitepaper is on its way." plus the direct PDF download link.
+
+### Changed (whitepaper + bio pass)
+- Angelina Usanova bio: first paragraph rewritten to lead with the Angelina Usanova Foundation; the Miss Eco International claim removed (zero "Miss Eco" hits in src/). Title and second paragraph unchanged.
+
