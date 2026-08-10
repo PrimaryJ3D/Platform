@@ -4162,7 +4162,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       </div>
     </div>
     <div class="ft-bot" style="border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
-      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap"><a href="#" onclick="go('imprint');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Imprint</a><a href="#" onclick="go('privacy-policy');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Privacy Policy</a><a href="#" onclick="go('terms-and-conditions');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Terms &amp; Conditions</a><a href="#" onclick="go('cancellation');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Cancellation Policy</a></div>
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap"><a href="#" onclick="go('imprint');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Imprint</a><a href="#" onclick="go('privacy-policy');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Privacy Policy</a><a href="#" onclick="go('terms-and-conditions');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Terms &amp; Conditions</a><a href="#" onclick="go('cancellation');return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Cancellation Policy</a><a href="#" onclick="J3DCookies.reopen();return false" style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.55);text-decoration:none;letter-spacing:.05em">Cookie settings</a></div>
       <p style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.2);font-weight:500;margin:0">VAY Score, House of Collaboration, Estonian Leap and Deep Tech Castle are brand names of J3D.AI Labs O&Uuml;. &nbsp;&middot;&nbsp; &copy; 2026 J3D.AI Labs O&Uuml;</p>
     </div>
   </div>
@@ -4417,6 +4417,12 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ── COOKIE CONSENT + HUBSPOT ON-CONSENT ───────────────────── -->
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<style id="cc-equal-weight">
+.cc-window .cc-btn,.cc-window .cc-compliance .cc-btn{min-height:44px;min-width:150px;display:inline-flex;align-items:center;justify-content:center;padding:11px 22px;border-radius:4px;font-size:14px;font-weight:600;text-decoration:none;flex:1 1 auto}
+.cc-window .cc-btn.cc-dismiss{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.7)!important;opacity:1!important;text-decoration:none!important}
+.cc-window .cc-btn.cc-dismiss:hover{background:rgba(255,255,255,.12)!important}
+.cc-window .cc-compliance{display:flex;gap:12px;flex-wrap:wrap}
+</style>
 <script>
 (function(){
   function loadHubSpot(){
@@ -4438,7 +4444,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     content:{
       message:'We use cookies to analyse site usage (GA4) and for marketing attribution (HubSpot). Essential cookies run without consent.',
       dismiss:'Decline',
-      allow:'Accept analytics',
+      allow:'Accept',
       link:'Privacy Policy',
       href:'/privacy-policy'
     },
