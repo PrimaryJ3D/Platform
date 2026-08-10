@@ -4554,8 +4554,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ═══ FORESIGHT WHITEPAPER LEAD-GEN BAND (shared component) ══════════════
      Rendered into every <div data-wp-band></div> on the site (/hoc, /reports).
-     DROP-IN HUBSPOT EMBED: put your HubSpot EU (eu1) portal + form id below.
-     While they are the placeholders, a styled native fallback form is shown. -->
+     The HubSpot EU portal and form constants are kept at the top of the script. -->
 <style id="wpb-component">
 .wpb{background:linear-gradient(135deg,#15132B 0%,#2A2947 60%,#3A2F55 100%);color:#fff;padding:clamp(56px,7vw,88px) 0;overflow:hidden}
 .wpb-in{max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
@@ -4574,6 +4573,10 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 .wpb-consent a{color:#C6F0FF;text-decoration:underline}
 .wpb-btn{grid-column:1/-1;min-height:48px;padding:12px 22px;border:0;border-radius:4px;background:#C6F0FF;color:#2A2947;font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:.25s}
 .wpb-btn:hover{background:#fff}
+.wpb-fallback{display:none;margin:16px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
+.wpb-fallback a{display:inline-flex;align-items:center;min-height:44px;color:#C6F0FF;text-decoration:underline;font-weight:600}
+.wpb-privacy{margin:16px 0 0;font-size:12px;line-height:1.6;color:rgba(255,255,255,.58)}
+.wpb-privacy a{color:#C6F0FF;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
 .wpb-ok{display:none;padding:4px 0}
 .wpb-ok p{margin:0 0 14px;font-size:16px;color:#fff}
 .wpb-ok a{display:inline-block;min-height:44px;line-height:44px;padding:0 20px;border-radius:4px;background:#997CB7;color:#fff;font-weight:600;font-size:14px}
@@ -4582,13 +4585,12 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 </style>
 <script>
 (function(){
-  /* ── EDIT THESE TWO WHEN THE HUBSPOT FORM EXISTS (EU / eu1 instance) ── */
-  var PORTAL_ID = 'PORTAL_ID_HERE';
-  var FORM_ID   = 'FORM_ID_HERE';
-  /* ───────────────────────────────────────────────────────────────────── */
+  /* ── HUBSPOT EU FORM - edit these two constants to change the form ── */
+  var PORTAL_ID = '139812302';
+  var FORM_ID   = '807243db-52cf-4ecf-b3eb-b098a6454511';
+  /* ──────────────────────────────────────────────────────────────────── */
   var PDF = 'https://docs.j3d.ai/hubfs/Davos%20-%20Foresight%20Whitepaper%20-%20Our%20World%20in%202125.pdf';
-  var HS_SRC = '//js-eu1.hsforms.net/forms/embed/v2.js';
-  var live = PORTAL_ID !== 'PORTAL_ID_HERE' && FORM_ID !== 'FORM_ID_HERE';
+  var HS_SRC = 'https://js-eu1.hsforms.net/forms/embed/v2.js';
 
   function copy(){
     return '<div class="wpb"><div class="wpb-in">'
@@ -4596,6 +4598,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       + '<h2 class="wpb-h2">Our World in 2125</h2>'
       + '<p class="wpb-sub">The Davos Foresight Whitepaper - a hundred-year view of the transitions shaping the next decade, drawn from the rooms we convene.</p></div>'
       + '<div class="wpb-card"><div class="wpb-slot"></div>'
+      + '<p class="wpb-fallback">The form could not load. <a href="' + PDF + '" target="_blank" rel="noopener">Download the whitepaper directly</a>.</p>'
+      + '<p class="wpb-privacy">We\'ll email you the whitepaper. See our <a href="/privacy-policy">privacy policy</a>.</p>'
       + '<div class="wpb-ok"><p>Check your inbox - the whitepaper is on its way.</p>'
       + '<a href="' + PDF + '" target="_blank" rel="noopener">Download the whitepaper</a></div></div>'
       + '</div></div>';
@@ -4613,30 +4617,39 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var f = card.querySelector('.wpb-slot'); if(f) f.style.display='none';
     card.querySelector('.wpb-ok').style.display='block';
   }
-  function loadHs(cb){
-    if(window.hbspt) return cb();
-    var s=document.createElement('script'); s.src=HS_SRC; s.async=true; s.onload=cb; document.head.appendChild(s);
+  function loadHs(cb,fail){
+    if(window.hbspt && window.hbspt.forms) return cb();
+    var existing=document.querySelector('script[data-foresight-hubspot]');
+    if(existing){
+      existing.addEventListener('load',cb,{once:true});
+      existing.addEventListener('error',fail,{once:true});
+      return;
+    }
+    var s=document.createElement('script');
+    s.src=HS_SRC; s.async=true; s.dataset.foresightHubspot='1';
+    s.onload=cb; s.onerror=fail; document.head.appendChild(s);
   }
   function mount(el){
     if(el.dataset.wpbDone) return; el.dataset.wpbDone='1';
     el.innerHTML = copy();
     var card = el.querySelector('.wpb-card'), slot = el.querySelector('.wpb-slot');
-    if(live){
-      slot.id = 'wpb-hs-' + Math.random().toString(36).slice(2);
-      loadHs(function(){
-        window.hbspt.forms.create({
-          region:'eu1', portalId:PORTAL_ID, formId:FORM_ID, target:'#'+slot.id,
-          onFormSubmitted:function(){ success(card); }
-        });
+    var fallback = el.querySelector('.wpb-fallback');
+    var onHoc = !!el.closest('#pg-hoc');
+    slot.id = onHoc ? 'foresight-form' : 'foresight-form-reports';
+    var timer=setTimeout(function(){
+      if(!slot.querySelector('form,iframe')) fallback.style.display='block';
+    },3000);
+    loadHs(function(){
+      if(!window.hbspt || !window.hbspt.forms){ fallback.style.display='block'; return; }
+      window.hbspt.forms.create({
+        region: "eu1",
+        portalId: "139812302",
+        formId: "807243db-52cf-4ecf-b3eb-b098a6454511",
+        target: '#'+slot.id,
+        onFormReady:function(){ clearTimeout(timer); fallback.style.display='none'; },
+        onFormSubmitted:function(){ success(card); }
       });
-      return;
-    }
-    slot.innerHTML = nativeForm();
-    slot.querySelector('form').addEventListener('submit', function(e){
-      e.preventDefault();
-      if(!this.checkValidity()){ this.reportValidity(); return; }
-      success(card);
-    });
+    },function(){ clearTimeout(timer); fallback.style.display='block'; });
   }
   function scan(){ document.querySelectorAll('[data-wp-band]').forEach(mount); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',scan); else scan();
