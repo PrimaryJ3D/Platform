@@ -190,19 +190,24 @@ const PAGES: Record<string, PageMeta> = {
     title: "Contact - J3D.AI",
     description: "Start a conversation with J3D.AI.",
   },
-  "/privacy": {
+  "/privacy-policy": {
     title: "Privacy Policy - J3D.AI",
     description:
-      "GDPR-compliant disclosure of how J3D.AI Labs OÜ collects, processes, and stores personal data.",
+      "How J3D.AI Labs OÜ collects, uses and protects personal data, under the GDPR and Estonian law.",
   },
   "/imprint": {
     title: "Imprint - J3D.AI",
-    description: "Legal imprint for J3D.AI Labs OÜ.",
+    description: "Legal imprint for J3D.AI Labs OÜ, Tallinn, Estonia.",
   },
-  "/hoc-terms": {
-    title: "House of Collaboration - Terms & Policy - J3D.AI",
+  "/terms-and-conditions": {
+    title: "Terms & Conditions - J3D.AI",
     description:
-      "Booking conditions, code of conduct, and event-specific policies for all HoC programmes.",
+      "Participant Terms & Conditions for the House of Collaboration, operated by J3D.AI Labs OÜ.",
+  },
+  "/cancellation": {
+    title: "Cancellation Policy - J3D.AI",
+    description:
+      "Event cancellation, substitution and refund policy for events organised by J3D.AI Labs OÜ.",
   },
 };
 
@@ -249,8 +254,29 @@ const deepLinkScript = `
   } catch (e) {}
 })();</script>`;
 
+export function normalizePath(pathname: string): string {
+  const lower = (pathname || "/").toLowerCase();
+  return lower === "" ? "/" : lower.replace(/\/+$/, "") || "/";
+}
+
+export const REDIRECTS: Record<string, string> = {
+  "/privacy": "/privacy-policy",
+  "/privacypolicy": "/privacy-policy",
+  "/privacy-and-policy": "/privacy-policy",
+  "/hoc-terms": "/terms-and-conditions",
+  "/terms": "/terms-and-conditions",
+  "/termsandconditions": "/terms-and-conditions",
+  "/cancellation-policy": "/cancellation",
+  "/cancellations": "/cancellation",
+  "/impressum": "/imprint",
+};
+
+export function getRedirect(pathname: string): string | null {
+  return REDIRECTS[normalizePath(pathname)] ?? null;
+}
+
 export function renderPage(pathname: string): string {
-  const path = pathname === "" ? "/" : pathname.replace(/\/+$/, "") || "/";
+  const path = normalizePath(pathname);
   const meta = PAGES[path] ?? PAGES["/"];
   const url = `${BASE_URL}${path === "/" ? "/" : path}`;
   const title = escapeAttr(meta.title);
@@ -292,8 +318,7 @@ export function renderPage(pathname: string): string {
 export const KNOWN_PATHS: ReadonlySet<string> = new Set(Object.keys(PAGES));
 
 export function isKnownPath(pathname: string): boolean {
-  const path = pathname === "" ? "/" : pathname.replace(/\/+$/, "") || "/";
-  return KNOWN_PATHS.has(path);
+  return KNOWN_PATHS.has(normalizePath(pathname));
 }
 
 export function renderNotFoundPage(pathname: string): string {
