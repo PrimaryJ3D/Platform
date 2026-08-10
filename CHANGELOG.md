@@ -44,3 +44,6 @@
 - HoC 2027 lockup from the /hoc and /residency heroes (moved to header and footer).
 - primary@j3d.ai from the site footer (retained on /imprint and /privacy-policy).
 - Last remaining mentions of Diene Keita and Helen Zhang in the 2026 agenda archive; dangling separators cleaned.
+
+### Changed (bios)
+- Bio opening sentences realigned with updated titles for Dr. Eva-Maria Hempe (Executive Director, Public Sector, NVIDIA), Dr. Nele Leosk (ITU BDT candidacy now leads the bio) and Martina Fuchs (The Frequency School co-founding now leads the bio). Remainder of each bio unchanged.
