@@ -11,6 +11,8 @@
 - Angelina Usanova bio now leads with the Angelina Usanova Foundation; all "Miss Eco" references removed.
 - Cookie banner: Accept and Decline are now equal-weight buttons of identical size; the consent button is relabelled "Accept" since it also grants `ad_storage`.
 
+- Whitepaper band switched to HubSpot's frame embed (`hs-form-frame`), CSP extended with `https://forms-eu1.hsforms.com` in `frame-src`, and "Cookie settings" added to `FOOTER_LINKS.Legal`.
+
 ### Added
 - HoC 2027 programme: "Nordics and NB8 Summit" day (Oceans, Ports, Energy, Deep Tech, Resilience).
 - Middle East-Europe bridge segment, placed before Africa in the regional sequence.
