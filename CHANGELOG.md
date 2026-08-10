@@ -28,3 +28,19 @@
 - UnternehmerTUM chip from the Estonian Leap 2026 partner chip row (speaker title, bio and agenda mention retained).
 - Speakers Diene Keita and Helen Zhang from the HoC reel.
 - D11Z Ventures, Salzburg University of Applied Sciences and UnternehmerTUM from the landing-page logo block.
+
+### Added (HoC pass 3)
+- Four speakers with initials-avatar fallback (no sprite index, no photo): Dr. Carlos Nobre, Indrani Pal-Chaudhuri, Dr. Clara Guerra, Angelina Usanova. SP length is now 52.
+- Swipeable speaker overlay: touch swipe with a horizontal-vs-vertical direction threshold, left/right arrow keys, visible prev/next controls (44x44), wrap-around, animated transition that respects `prefers-reduced-motion`.
+- HoC 2027 logo in the top nav on /hoc and /residency (on a dark indigo pill so the pale artwork stays legible), matching the existing footer swap.
+- Geneva Polo Club chip in both copies of the "Past Clients & Partners" marquee.
+- HoC responsiveness sweep: overflow-x containment, `dvh` overlay height, safe-area insets, 44px minimum tap targets, long-string wrapping, narrower reel cards below 400px.
+
+### Changed (HoC pass 3)
+- "Nordics and NB8 Summit" is now "New Nordics and NB8 Summit".
+- Delegate Pass regains the speaker-slot line; programme access remains the only difference from the Residency.
+
+### Removed (HoC pass 3)
+- HoC 2027 lockup from the /hoc and /residency heroes (moved to header and footer).
+- primary@j3d.ai from the site footer (retained on /imprint and /privacy-policy).
+- Last remaining mentions of Diene Keita and Helen Zhang in the 2026 agenda archive; dangling separators cleaned.
