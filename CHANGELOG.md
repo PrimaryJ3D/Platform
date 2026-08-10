@@ -53,4 +53,6 @@
 
 ### Changed (whitepaper + bio pass)
 - Angelina Usanova bio: first paragraph rewritten to lead with the Angelina Usanova Foundation; the Miss Eco International claim removed (zero "Miss Eco" hits in src/). Title and second paragraph unchanged.
+- Activated the shared HoC and Reports Foresight Whitepaper band with HubSpot EU form `807243db-52cf-4ecf-b3eb-b098a6454511`, privacy copy and a direct-download fallback after three seconds.
+- Added the HubSpot EU form host to the production `frame-src` policy for embedded-form compatibility.
 
