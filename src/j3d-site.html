@@ -75,6 +75,12 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 #nav{position:fixed;top:38px;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 52px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--warmb);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:top .3s ease,box-shadow .25s}
 #nav.scl{box-shadow:0 2px 24px rgba(42,41,71,.08)}
 #nav.up{top:0}
+.hoc-lockup{height:46px}
+@media(max-width:768px){.hoc-lockup{height:32px!important}}
+#ftLogoHoC{display:none;height:36px;width:auto;max-width:100%;margin-bottom:12px}
+@media(max-width:768px){#ftLogoHoC{height:28px}}
+body.hoc-brand #ftLogoHoC{display:block}
+body.hoc-brand #ftLogoJ3D{display:none}
 /* Announce strip: dynamic + responsive */
 #announce-strip{height:38px;transition:transform .3s ease}
 #announce-strip.up{transform:translateY(-100%)}
@@ -885,7 +891,7 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 <meta name="twitter:image" content="https://j3d.ai/og-j3d.jpg">
 <meta name="robots" content="index,follow">
 <!-- ── JSON-LD STRUCTURED DATA ─────────────────────────────── -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"J3D.AI","url":"https://j3d.ai","logo":"https://j3d.ai/og-j3d.jpg","description":"Advisory and technology company specialising in market access advisory, AI readiness scoring, and sovereign convening for organisations navigating the AI transition across Europe and Asia.","email":"primary@j3d.ai","address":{"@type":"PostalAddress","addressLocality":"Tallinn","addressCountry":"EE"},"sameAs":["https://www.linkedin.com/company/j3d-ai/","https://www.linkedin.com/company/hocdavos/","https://www.youtube.com/@J3DAI"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"J3D.AI","url":"https://j3d.ai","logo":"https://j3d.ai/og-j3d.jpg","description":"Advisory and technology company specialising in market access advisory, AI readiness scoring, and sovereign convening for organisations navigating the AI transition across Europe and Asia.","email":"primary@j3d.ai","address":{"@type":"PostalAddress","addressLocality":"Tallinn","addressCountry":"EE"},"sameAs":["https://www.linkedin.com/company/j3d-ai/","https://www.linkedin.com/company/hocdavos/","https://www.youtube.com/@J3DAI","https://lu.ma/davos27"]}</script>
 <!-- ── GA4 CONSENT MODE (default: denied) ──────────────────── -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W18JEVSYFS"></script>
 <script>
@@ -2739,6 +2745,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 
 <section class="hx-hero"><div class="hx-con">
+  <img class="hoc-lockup" src="/__l5e/assets-v1/21af4ce8-a7bb-479f-b5c9-a7e8738ea861/HoC27-Light.svg" alt="House of Collaboration 2027" width="569" height="108" style="display:block;height:46px;width:auto;max-width:100%;margin:0 0 28px">
   <div class="hx-hero-ey"><span></span>By application · 17–21 January 2027 · Davos</div>
   <h1 class="hx-h1">House of<br><em>Collaboration.</em></h1>
   <p class="hx-hero-lede">The invitation-only week where governments, capital and founders turn Davos into decisions - not panels.</p>
@@ -3799,6 +3806,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 25% 30%, rgba(153,124,183,.18) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(198,240,255,.10) 0%, transparent 50%);pointer-events:none"></div>
     <div style="position:absolute;top:100px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,240,230,.18),transparent)"></div>
     <div class="con" style="position:relative;z-index:1">
+      <img class="hoc-lockup" src="/__l5e/assets-v1/21af4ce8-a7bb-479f-b5c9-a7e8738ea861/HoC27-Light.svg" alt="House of Collaboration 2027" width="569" height="108" style="display:block;height:46px;width:auto;max-width:100%;margin:0 0 28px">
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;flex-wrap:wrap">
         <span style="height:1px;width:48px;background:var(--lav);display:inline-block"></span>
         <span style="font-family:var(--rounded);font-size:10px;font-weight:700;color:var(--lav);text-transform:uppercase;letter-spacing:.4em">The HoC Residency</span>
@@ -4034,7 +4042,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   <div style="max-width:var(--mx);margin:0 auto">
     <div class="ft-g">
       <div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333.67 165.52" height="30" style="display:block;margin-bottom:12px">
+      <img id="ftLogoHoC" src="/__l5e/assets-v1/21af4ce8-a7bb-479f-b5c9-a7e8738ea861/HoC27-Light.svg" alt="House of Collaboration 2027" width="569" height="108">
+<span id="ftLogoJ3D" style="display:block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333.67 165.52" height="30" style="display:block;margin-bottom:12px">
 <style>.ft8{fill:#ffffff}.ft9{fill:#977CB5}.ft22{fill:#997CB7}</style>
 <path class="ft22" d="M113.62,151.59c-1.87,1.73-4.62,2.59-8.25,2.59h-8.42c-1.94,0-3.61-0.23-5.03-0.68c-1.42-0.45-2.59-1.13-3.5-2.05c-0.91-0.91-1.59-2.07-2.03-3.48l2.31-1.72c0.15,0.37,0.31,0.72,0.46,1.02c0.59,1.43,1.53,2.48,2.82,3.15s2.94,1.01,4.97,1.01h8.42c2.57,0,4.56-0.63,5.96-1.88c1.4-1.25,2.1-3.15,2.1-5.68v-9.93H98.24v-2.74h18.18v12.67C116.42,147.3,115.48,149.87,113.62,151.59z"/>
 <path class="ft22" d="M151.84,133.82h-26.43v7.66h24.78v2.54h-24.78v7.43h26.43v2.61h-29.44v-22.84h29.44V133.82z"/>
@@ -4049,7 +4058,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <path class="ft8" d="M159.48,104.88c-6.44,2-15.16,2.43-23.03,2.43c-7.72,0-31.47,0-31.47,0v-2c1.86-0.14,4.86-0.72,7.01-3.15c2.43-2.72,2.57-6.72,2.57-19.02V32.79c0-10.58-0.29-12.44-2.43-15.02c-1.29-1.43-4.15-2.72-6.72-2.86v-2c0,0,25.17,0.14,32.33,0.14c15.45,0,53.35,0.57,53.35,44.77C191.09,82.28,179.65,98.73,159.48,104.88z M139.74,18.2c-7.01,0-12.16,0.57-13.45,0.86V94.3c0,3.72,0.29,6.72,4.58,7.15c1.86,0.14,2.15,0.43,9.87,0.43c27.32,0,37.33-15.59,37.33-42.34C178.07,36.22,168.2,18.2,139.74,18.2z"/>
 <path class="ft8" d="M259.32,107.31v-2c2.15-0.14,4.43-0.72,5.86-2c0.86-0.72,1.29-1.86,1.29-3.29c0-1.86-1.14-5.29-2.29-8.44l-8.73-24.32H225.7l-9.44,24.32c-1.14,3.15-2.43,6.58-2.43,8.44c0,1.43,0.43,2.57,1.29,3.29c1.43,1.29,3.58,1.86,5.72,2v2h-24.03v-2c5.29-0.29,6.87-4.15,7.29-4.86c0.57-1,2.57-5.44,5.01-11.3l32.33-76.67l5.58-1.14l27.89,76.1c2.57,7.15,4.29,11.59,5.15,13.02c0.43,0.72,2,4.58,7.29,4.86v2H259.32z M246.01,41.23c-3.15-8.87-4.72-13.73-4.72-13.73l-13.3,34.19h25.46L246.01,41.23z"/>
 <path class="ft8" d="M311.24,18.06c-2.43,2.72-2.58,6.72-2.58,19.02v50.35c0,11.01,0.43,13.3,3,15.59c1.14,1,3.43,2,6.15,2.29v2h-30.47v-2c1.72,0,4.86-0.72,7.01-3.15c2.43-2.72,2.57-6.72,2.57-19.02V32.79c0-11.01-0.43-13.3-3-15.59c-1.14-1-3.43-2-6.15-2.29v-2h30.47v2C316.53,14.91,313.38,15.63,311.24,18.06z"/>
-</svg>
+</svg></span>
       <p style="font-family:var(--rounded);font-size:11px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:500;max-width:220px">Tallinn, Estonia &middot; working across DACH, the Gulf and South Asia.</p>
       <p style="font-family:var(--rounded);font-size:10px;color:rgba(255,255,255,.25);margin-top:12px;font-weight:500">&copy; 2026 J3D.AI Labs O&Uuml;<br>Tallinn, Estonia</p>
     </div>
@@ -4084,7 +4093,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
           <a href="mailto:primary@j3d.ai" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">primary@j3d.ai</a>
           <a href="https://www.linkedin.com/company/j3d-ai/" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">LinkedIn &rarr;</a>
           <a href="https://www.linkedin.com/company/hocdavos/" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">House of Collaboration LinkedIn &rarr;</a>
-          <a href="https://www.youtube.com/@J3DAI" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">YouTube &rarr;</a>
+          <a href="https://www.youtube.com/@J3DAI","https://lu.ma/davos27" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">YouTube &rarr;</a>
+          <a href="https://lu.ma/davos27" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">Luma &rarr;</a>
           <a href="https://calendly.com/j3d-ai/hoc" target="_blank" rel="noopener" style="font-family:var(--rounded);font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-decoration:none">Book a partnership call</a>
         </div>
       </div>
@@ -4217,10 +4227,15 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
   /* Patch go() to also trigger reveals on the new page */
   var _goOrig=window.go;
+  function hocBrand(page){
+    try{document.body.classList.toggle('hoc-brand',page==='hoc'||page==='residency');}catch(e){}
+  }
   window.go=function(page){
     _goOrig(page);
+    hocBrand(page);
     setTimeout(function(){revealPage(page);},40);
   };
+  hocBrand(((location.pathname||'/').replace(/\/+$/,'')==='/residency')?'residency':((location.hash||'').replace('#','')));
 
   /* ── SEARCH ── */
   var SEARCH_INDEX=[
