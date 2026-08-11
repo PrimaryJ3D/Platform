@@ -14,6 +14,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img,svg,video{max-width:100%;height:auto}
+h1,h2,h3,p,li,a,td,th{overflow-wrap:anywhere}
+.mob-ov{min-height:100dvh;padding-bottom:calc(32px + env(safe-area-inset-bottom));padding-left:calc(24px + env(safe-area-inset-left));padding-right:calc(24px + env(safe-area-inset-right))}
+
 /* ── BRAND TOKENS ──────────────────────────────────── */
 :root{
   --ind:#2A2947;--ind2:#1E1C36;--ind3:#3C3862;
@@ -72,7 +77,7 @@ button{cursor:pointer;font-family:var(--body);border:none;background:none}
 .btn-ice{background:var(--ice);color:var(--ind);font-weight:700}.btn-ice:hover{background:var(--icel);transform:translateY(-1px)}
 
 /* ── NAV ──────────────────────────────────────────── */
-#nav{position:fixed;top:38px;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 52px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--warmb);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:top .3s ease,box-shadow .25s}
+#nav{container-type:inline-size;position:fixed;top:38px;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 clamp(16px,3vw,52px);background:rgba(255,255,255,.96);border-bottom:1px solid var(--warmb);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);transition:top .3s ease,box-shadow .25s}
 #nav.scl{box-shadow:0 2px 24px rgba(42,41,71,.08)}
 #nav.up{top:0}
 .hoc-lockup{height:46px}
@@ -104,8 +109,8 @@ body.hoc-brand #navLogoJ3D{display:none}
 .nav-mark{border:1.5px solid var(--ind);padding:4px 9px;display:flex;align-items:center;transition:background .15s}
 .nav-mark:hover{background:var(--lavk)}
 .nav-mark span{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ind);letter-spacing:.04em}
-.nav-links{display:flex;align-items:center;gap:0;margin:0 auto;flex-wrap:nowrap}
-.nl{font-family:var(--rounded);font-size:10.5px;font-weight:600;letter-spacing:.03em;color:var(--tm);padding:8px 10px;position:relative;transition:color .15s;white-space:nowrap;display:flex;align-items:center;gap:3px}
+.nav-links{display:flex;align-items:center;gap:clamp(0px,0.4vw,8px);margin:0 auto;flex-wrap:nowrap;min-width:0}
+.nl{font-family:var(--rounded);font-size:clamp(10px,0.78vw,12px);font-weight:600;letter-spacing:.03em;color:var(--tm);padding:8px 10px;position:relative;transition:color .15s;white-space:nowrap;display:flex;align-items:center;gap:3px}
 .nl:hover,.nl.on{color:var(--ind)}
 .nl.on::after{content:'';position:absolute;bottom:-1px;left:13px;right:13px;height:2px;background:var(--lav)}
 .dd{position:relative}
@@ -137,7 +142,7 @@ body.hoc-brand #navLogoJ3D{display:none}
 .pg > section:last-child,.pg > div.sec:last-child{margin-bottom:0}
 
 /* ── FUTURISTIC HERO ──────────────────────────────── */
-.hero{min-height:calc(94vh + 100px);margin-top:-100px;background:var(--ind2);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.hero{min-height:calc(94dvh + 100px);margin-top:-100px;background:var(--ind2);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
 .hero-mesh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .mesh-g1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(153,124,183,.22) 0%,transparent 65%);top:-120px;right:-80px;animation:pulse 8s ease-in-out infinite}
 .mesh-g2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(198,240,255,.1) 0%,transparent 70%);bottom:-100px;left:5%;animation:pulse 10s ease-in-out 2s infinite}
@@ -341,11 +346,11 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 /* ── RESPONSIVE ───────────────────────────────────── */
 @media(max-width:1024px){.hero-stats{grid-template-columns:repeat(3,1fr)}.ft-g{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(2,1fr)}.g5{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
-  .pg{padding-top:90px}.hero{margin-top:-90px;min-height:calc(88vh + 90px)}.sec-ph{margin-top:-90px;padding-top:calc(60px + 90px)}
+  .pg{padding-top:90px}.hero{margin-top:-90px;min-height:calc(88dvh + 90px)}.sec-ph{margin-top:-90px;padding-top:calc(60px + 90px)}
   .con{padding:0 20px}
   .nav-cta{display:none}
 }
-@media(max-width:1100px){
+@container (max-width:1100px){
   .nav-links{display:none}.nav-mob{display:flex}.nav-search-btn{display:none}.nav-cta{display:none}
 }
 @media(max-width:768px){
@@ -374,7 +379,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   .ft-g{grid-template-columns:1fr!important}
   .ft-bot{flex-direction:column;gap:6px}
   /* Mobile HoC hero */
-  #pg-hoc > section:first-child{min-height:calc(78vh + 100px)!important;margin-top:-100px!important}
+  #pg-hoc > section:first-child{min-height:calc(78dvh + 100px)!important;margin-top:-100px!important}
   .hoc-hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}
   .hoc-hero-meta{padding-top:0!important}
   /* HoC revamp - mobile */
@@ -409,7 +414,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   /* Nav: tight on mobile */
   #nav{height:54px;min-height:54px;top:34px}
   #nav.up{top:0}
-  .pg{padding-top:88px}.hero{margin-top:-88px;min-height:calc(88vh + 88px)}.sec-ph{margin-top:-88px;padding-top:calc(60px + 88px)}
+  .pg{padding-top:88px}.hero{margin-top:-88px;min-height:calc(88dvh + 88px)}.sec-ph{margin-top:-88px;padding-top:calc(60px + 88px)}
   .nav-logo{height:28px}
   /* Hero: readable on small screens */
   .hero-inner{padding:100px 20px 40px}
@@ -442,7 +447,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   .mem-grid{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
-  .hero{min-height:calc(88vh + 88px)}
+  .hero{min-height:calc(88dvh + 88px)}
   .hero-h{font-size:clamp(26px,9vw,38px)!important}
   .hero-stats{grid-template-columns:1fr 1fr!important}
   .hst-n{font-size:20px!important}
@@ -851,8 +856,8 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 /* modal */
 .hoc-modal{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px}
 .hoc-modal[hidden]{display:none}
-.hoc-modal-bd{position:absolute;inset:0;background:rgba(30,28,54,.72);backdrop-filter:blur(4px)}
-.hoc-modal-card{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;box-shadow:0 24px 60px rgba(30,28,54,.35);max-height:90vh;overflow:auto}
+.hoc-modal-bd{position:absolute;inset:0;background:rgba(30,28,54,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.hoc-modal-card{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;box-shadow:0 24px 60px rgba(30,28,54,.35);max-height:90dvh;overflow:auto}
 .hoc-modal-img{background:#E4E2DC;position:relative;aspect-ratio:1/1;overflow:hidden}
 .hoc-modal-img img{width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 25%;display:block}
 .hoc-modal-body{padding:24px 24px 26px}
@@ -939,34 +944,23 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 <path class="n8" d="M311.24,18.06c-2.43,2.72-2.58,6.72-2.58,19.02v50.35c0,11.01,0.43,13.3,3,15.59c1.14,1,3.43,2,6.15,2.29v2h-30.47v-2c1.72,0,4.86-0.72,7.01-3.15c2.43-2.72,2.57-6.72,2.57-19.02V32.79c0-11.01-0.43-13.3-3-15.59c-1.14-1-3.43-2-6.15-2.29v-2h30.47v2C316.53,14.91,313.38,15.63,311.24,18.06z"/>
 </svg></span></a>
   <div class="nav-links">
-    <a href="/#home" class="nl on" id="nl-home" onclick="navGo('home');return false">Home</a>
-    <a href="/#about" class="nl" id="nl-about" onclick="navGo('about');return false">About</a>
+    <a href="/" class="nl on" id="nl-home" onclick="navGo('home');return false">Home</a>
+    <a href="/hoc" class="nl" id="nl-hoc" onclick="navGo('hoc');return false">House of Collaboration</a>
     <div class="dd">
-      <a href="/#case-studies" class="nl" id="nl-approach" onclick="navGo('approach');return false">Case Studies</a>
-    </div>
-    <div class="dd">
-      <a href="/#platforms" class="nl" id="nl-events" onclick="navGo('events');return false">Platforms &#9662;</a>
+      <a href="/about" class="nl" id="nl-about" onclick="navGo('about');return false">About &#9662;</a>
       <div class="dd-m">
-        <a href="/#hoc" class="di" onclick="navGo('hoc');return false">House of Collaboration</a>
-        <a href="/#estonian-leap" class="di" onclick="navGo('estonian-leap');return false">Estonian Leap</a>
-        
-        
+        <a href="/approach" class="di" onclick="navGo('approach');return false">Case Studies</a>
+        <a href="/reports" class="di" onclick="navGo('reports');return false">Reports</a>
       </div>
     </div>
-    <a href="/#reports" class="nl" id="nl-reports" onclick="navGo('reports');return false">Reports</a>
-    <a href="/#media" class="nl" id="nl-media" onclick="navGo('media');return false">Media &amp; PR</a>
+    <a href="/media" class="nl" id="nl-media" onclick="navGo('media');return false">Media &amp; PR</a>
     <div class="dd">
-      <a href="/#team" class="nl" id="nl-team" onclick="navGo('team');return false">Team &#9662;</a>
+      <a href="/contact" class="nl" id="nl-contact" onclick="navGo('contact');return false">Contact &#9662;</a>
       <div class="dd-m">
-        <a href="/#team" class="di" onclick="navGo('team');return false">Team Members</a>
-        <a href="/#fellows" class="di" onclick="navGo('fellows');return false">Fellows Programme</a>
-      </div>
-    </div>
-    <div class="dd">
-      <a href="/#contact" class="nl" id="nl-contact" onclick="navGo('contact');return false">Contact &#9662;</a>
-      <div class="dd-m">
-        <a href="/#contact" class="di" onclick="navGo('contact');return false">Contact Us</a>
-        <a href="/#members" onclick="navGo('members');return false" class="di">Members Portal</a>
+        <a href="/contact" class="di" onclick="navGo('contact');return false">Contact Us</a>
+        <a href="/team" class="di" onclick="navGo('team');return false">Team</a>
+        <a href="/fellows" class="di" onclick="navGo('fellows');return false">Fellows Programme</a>
+        <a href="/members" class="di" onclick="navGo('members');return false">Members Portal</a>
       </div>
     </div>
   </div>
@@ -987,32 +981,27 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         style="width:100%;padding:16px 48px 16px 20px;font-family:var(--rounded);font-size:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--w);outline:none;caret-color:var(--lavl)">
       <button onclick="toggleSearch()" aria-label="Close search" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.4);font-weight:300;line-height:1">&#215;</button>
     </div>
-    <div id="srch-results" style="margin-top:8px;max-height:60vh;overflow-y:auto"></div>
+    <div id="srch-results" style="margin-top:8px;max-height:60dvh;overflow-y:auto"></div>
   </div>
 </div>
 
 <div class="mob-ov" id="mob-ov">
-  <a href="/#home" class="ml" onclick="navGo('home');cM();return false">Home</a>
-  <a href="/#about" class="ml" onclick="navGo('about');cM();return false">About</a>
+  <a href="/" class="ml" onclick="navGo('home');cM();return false">Home</a>
 
-  <a href="/#case-studies" class="ml" onclick="navGo('approach');cM();return false">Case Studies</a>
+  <a href="/hoc" class="ml" onclick="navGo('hoc');cM();return false">House of Collaboration</a>
 
-  <a href="/#platforms" class="ml" onclick="navGo('events');cM();return false">Platforms</a>
-  <a href="/#hoc" class="ml mlsub" onclick="navGo('hoc');cM();return false">House of Collaboration</a>
-  <a href="/#estonian-leap" class="ml mlsub" onclick="navGo('estonian-leap');cM();return false">Estonian Leap</a>
-  
-  
+  <a href="/about" class="ml" onclick="navGo('about');cM();return false">About</a>
+  <a href="/approach" class="ml mlsub" onclick="navGo('approach');cM();return false">Case Studies</a>
+  <a href="/reports" class="ml mlsub" onclick="navGo('reports');cM();return false">Reports</a>
 
-  <a href="/#reports" class="ml" onclick="navGo('reports');cM();return false">Reports</a>
-  <a href="/#media" class="ml" onclick="navGo('media');cM();return false">Media &amp; PR</a>
+  <a href="/media" class="ml" onclick="navGo('media');cM();return false">Media &amp; PR</a>
 
-  <a href="/#team" class="ml" onclick="navGo('team');cM();return false">Team</a>
-  <a href="/#team" class="ml mlsub" onclick="navGo('team');cM();return false">Team Members</a>
-  <a href="/#fellows" class="ml mlsub" onclick="navGo('fellows');cM();return false">Fellows Programme</a>
+  <a href="/contact" class="ml" onclick="navGo('contact');cM();return false">Contact</a>
+  <a href="/contact" class="ml mlsub" onclick="navGo('contact');cM();return false">Contact Us</a>
+  <a href="/team" class="ml mlsub" onclick="navGo('team');cM();return false">Team</a>
+  <a href="/fellows" class="ml mlsub" onclick="navGo('fellows');cM();return false">Fellows Programme</a>
+  <a href="/members" class="ml mlsub" onclick="navGo('members');cM();return false">Members Portal</a>
 
-  <a href="/#contact" class="ml" onclick="navGo('contact');cM();return false">Contact</a>
-  <a href="/#contact" class="ml mlsub" onclick="navGo('contact');cM();return false">Contact Us</a>
-  <a href="/#members" class="ml mlsub" onclick="navGo('members');cM();return false">Members Portal</a>
 
   <a href="https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form" target="_blank" rel="noopener" class="ml mlcta" onclick="cM()">Apply for HoC 2027 &rarr;</a>
 </div>
@@ -2709,9 +2698,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 #pg-hoc .hx-fnote{margin:26px 0 0;font-size:13px;color:rgba(245,240,230,.55)}
 #pg-hoc .hx-fnote a{color:var(--ice);border-bottom:1px solid rgba(198,240,255,.4);text-decoration:none}
 /* modal */
-#pg-hoc .hx-ov{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(30,28,54,.72)}
+#pg-hoc .hx-ov{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(30,28,54,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 #pg-hoc .hx-ov.on{display:flex}
-#pg-hoc .hx-pan{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:190px 1fr;box-shadow:0 24px 60px rgba(30,28,54,.4);max-height:90vh;overflow:auto}
+#pg-hoc .hx-pan{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:190px 1fr;box-shadow:0 24px 60px rgba(30,28,54,.4);max-height:90dvh;overflow:auto}
 #pg-hoc .hx-pph{background-repeat:no-repeat;background-size:800% 600%;aspect-ratio:1/1}
 #pg-hoc .hx-pb{padding:26px}
 #pg-hoc .hx-pb .hx-nm{font-family:var(--serif);font-size:25px;margin-bottom:4px}
@@ -2772,7 +2761,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 @media(prefers-reduced-motion:reduce){#pg-hoc .hx-pan.slide{animation:none}}
 /* responsiveness sweep */
 #pg-hoc{overflow-x:hidden}
-#pg-hoc .hx-pan{max-height:min(90dvh,90vh);padding-bottom:64px}
+#pg-hoc .hx-pan{max-height:min(90dvh,90dvh);padding-bottom:64px}
 #pg-hoc .hx-hero{min-height:auto}
 #pg-hoc img,#pg-hoc svg,#pg-hoc iframe,#pg-hoc table{max-width:100%}
 #pg-hoc .hx-nm,#pg-hoc .hx-tt,#pg-hoc .hx-bio,#pg-hoc .hx-dt{overflow-wrap:anywhere}
@@ -2921,7 +2910,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
      Signature: rounded boulder shapes inspired by Estonian nature
 -->
 <div id="pg-estonian-leap" class="pg">
-  <div style="background:linear-gradient(135deg,#0030DE 0%,#000087 100%);min-height:62vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
+  <div style="background:linear-gradient(135deg,#0030DE 0%,#000087 100%);min-height:62dvh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
     <!-- Boulder shapes (Brand Estonia signature graphic element) -->
     <div class="est-boulder" style="width:520px;height:480px;background:rgba(0,195,255,.18);top:-120px;right:-80px;animation:estDrift 18s ease-in-out infinite"></div>
     <div class="est-boulder est-boulder-2" style="width:340px;height:300px;background:rgba(206,226,253,.12);bottom:-80px;left:8%;animation:estDrift 22s ease-in-out 3s infinite"></div>
@@ -3159,7 +3148,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ═══ DEEP TECH CASTLE ════════════════════════ -->
 <div id="pg-deep-tech-castle" class="pg">
-  <div style="background:linear-gradient(135deg,var(--ind2),var(--ind));min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
+  <div style="background:linear-gradient(135deg,var(--ind2),var(--ind));min-height:60dvh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(198,240,255,.18),transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(153,124,183,.32),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 60%,var(--ind3) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,28,54,.96),rgba(30,28,54,.5))"></div>
     <div class="hero-grid"></div>
@@ -3708,7 +3697,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ═══ MEMBERS PORTAL ══════════════════════════════════════════ -->
 <div id="pg-members" class="pg">
-  <div style="background:var(--ind2);min-height:50vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden">
+  <div style="background:var(--ind2);min-height:50dvh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(153,124,183,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(153,124,183,.07) 1px,transparent 1px);background-size:52px 52px;pointer-events:none"></div>
     <div class="con" style="position:relative;z-index:1;text-align:center;padding:64px 0">
       <span class="ey ey-l" style="display:block;margin-bottom:12px">Invitation Only</span>
@@ -4173,11 +4162,11 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 (function(){
   var PAGES=['home','about','approach','events','hoc','residency','estonian-leap','deep-tech-castle','foresight-whitepaper','reports','media','team','fellows','members','cs-hoc','cs-estonian-leap','cs-castle','cs-syntaigration','cs-vietnam-retreat','cs-gyeonggi','cs-europe-china','cs-fundraising','cs-allianz','cs-foresight','contact','imprint','privacy-policy','terms-and-conditions','cancellation'];
   var NAV_MAP={
-    'home':'home','about':'about','approach':'approach','cs-hoc':'approach','cs-estonian-leap':'approach','cs-castle':'approach','cs-syntaigration':'approach','cs-vietnam-retreat':'approach','cs-gyeonggi':'approach','cs-europe-china':'approach','cs-fundraising':'approach','cs-allianz':'approach','cs-foresight':'approach',
-    'events':'events','hoc':'hoc','residency':'residency',
-    'estonian-leap':'events','deep-tech-castle':'events',
-    'foresight-whitepaper':'reports','reports':'reports',
-    'media':'media','team':'team','fellows':'fellows','members':'members','contact':'contact','imprint':'contact','privacy-policy':'contact','cancellation':'contact',
+    'home':'home','about':'about','approach':'about','cs-hoc':'about','cs-estonian-leap':'about','cs-castle':'about','cs-syntaigration':'about','cs-vietnam-retreat':'about','cs-gyeonggi':'about','cs-europe-china':'about','cs-fundraising':'about','cs-allianz':'about','cs-foresight':'about',
+    'events':'hoc','hoc':'hoc','residency':'hoc',
+    'estonian-leap':'hoc','deep-tech-castle':'hoc',
+    'foresight-whitepaper':'about','reports':'about',
+    'media':'media','team':'contact','fellows':'contact','members':'contact','contact':'contact','imprint':'contact','privacy-policy':'contact','cancellation':'contact',
     'terms-and-conditions':'hoc'
   };
   /* slug aliases: pretty URL <-> internal page id */

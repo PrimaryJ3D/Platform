@@ -71,3 +71,5 @@
 - Activated the shared HoC and Reports Foresight Whitepaper band with HubSpot EU form `807243db-52cf-4ecf-b3eb-b098a6454511`, privacy copy and a direct-download fallback after three seconds.
 - Added the HubSpot EU form host to the production `frame-src` policy for embedded-form compatibility.
 
+
+## 2026-08-11 - Header slimmed to five items (Home, House of Collaboration, About, Media & PR, Contact), fluid device-agnostic sizing (clamp/min/auto-fit, dvh, safe-area, container-query nav collapse) and -webkit-backdrop-filter pairs for Safari.
