@@ -142,7 +142,7 @@ body.hoc-brand #navLogoJ3D{display:none}
 .pg > section:last-child,.pg > div.sec:last-child{margin-bottom:0}
 
 /* ── FUTURISTIC HERO ──────────────────────────────── */
-.hero{min-height:calc(94vh + 100px);margin-top:-100px;background:var(--ind2);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.hero{min-height:calc(94dvh + 100px);margin-top:-100px;background:var(--ind2);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
 .hero-mesh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .mesh-g1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(153,124,183,.22) 0%,transparent 65%);top:-120px;right:-80px;animation:pulse 8s ease-in-out infinite}
 .mesh-g2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(198,240,255,.1) 0%,transparent 70%);bottom:-100px;left:5%;animation:pulse 10s ease-in-out 2s infinite}
@@ -346,7 +346,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
 /* ── RESPONSIVE ───────────────────────────────────── */
 @media(max-width:1024px){.hero-stats{grid-template-columns:repeat(3,1fr)}.ft-g{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(2,1fr)}.g5{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
-  .pg{padding-top:90px}.hero{margin-top:-90px;min-height:calc(88vh + 90px)}.sec-ph{margin-top:-90px;padding-top:calc(60px + 90px)}
+  .pg{padding-top:90px}.hero{margin-top:-90px;min-height:calc(88dvh + 90px)}.sec-ph{margin-top:-90px;padding-top:calc(60px + 90px)}
   .con{padding:0 20px}
   .nav-cta{display:none}
 }
@@ -379,7 +379,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   .ft-g{grid-template-columns:1fr!important}
   .ft-bot{flex-direction:column;gap:6px}
   /* Mobile HoC hero */
-  #pg-hoc > section:first-child{min-height:calc(78vh + 100px)!important;margin-top:-100px!important}
+  #pg-hoc > section:first-child{min-height:calc(78dvh + 100px)!important;margin-top:-100px!important}
   .hoc-hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}
   .hoc-hero-meta{padding-top:0!important}
   /* HoC revamp - mobile */
@@ -414,7 +414,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   /* Nav: tight on mobile */
   #nav{height:54px;min-height:54px;top:34px}
   #nav.up{top:0}
-  .pg{padding-top:88px}.hero{margin-top:-88px;min-height:calc(88vh + 88px)}.sec-ph{margin-top:-88px;padding-top:calc(60px + 88px)}
+  .pg{padding-top:88px}.hero{margin-top:-88px;min-height:calc(88dvh + 88px)}.sec-ph{margin-top:-88px;padding-top:calc(60px + 88px)}
   .nav-logo{height:28px}
   /* Hero: readable on small screens */
   .hero-inner{padding:100px 20px 40px}
@@ -447,7 +447,7 @@ footer{background:var(--ind2);border-top:1px solid rgba(255,255,255,.06);padding
   .mem-grid{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
-  .hero{min-height:calc(88vh + 88px)}
+  .hero{min-height:calc(88dvh + 88px)}
   .hero-h{font-size:clamp(26px,9vw,38px)!important}
   .hero-stats{grid-template-columns:1fr 1fr!important}
   .hst-n{font-size:20px!important}
@@ -857,7 +857,7 @@ hr,.hairline{border:0;border-top:1px solid var(--warmb);margin:clamp(20px,4vw,32
 .hoc-modal{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px}
 .hoc-modal[hidden]{display:none}
 .hoc-modal-bd{position:absolute;inset:0;background:rgba(30,28,54,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.hoc-modal-card{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;box-shadow:0 24px 60px rgba(30,28,54,.35);max-height:90vh;overflow:auto}
+.hoc-modal-card{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;box-shadow:0 24px 60px rgba(30,28,54,.35);max-height:90dvh;overflow:auto}
 .hoc-modal-img{background:#E4E2DC;position:relative;aspect-ratio:1/1;overflow:hidden}
 .hoc-modal-img img{width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 25%;display:block}
 .hoc-modal-body{padding:24px 24px 26px}
@@ -981,7 +981,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
         style="width:100%;padding:16px 48px 16px 20px;font-family:var(--rounded);font-size:15px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--w);outline:none;caret-color:var(--lavl)">
       <button onclick="toggleSearch()" aria-label="Close search" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.4);font-weight:300;line-height:1">&#215;</button>
     </div>
-    <div id="srch-results" style="margin-top:8px;max-height:60vh;overflow-y:auto"></div>
+    <div id="srch-results" style="margin-top:8px;max-height:60dvh;overflow-y:auto"></div>
   </div>
 </div>
 
@@ -2700,7 +2700,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 /* modal */
 #pg-hoc .hx-ov{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(30,28,54,.72)}
 #pg-hoc .hx-ov.on{display:flex}
-#pg-hoc .hx-pan{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:190px 1fr;box-shadow:0 24px 60px rgba(30,28,54,.4);max-height:90vh;overflow:auto}
+#pg-hoc .hx-pan{position:relative;background:#fff;max-width:520px;width:100%;display:grid;grid-template-columns:190px 1fr;box-shadow:0 24px 60px rgba(30,28,54,.4);max-height:90dvh;overflow:auto}
 #pg-hoc .hx-pph{background-repeat:no-repeat;background-size:800% 600%;aspect-ratio:1/1}
 #pg-hoc .hx-pb{padding:26px}
 #pg-hoc .hx-pb .hx-nm{font-family:var(--serif);font-size:25px;margin-bottom:4px}
@@ -2761,7 +2761,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 @media(prefers-reduced-motion:reduce){#pg-hoc .hx-pan.slide{animation:none}}
 /* responsiveness sweep */
 #pg-hoc{overflow-x:hidden}
-#pg-hoc .hx-pan{max-height:min(90dvh,90vh);padding-bottom:64px}
+#pg-hoc .hx-pan{max-height:min(90dvh,90dvh);padding-bottom:64px}
 #pg-hoc .hx-hero{min-height:auto}
 #pg-hoc img,#pg-hoc svg,#pg-hoc iframe,#pg-hoc table{max-width:100%}
 #pg-hoc .hx-nm,#pg-hoc .hx-tt,#pg-hoc .hx-bio,#pg-hoc .hx-dt{overflow-wrap:anywhere}
@@ -2910,7 +2910,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
      Signature: rounded boulder shapes inspired by Estonian nature
 -->
 <div id="pg-estonian-leap" class="pg">
-  <div style="background:linear-gradient(135deg,#0030DE 0%,#000087 100%);min-height:62vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
+  <div style="background:linear-gradient(135deg,#0030DE 0%,#000087 100%);min-height:62dvh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
     <!-- Boulder shapes (Brand Estonia signature graphic element) -->
     <div class="est-boulder" style="width:520px;height:480px;background:rgba(0,195,255,.18);top:-120px;right:-80px;animation:estDrift 18s ease-in-out infinite"></div>
     <div class="est-boulder est-boulder-2" style="width:340px;height:300px;background:rgba(206,226,253,.12);bottom:-80px;left:8%;animation:estDrift 22s ease-in-out 3s infinite"></div>
@@ -3148,7 +3148,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ═══ DEEP TECH CASTLE ════════════════════════ -->
 <div id="pg-deep-tech-castle" class="pg">
-  <div style="background:linear-gradient(135deg,var(--ind2),var(--ind));min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
+  <div style="background:linear-gradient(135deg,var(--ind2),var(--ind));min-height:60dvh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(198,240,255,.18),transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(153,124,183,.32),transparent 60%),linear-gradient(135deg,var(--ind2) 0%,var(--ind) 60%,var(--ind3) 100%)"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,28,54,.96),rgba(30,28,54,.5))"></div>
     <div class="hero-grid"></div>
@@ -3697,7 +3697,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 
 <!-- ═══ MEMBERS PORTAL ══════════════════════════════════════════ -->
 <div id="pg-members" class="pg">
-  <div style="background:var(--ind2);min-height:50vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden">
+  <div style="background:var(--ind2);min-height:50dvh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(153,124,183,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(153,124,183,.07) 1px,transparent 1px);background-size:52px 52px;pointer-events:none"></div>
     <div class="con" style="position:relative;z-index:1;text-align:center;padding:64px 0">
       <span class="ey ey-l" style="display:block;margin-bottom:12px">Invitation Only</span>
