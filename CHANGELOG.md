@@ -3,6 +3,7 @@
 ## Working rule: no whole-file overwrites
 - Never paste a full `src/j3d-site.html` over the existing file. A verbatim overwrite at 17:53 on 2026-08-10 reverted roughly a day of work (all four legal pages, the corrected Estonian Impressum, 52 speakers with photos, HoC nav/footer logo, whitepaper band, cookie fixes). Restored from the 17:09 known-good revision. All future changes must be targeted edits to the specific blocks being changed.
 
+## 2026-08-31 - Factual corrections: registry code 16727690, HoC dates 17-21 Jan, residency 5 nights, shared-room definition.
 
 ## 2026-08-10 - Content update: HoC programme, speakers, Estonian Leap, landing page
 
