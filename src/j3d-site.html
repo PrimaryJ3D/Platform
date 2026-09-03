@@ -4358,6 +4358,8 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       /* Hash aliases (/ #hoc) load the page, then scrub to the clean path (/hoc). */
       if(hash&&pathPage===''&&aliased!=='home'){
         try{history.replaceState(null,'','/'+aliased);}catch(e){}
+        var c=document.querySelector('link[rel="canonical"]');
+        if(c)c.setAttribute('href','https://j3d.ai/'+aliased);
       }
     } else if(pathPage&&document.getElementById('pg-'+pathPage)){
       window.go(pathPage);
