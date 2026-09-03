@@ -74,3 +74,5 @@
 
 
 ## 2026-08-11 - Header slimmed to five items (Home, House of Collaboration, About, Media & PR, Contact), fluid device-agnostic sizing (clamp/min/auto-fit, dvh, safe-area, container-query nav collapse) and -webkit-backdrop-filter pairs for Safari.
+
+- 2026-09-03: /residency routing fix - head paint guard and DOMContentLoaded router now derive the page from the pathname on standalone routes, so /residency renders the residency page immediately with no #residency hash; the hash form still works as an alias and is scrubbed to the clean URL. Canonical already pointed at https://j3d.ai/residency. No internal /residency#residency links remained.
