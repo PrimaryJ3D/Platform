@@ -913,7 +913,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 </script>
 <!-- ── COOKIE CONSENT CSS (Orest Bida v3) ─────────────────── -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script>(function(){try{var pt=(location.pathname||"/").replace(/\/+$/,"").replace(/^\//,"");var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;if(!h){pt=A[pt]||pt;h=pt?pt:"home";}h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
+<script>(function(){try{var pt=(location.pathname||"/").replace(/\/+$/,"").replace(/^\//,"");var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;pt=A[pt]||pt;if(pt){h=pt;}else if(!h){h="home";}h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
@@ -4353,16 +4353,19 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var aliased=(typeof SLUG_IN!=='undefined'&&SLUG_IN[hash])?SLUG_IN[hash]:hash;
     var pathPage=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
     pathPage=(typeof SLUG_IN!=='undefined'&&SLUG_IN[pathPage])?SLUG_IN[pathPage]:pathPage;
-    if(aliased&&document.getElementById('pg-'+aliased)){
+    /* A valid pathname page always wins over the hash; stale hashes (e.g. the
+       fragment preserved across the /residency -> /hoc 301) are scrubbed. */
+    if(pathPage&&document.getElementById('pg-'+pathPage)){
+      window.go(pathPage);
+      if(hash){try{history.replaceState(null,'',location.pathname);}catch(e){}}
+    } else if(aliased&&document.getElementById('pg-'+aliased)){
       window.go(aliased);
       /* Hash aliases (/ #hoc) load the page, then scrub to the clean path (/hoc). */
-      if(hash&&pathPage===''&&aliased!=='home'){
+      if(hash&&aliased!=='home'){
         try{history.replaceState(null,'','/'+aliased);}catch(e){}
         var c=document.querySelector('link[rel="canonical"]');
         if(c)c.setAttribute('href','https://j3d.ai/'+aliased);
       }
-    } else if(pathPage&&document.getElementById('pg-'+pathPage)){
-      window.go(pathPage);
     } else {
       revealPage('home');
     }
