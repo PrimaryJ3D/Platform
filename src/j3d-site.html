@@ -913,7 +913,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 </script>
 <!-- ── COOKIE CONSENT CSS (Orest Bida v3) ─────────────────── -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script>(function(){try{var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;if(!h)h="home";h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
+<script>(function(){try{var pt=(location.pathname||"/").replace(/\/+$/,"");var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;if(!h)h=(pt==="/residency")?"residency":"home";h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
@@ -4351,8 +4351,12 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     if(btn)btn.addEventListener('click',window.tM);
     var hash=window.location.hash.replace('#','');
     var aliased=(typeof SLUG_IN!=='undefined'&&SLUG_IN[hash])?SLUG_IN[hash]:hash;
+    var pathPage=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
+    if(!aliased&&pathPage==='residency')aliased='residency';
     if(aliased&&document.getElementById('pg-'+aliased)){
       window.go(aliased);
+    } else if(pathPage==='residency'){
+      window.go('residency');
     } else {
       revealPage('home');
     }
