@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- Generalised clean-path routing: any pathname matching an existing page element now renders that page (e.g. /hoc), with SLUG_IN aliases applied to path-derived pages; hash aliases like /#hoc scrub to the clean path and update the canonical tag. Canonical for /hoc is https://j3d.ai/hoc. No page content, copy, or layout changed.
+
 ## Working rule: no whole-file overwrites
 - Never paste a full `src/j3d-site.html` over the existing file. A verbatim overwrite at 17:53 on 2026-08-10 reverted roughly a day of work (all four legal pages, the corrected Estonian Impressum, 52 speakers with photos, HoC nav/footer logo, whitepaper band, cookie fixes). Restored from the 17:09 known-good revision. All future changes must be targeted edits to the specific blocks being changed.
 
