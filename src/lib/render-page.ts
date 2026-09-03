@@ -267,6 +267,7 @@ export function normalizePath(pathname: string): string {
 export const REDIRECTS: Record<string, string> = {
   "/privacy": "/privacy-policy",
   "/privacypolicy": "/privacy-policy",
+  "/residency": "/hoc",
   "/privacy-and-policy": "/privacy-policy",
   "/hoc-terms": "/terms-and-conditions",
   "/terms": "/terms-and-conditions",
