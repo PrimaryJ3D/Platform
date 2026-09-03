@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-09-03
+- Converted all remaining en-dash entities (&ndash;, 24 occurrences) and two literal en-dash date ranges to plain ASCII hyphens; registry code 16727690 and HoC 2027 dates (Jan 17-21, 2027) verified already correct site-wide.
 
 - Generalised clean-path routing: any pathname matching an existing page element now renders that page (e.g. /hoc), with SLUG_IN aliases applied to path-derived pages; hash aliases like /#hoc scrub to the clean path and update the canonical tag. Canonical for /hoc is https://j3d.ai/hoc. No page content, copy, or layout changed.
 
