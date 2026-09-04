@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-09-04
+- Legal copy updates: removed "hotel" from Residency accommodation description; updated Cancellation Policy Section 3, added Section 7 (visa and travel documents), and updated Terms & Conditions Section 7 to clarify properties are not in Davos and not hotels; refreshed "Last updated" dates.
+
 ## 2026-09-03
 - Converted all remaining en-dash entities (&ndash;, 24 occurrences) and two literal en-dash date ranges to plain ASCII hyphens; registry code 16727690 and HoC 2027 dates (Jan 17-21, 2027) verified already correct site-wide.
 
