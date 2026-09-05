@@ -4380,24 +4380,20 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var btn=document.getElementById('mob-btn');
     if(btn)btn.addEventListener('click',window.tM);
     var hash=window.location.hash.replace('#','');
-    var aliased=(typeof SLUG_IN!=='undefined'&&SLUG_IN[hash])?SLUG_IN[hash]:hash;
-    var pathPage=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
-    pathPage=(typeof SLUG_IN!=='undefined'&&SLUG_IN[pathPage])?SLUG_IN[pathPage]:pathPage;
-    /* A valid pathname page always wins over the hash; stale hashes (e.g. the
-       fragment preserved across the /residency -> /hoc 301) are scrubbed. */
-    if(pathPage&&document.getElementById('pg-'+pathPage)){
-      window.go(pathPage);
-      if(hash){try{history.replaceState(null,'',location.pathname);}catch(e){}}
-    } else if(aliased&&document.getElementById('pg-'+aliased)){
-      window.go(aliased);
-      /* Hash aliases (/ #hoc) load the page, then scrub to the clean path (/hoc). */
-      if(hash&&aliased!=='home'){
-        try{history.replaceState(null,'','/'+aliased);}catch(e){}
-        var c=document.querySelector('link[rel="canonical"]');
-        if(c)c.setAttribute('href','https://j3d.ai/'+aliased);
-      }
+    var hashPage=(SLUG_IN[hash]&&document.getElementById('pg-'+SLUG_IN[hash]))?SLUG_IN[hash]:(document.getElementById('pg-'+hash)?hash:'');
+    var rawPath=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
+    var pathPage=pageFor(location.pathname);
+    /* A valid pathname page always wins over the hash; a hash alias (/#hoc)
+       loads that page and is scrubbed to the clean path. In-page anchors on
+       the home page are left alone. */
+    var page=(rawPath&&pathPage!=='home')?pathPage:(hashPage||'home');
+    window.go(page,true);
+    var want=pathFor(page);
+    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+    if(here!==want||(hashPage&&location.hash)){
+      try{history.replaceState({page:page},'',want);}catch(e){}
     } else {
-      revealPage('home');
+      try{history.replaceState({page:page},'',here+location.hash);}catch(e){}
     }
     /* Lift the pre-route paint guard only AFTER the router has set inline
        display styles - prevents the flash of home before the real page. */
