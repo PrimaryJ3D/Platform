@@ -277,7 +277,6 @@ export function normalizePath(pathname: string): string {
 export const REDIRECTS: Record<string, string> = {
   "/privacy": "/privacy-policy",
   "/privacypolicy": "/privacy-policy",
-  "/residency": "/hoc",
   "/privacy-and-policy": "/privacy-policy",
   "/hoc-terms": "/terms-and-conditions",
   "/terms": "/terms-and-conditions",
@@ -285,6 +284,9 @@ export const REDIRECTS: Record<string, string> = {
   "/cancellation-policy": "/cancellation",
   "/cancellations": "/cancellation",
   "/impressum": "/imprint",
+  "/house-of-collaboration": "/hoc",
+  "/foresight": "/foresight-whitepaper",
+  "/platforms": "/events",
 };
 
 export function getRedirect(pathname: string): string | null {
