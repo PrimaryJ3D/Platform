@@ -4310,12 +4310,13 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   function hocBrand(page){
     try{document.body.classList.toggle('hoc-brand',page==='hoc'||page==='residency');}catch(e){}
   }
-  window.go=function(page){
-    _goOrig(page);
+  window.go=function(page,noPush){
+    if(SLUG_IN[page])page=SLUG_IN[page];
+    _goOrig(page,noPush);
     hocBrand(page);
     setTimeout(function(){revealPage(page);},40);
   };
-  hocBrand(((location.pathname||'/').replace(/\/+$/,'')==='/residency')?'residency':((location.hash||'').replace('#','')));
+  hocBrand(pageFor(location.pathname));
 
   /* ── SEARCH ── */
   var SEARCH_INDEX=[
