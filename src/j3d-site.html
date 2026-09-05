@@ -4170,15 +4170,56 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     'terms-and-conditions':'hoc'
   };
   /* slug aliases: pretty URL <-> internal page id */
-  var SLUG_OUT={'approach':'case-studies','events':'platforms'};
-  var SLUG_IN={'case-studies':'approach','platforms':'events'};
-  window.go=function(page){
-    if(SLUG_IN[page])page=SLUG_IN[page];
-    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+  var SLUG_OUT={'approach':'case-studies','events':'events','hoc':'hoc','foresight-whitepaper':'foresight-whitepaper','privacy-policy':'privacy-policy'};
+  var SLUG_IN={
+    'case-studies':'approach','approach':'approach',
+    'platforms':'events','events':'events',
+    'house-of-collaboration':'hoc','hoc':'hoc',
+    'foresight':'foresight-whitepaper','foresight-whitepaper':'foresight-whitepaper',
+    'privacy':'privacy-policy','privacy-policy':'privacy-policy'
+  };
+  var TITLES={
+    'home':'J3D.AI - Advisory, AI Readiness & Sovereign Convening',
+    'about':'About - J3D.AI',
+    'approach':'Case Studies - J3D.AI',
+    'events':'Platforms & Events - J3D.AI',
+    'hoc':'House of Collaboration 2027 - J3D.AI',
+    'residency':'HoC 2027 Residency - J3D.AI',
+    'estonian-leap':'Estonian Leap - J3D.AI',
+    'deep-tech-castle':'Deep Tech Castle - J3D.AI',
+    'foresight-whitepaper':'Davos Foresight Whitepaper - J3D.AI',
+    'reports':'Reports - J3D.AI',
+    'media':'Media - J3D.AI',
+    'team':'Team - J3D.AI',
+    'fellows':'Fellows - J3D.AI',
+    'members':'Members Portal - J3D.AI',
+    'contact':'Contact - J3D.AI',
+    'imprint':'Imprint - J3D.AI',
+    'privacy-policy':'Privacy Policy - J3D.AI',
+    'terms-and-conditions':'Terms & Conditions - J3D.AI',
+    'cancellation':'Cancellation Policy - J3D.AI'
+  };
+  function pathFor(page){
     var slug=SLUG_OUT[page]||page;
-    /* Cross-boundary navigation for the standalone /residency route */
-    if(page==='residency' && here!=='/residency'){location.assign('/residency');return;}
-    if(page!=='residency' && here==='/residency'){location.assign('/#'+slug);return;}
+    return (page==='home')?'/':('/'+slug);
+  }
+  function pageFor(path){
+    var p=(path||'/').replace(/\/+$/,'').replace(/^\//,'');
+    if(!p)return 'home';
+    if(SLUG_IN[p])p=SLUG_IN[p];
+    return document.getElementById('pg-'+p)?p:'home';
+  }
+  window.pageForPath=pageFor;
+  function syncHead(page){
+    try{
+      var t=TITLES[page];
+      if(t)document.title=t;
+      var c=document.querySelector('link[rel="canonical"]');
+      if(c)c.setAttribute('href','https://j3d.ai'+(pathFor(page)==='/'?'/':pathFor(page)));
+    }catch(e){}
+  }
+  window.go=function(page,noPush){
+    if(SLUG_IN[page])page=SLUG_IN[page];
     /* Hide ALL .pg elements */
     document.querySelectorAll('.pg').forEach(function(el){
       el.classList.remove('on');
@@ -4188,7 +4229,6 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     if(!target){
       target=document.getElementById('pg-contact');
       page='contact';
-      slug=SLUG_OUT[page]||page;
     }
     if(target){
       target.classList.add('on');
@@ -4199,21 +4239,16 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var navEl=document.getElementById('nl-'+activeNav);
     if(navEl)navEl.classList.add('on');
     window.scrollTo(0,0);
-    try{
-      /* Only rewrite the URL when we're on the homepage. On standalone
-         routes (e.g. /residency) never append a hash - the URL must stay
-         exactly the pathname. Cross-boundary nav is handled above via
-         a full location.href change. */
-      if(here==='/'){history.pushState(null,'','/#'+slug);}
-    }catch(e){}
+    syncHead(page);
+    if(!noPush){
+      try{
+        var next=pathFor(page);
+        var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+        if(here!==next||location.hash){history.pushState({page:page},'',next);}
+      }catch(e){}
+    }
   };
-  window.navGo=function(page){
-    if(SLUG_IN[page])page=SLUG_IN[page];
-    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
-    var slug=SLUG_OUT[page]||page;
-    if(here==='/residency'){location.assign('/#'+slug);return;}
-    window.go(page);
-  };
+  window.navGo=function(page){window.go(page);};
   window.goAnchor=function(page,anchor){
     window.go(page);
     setTimeout(function(){
@@ -4221,16 +4256,10 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },120);
   };
-  function stripResidencyHash(){
-    try{
-      var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
-      if(path==='/residency'&&location.hash){history.replaceState(null,'','/residency');}
-    }catch(e){}
-  }
-  window.addEventListener('scroll',stripResidencyHash,{passive:true});
-  window.addEventListener('hashchange',stripResidencyHash);
-  setInterval(stripResidencyHash,250);
-  stripResidencyHash();
+  window.addEventListener('popstate',function(){
+    var page=(history.state&&history.state.page)?history.state.page:pageFor(location.pathname);
+    window.go(page,true);
+  });
   window.tM=function(){
     document.getElementById('mob-ov').classList.toggle('on');
     document.getElementById('mob-btn').classList.toggle('open');
