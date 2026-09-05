@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-09-04
+- Quotation alignment: substitution is now consent-based with no fee (Terms clause 5.2, Cancellation Section 2, CHF 250 fee removed); postponement refund aligned to committed-costs rule (Cancellation Section 3); payment falls due on countersignature (Terms clause 3). Delegate Pass no longer lists curated introductions; "Personal matchmaking (TBC)" is now "Strategic matchmaking"; venue walking distance standardised to "four to five minutes" site-wide.
 - Legal copy updates: removed "hotel" from Residency accommodation description; updated Cancellation Policy Section 3, added Section 7 (visa and travel documents), and updated Terms & Conditions Section 7 to clarify properties are not in Davos and not hotels; refreshed "Last updated" dates.
 - Legal copy updates: removed commercially sensitive details from Terms & Conditions (clauses 3, 8, 9) and Cancellation Policy (Sections 1, 3); reset Terms & Conditions and Cancellation Policy "Last updated" dates to 1 September 2026.
 
