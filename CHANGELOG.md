@@ -89,3 +89,4 @@
 
 - 2026-09-03: /residency routing fix - head paint guard and DOMContentLoaded router now derive the page from the pathname on standalone routes, so /residency renders the residency page immediately with no #residency hash; the hash form still works as an alias and is scrubbed to the clean URL. Canonical already pointed at https://j3d.ai/residency. No internal /residency#residency links remained.
 - /residency now 301-redirects server-side to /hoc (browser preserves the #residency fragment across the redirect; the pathname router wins and scrubs it), so both /residency and /residency#residency land on the House of Collaboration page. Residency page code and content remain in the codebase, just unreachable at /residency.
+- Routing: back/forward now restores previous scroll position; new pages open at the top. Hero meta line already removed.
