@@ -52,6 +52,16 @@ const PAGES: Record<string, PageMeta> = {
     description:
       "Cybernetic foresight, technology mastery, and wisdom: how J3D.AI works with clients and partners across borders.",
   },
+  "/case-studies": {
+    title: "Case Studies - J3D.AI",
+    description:
+      "Selected J3D.AI engagements across market access, AI readiness, and sovereign convening.",
+  },
+  "/events": {
+    title: "Platforms & Events - J3D.AI",
+    description:
+      "J3D.AI platforms and events: House of Collaboration, Deep Tech Castle, and the Estonian Leap.",
+  },
   "/team": {
     title: "Team - J3D.AI",
     description: "The people behind J3D.AI's advisory, AI readiness, and convening practice.",
