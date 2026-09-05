@@ -4218,8 +4218,26 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       if(c)c.setAttribute('href','https://j3d.ai'+(pathFor(page)==='/'?'/':pathFor(page)));
     }catch(e){}
   }
-  window.go=function(page,noPush){
+  /* We control scroll ourselves so Back can restore the saved offset. */
+  try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+  var _scrollTimers=[];
+  function _setScroll(y){
+    var de=document.documentElement, prev=de.style.scrollBehavior, t0=Date.now();
+    _scrollTimers.forEach(clearTimeout); _scrollTimers=[];
+    de.style.scrollBehavior='auto';
+    function apply(){
+      /* Skip stale re-applies (e.g. background-throttled timers firing late)
+         so we never yank a visitor who has started scrolling. */
+      if(Date.now()-t0>800)return;
+      window.scrollTo(0,y);
+    }
+    apply();
+    [30,120,260,420,600].forEach(function(d){_scrollTimers.push(setTimeout(apply,d));});
+    _scrollTimers.push(setTimeout(function(){de.style.scrollBehavior=prev;},650));
+  }
+  window.go=function(page,noPush,scrollY){
     if(SLUG_IN[page])page=SLUG_IN[page];
+    var _leaveY=window.scrollY||window.pageYOffset||0;
     /* Hide ALL .pg elements */
     document.querySelectorAll('.pg').forEach(function(el){
       el.classList.remove('on');
@@ -4238,15 +4256,19 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var activeNav=NAV_MAP[page]||page;
     var navEl=document.getElementById('nl-'+activeNav);
     if(navEl)navEl.classList.add('on');
-    window.scrollTo(0,0);
     syncHead(page);
     if(!noPush){
       try{
+        /* remember where we were on the page we are leaving */
+        var cur=history.state||{};
+        history.replaceState({page:cur.page||pageFor(location.pathname),scroll:_leaveY},'',location.pathname+location.hash);
         var next=pathFor(page);
         var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
-        if(here!==next||location.hash){history.pushState({page:page},'',next);}
+        if(here!==next||location.hash){history.pushState({page:page,scroll:0},'',next);}
       }catch(e){}
     }
+    var _y=(typeof scrollY==='number')?scrollY:0;
+    _setScroll(_y);
   };
   window.navGo=function(page){window.go(page);};
   window.goAnchor=function(page,anchor){
@@ -4256,9 +4278,12 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },120);
   };
-  window.addEventListener('popstate',function(){
-    var page=(history.state&&history.state.page)?history.state.page:pageFor(location.pathname);
-    window.go(page,true);
+  window.addEventListener('popstate',function(e){
+    var st=(e&&e.state)||history.state||null;
+    var page=(st&&st.page)?st.page:pageFor(location.pathname);
+    var y=(st&&typeof st.scroll==='number')?st.scroll:0;
+    window.go(page,true,y);
+
   });
   window.tM=function(){
     document.getElementById('mob-ov').classList.toggle('on');
@@ -4310,9 +4335,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   function hocBrand(page){
     try{document.body.classList.toggle('hoc-brand',page==='hoc'||page==='residency');}catch(e){}
   }
-  window.go=function(page,noPush){
+  window.go=function(page,noPush,scrollY){
     if(SLUG_IN[page])page=SLUG_IN[page];
-    _goOrig(page,noPush);
+    _goOrig(page,noPush,scrollY);
     hocBrand(page);
     setTimeout(function(){revealPage(page);},40);
   };
