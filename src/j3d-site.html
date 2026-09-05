@@ -913,7 +913,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
 </script>
 <!-- ── COOKIE CONSENT CSS (Orest Bida v3) ─────────────────── -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-<script>(function(){try{var pt=(location.pathname||"/").replace(/\/+$/,"").replace(/^\//,"");var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events"};h=A[h]||h;pt=A[pt]||pt;if(pt){h=pt;}else if(!h){h="home";}h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
+<script>(function(){try{var pt=(location.pathname||"/").replace(/\/+$/,"").replace(/^\//,"");var h=(location.hash||"").replace(/^#/,"");var A={"case-studies":"approach","platforms":"events","house-of-collaboration":"hoc","foresight":"foresight-whitepaper","privacy":"privacy-policy"};h=A[h]||h;pt=A[pt]||pt;if(pt){h=pt;}else if(!h){h="home";}h=h.replace(/[^a-z0-9-]/g,"");var d=document.documentElement;d.setAttribute("data-pre",h);var st=document.createElement("style");st.textContent="html[data-pre] .pg{display:none!important}html[data-pre] #pg-"+h+"{display:block!important}";(document.head||d).appendChild(st);}catch(e){}})();</script>
 </head>
 <body>
   <a href="#maincontent" class="skip-link">Skip to content</a>
@@ -2778,7 +2778,7 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   <div class="hx-hero-ey"><span></span>By application · 17-21 January 2027 · Davos</div>
   <h1 class="hx-h1">House of<br><em>Collaboration.</em></h1>
   <p class="hx-hero-lede">The invitation-only week where governments, capital and founders turn Davos into decisions - not panels.</p>
-  <p class="hx-hero-meta">Four to five minutes from the Congress Centre · Housing, full week &amp; a stage</p>
+  
   <div class="hx-cta"><a class="hx-btn hx-btn-l" href="https://airtable.com/app1PFygdKIVq22Sc/pagKpwlgJmumn1Uwq/form" target="_blank" rel="noopener">Apply for a Residency</a><a class="hx-btn hx-btn-o" href="https://calendly.com/j3d-ai/hoc" target="_blank" rel="noopener">Talk to the team</a></div>
   <div class="hx-badges"><div class="hx-badge"><b>20+</b><span>Strategic roundtables</span></div><div class="hx-badge"><b>1000+</b><span>Curated delegates</span></div><div class="hx-badge"><b>5</b><span>Impactful days</span></div><div class="hx-badge"><b>3</b><span>Core domains</span></div></div>
 </div></section>
@@ -4170,15 +4170,56 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     'terms-and-conditions':'hoc'
   };
   /* slug aliases: pretty URL <-> internal page id */
-  var SLUG_OUT={'approach':'case-studies','events':'platforms'};
-  var SLUG_IN={'case-studies':'approach','platforms':'events'};
-  window.go=function(page){
-    if(SLUG_IN[page])page=SLUG_IN[page];
-    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+  var SLUG_OUT={'approach':'case-studies','events':'events','hoc':'hoc','foresight-whitepaper':'foresight-whitepaper','privacy-policy':'privacy-policy'};
+  var SLUG_IN={
+    'case-studies':'approach','approach':'approach',
+    'platforms':'events','events':'events',
+    'house-of-collaboration':'hoc','hoc':'hoc',
+    'foresight':'foresight-whitepaper','foresight-whitepaper':'foresight-whitepaper',
+    'privacy':'privacy-policy','privacy-policy':'privacy-policy'
+  };
+  var TITLES={
+    'home':'J3D.AI - Advisory, AI Readiness & Sovereign Convening',
+    'about':'About - J3D.AI',
+    'approach':'Case Studies - J3D.AI',
+    'events':'Platforms & Events - J3D.AI',
+    'hoc':'House of Collaboration 2027 - J3D.AI',
+    'residency':'HoC 2027 Residency - J3D.AI',
+    'estonian-leap':'Estonian Leap - J3D.AI',
+    'deep-tech-castle':'Deep Tech Castle - J3D.AI',
+    'foresight-whitepaper':'Davos Foresight Whitepaper - J3D.AI',
+    'reports':'Reports - J3D.AI',
+    'media':'Media - J3D.AI',
+    'team':'Team - J3D.AI',
+    'fellows':'Fellows - J3D.AI',
+    'members':'Members Portal - J3D.AI',
+    'contact':'Contact - J3D.AI',
+    'imprint':'Imprint - J3D.AI',
+    'privacy-policy':'Privacy Policy - J3D.AI',
+    'terms-and-conditions':'Terms & Conditions - J3D.AI',
+    'cancellation':'Cancellation Policy - J3D.AI'
+  };
+  function pathFor(page){
     var slug=SLUG_OUT[page]||page;
-    /* Cross-boundary navigation for the standalone /residency route */
-    if(page==='residency' && here!=='/residency'){location.assign('/residency');return;}
-    if(page!=='residency' && here==='/residency'){location.assign('/#'+slug);return;}
+    return (page==='home')?'/':('/'+slug);
+  }
+  function pageFor(path){
+    var p=(path||'/').replace(/\/+$/,'').replace(/^\//,'');
+    if(!p)return 'home';
+    if(SLUG_IN[p])p=SLUG_IN[p];
+    return document.getElementById('pg-'+p)?p:'home';
+  }
+  window.pageForPath=pageFor;
+  function syncHead(page){
+    try{
+      var t=TITLES[page];
+      if(t)document.title=t;
+      var c=document.querySelector('link[rel="canonical"]');
+      if(c)c.setAttribute('href','https://j3d.ai'+(pathFor(page)==='/'?'/':pathFor(page)));
+    }catch(e){}
+  }
+  window.go=function(page,noPush){
+    if(SLUG_IN[page])page=SLUG_IN[page];
     /* Hide ALL .pg elements */
     document.querySelectorAll('.pg').forEach(function(el){
       el.classList.remove('on');
@@ -4188,7 +4229,6 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     if(!target){
       target=document.getElementById('pg-contact');
       page='contact';
-      slug=SLUG_OUT[page]||page;
     }
     if(target){
       target.classList.add('on');
@@ -4199,21 +4239,16 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var navEl=document.getElementById('nl-'+activeNav);
     if(navEl)navEl.classList.add('on');
     window.scrollTo(0,0);
-    try{
-      /* Only rewrite the URL when we're on the homepage. On standalone
-         routes (e.g. /residency) never append a hash - the URL must stay
-         exactly the pathname. Cross-boundary nav is handled above via
-         a full location.href change. */
-      if(here==='/'){history.pushState(null,'','/#'+slug);}
-    }catch(e){}
+    syncHead(page);
+    if(!noPush){
+      try{
+        var next=pathFor(page);
+        var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+        if(here!==next||location.hash){history.pushState({page:page},'',next);}
+      }catch(e){}
+    }
   };
-  window.navGo=function(page){
-    if(SLUG_IN[page])page=SLUG_IN[page];
-    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
-    var slug=SLUG_OUT[page]||page;
-    if(here==='/residency'){location.assign('/#'+slug);return;}
-    window.go(page);
-  };
+  window.navGo=function(page){window.go(page);};
   window.goAnchor=function(page,anchor){
     window.go(page);
     setTimeout(function(){
@@ -4221,16 +4256,10 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },120);
   };
-  function stripResidencyHash(){
-    try{
-      var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
-      if(path==='/residency'&&location.hash){history.replaceState(null,'','/residency');}
-    }catch(e){}
-  }
-  window.addEventListener('scroll',stripResidencyHash,{passive:true});
-  window.addEventListener('hashchange',stripResidencyHash);
-  setInterval(stripResidencyHash,250);
-  stripResidencyHash();
+  window.addEventListener('popstate',function(){
+    var page=(history.state&&history.state.page)?history.state.page:pageFor(location.pathname);
+    window.go(page,true);
+  });
   window.tM=function(){
     document.getElementById('mob-ov').classList.toggle('on');
     document.getElementById('mob-btn').classList.toggle('open');
@@ -4281,12 +4310,13 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   function hocBrand(page){
     try{document.body.classList.toggle('hoc-brand',page==='hoc'||page==='residency');}catch(e){}
   }
-  window.go=function(page){
-    _goOrig(page);
+  window.go=function(page,noPush){
+    if(SLUG_IN[page])page=SLUG_IN[page];
+    _goOrig(page,noPush);
     hocBrand(page);
     setTimeout(function(){revealPage(page);},40);
   };
-  hocBrand(((location.pathname||'/').replace(/\/+$/,'')==='/residency')?'residency':((location.hash||'').replace('#','')));
+  hocBrand(pageFor(location.pathname));
 
   /* ── SEARCH ── */
   var SEARCH_INDEX=[
@@ -4350,24 +4380,20 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var btn=document.getElementById('mob-btn');
     if(btn)btn.addEventListener('click',window.tM);
     var hash=window.location.hash.replace('#','');
-    var aliased=(typeof SLUG_IN!=='undefined'&&SLUG_IN[hash])?SLUG_IN[hash]:hash;
-    var pathPage=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
-    pathPage=(typeof SLUG_IN!=='undefined'&&SLUG_IN[pathPage])?SLUG_IN[pathPage]:pathPage;
-    /* A valid pathname page always wins over the hash; stale hashes (e.g. the
-       fragment preserved across the /residency -> /hoc 301) are scrubbed. */
-    if(pathPage&&document.getElementById('pg-'+pathPage)){
-      window.go(pathPage);
-      if(hash){try{history.replaceState(null,'',location.pathname);}catch(e){}}
-    } else if(aliased&&document.getElementById('pg-'+aliased)){
-      window.go(aliased);
-      /* Hash aliases (/ #hoc) load the page, then scrub to the clean path (/hoc). */
-      if(hash&&aliased!=='home'){
-        try{history.replaceState(null,'','/'+aliased);}catch(e){}
-        var c=document.querySelector('link[rel="canonical"]');
-        if(c)c.setAttribute('href','https://j3d.ai/'+aliased);
-      }
+    var hashPage=(SLUG_IN[hash]&&document.getElementById('pg-'+SLUG_IN[hash]))?SLUG_IN[hash]:(document.getElementById('pg-'+hash)?hash:'');
+    var rawPath=(location.pathname||'/').replace(/\/+$/,'').replace(/^\//,'');
+    var pathPage=pageFor(location.pathname);
+    /* A valid pathname page always wins over the hash; a hash alias (/#hoc)
+       loads that page and is scrubbed to the clean path. In-page anchors on
+       the home page are left alone. */
+    var page=(rawPath&&pathPage!=='home')?pathPage:(hashPage||'home');
+    window.go(page,true);
+    var want=pathFor(page);
+    var here=(location.pathname||'/').replace(/\/+$/,'')||'/';
+    if(here!==want||(hashPage&&location.hash)){
+      try{history.replaceState({page:page},'',want);}catch(e){}
     } else {
-      revealPage('home');
+      try{history.replaceState({page:page},'',here+location.hash);}catch(e){}
     }
     /* Lift the pre-route paint guard only AFTER the router has set inline
        display styles - prevents the flash of home before the real page. */

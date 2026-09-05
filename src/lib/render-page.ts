@@ -52,6 +52,16 @@ const PAGES: Record<string, PageMeta> = {
     description:
       "Cybernetic foresight, technology mastery, and wisdom: how J3D.AI works with clients and partners across borders.",
   },
+  "/case-studies": {
+    title: "Case Studies - J3D.AI",
+    description:
+      "Selected J3D.AI engagements across market access, AI readiness, and sovereign convening.",
+  },
+  "/events": {
+    title: "Platforms & Events - J3D.AI",
+    description:
+      "J3D.AI platforms and events: House of Collaboration, Deep Tech Castle, and the Estonian Leap.",
+  },
   "/team": {
     title: "Team - J3D.AI",
     description: "The people behind J3D.AI's advisory, AI readiness, and convening practice.",
@@ -267,7 +277,6 @@ export function normalizePath(pathname: string): string {
 export const REDIRECTS: Record<string, string> = {
   "/privacy": "/privacy-policy",
   "/privacypolicy": "/privacy-policy",
-  "/residency": "/hoc",
   "/privacy-and-policy": "/privacy-policy",
   "/hoc-terms": "/terms-and-conditions",
   "/terms": "/terms-and-conditions",
@@ -275,6 +284,9 @@ export const REDIRECTS: Record<string, string> = {
   "/cancellation-policy": "/cancellation",
   "/cancellations": "/cancellation",
   "/impressum": "/imprint",
+  "/house-of-collaboration": "/hoc",
+  "/foresight": "/foresight-whitepaper",
+  "/platforms": "/events",
 };
 
 export function getRedirect(pathname: string): string | null {
