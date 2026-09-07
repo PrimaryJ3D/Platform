@@ -1,5 +1,7 @@
 # Changelog
 
+- Founder bios: updated Yip Thy-Diep Ta and Kevin Varend role lines and biographies in both the Team section and Media & PR press profiles; both blocks now carry identical bio text.
+
 - Routing: real URLs for every page with pushState navigation, popstate back/forward, per-page title + canonical sync, and new aliases /house-of-collaboration, /case-studies, /events, /foresight, /privacy; removed HoC hero meta line.
 
 ## 2026-09-04
