@@ -19,11 +19,14 @@ export const Route = createFileRoute("/$")({
           getRedirect(pathname) ??
           (isKnownPath(pathname) && canonical !== pathname ? canonical : null);
         if (redirect) {
+          // 302 + no-store: browsers cache 301s indefinitely, which previously
+          // left stale /residency -> /hoc redirects pinned in user caches.
           return new Response(null, {
-            status: 301,
-            headers: { Location: redirect + url.search, "Cache-Control": "public, max-age=3600" },
+            status: 302,
+            headers: { Location: redirect + url.search, "Cache-Control": "no-store" },
           });
         }
+
         if (!isKnownPath(pathname)) {
           return new Response(renderNotFoundPage(pathname), {
             status: 404,
