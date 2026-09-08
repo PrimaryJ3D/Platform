@@ -93,3 +93,5 @@
 - /residency now 301-redirects server-side to /hoc (browser preserves the #residency fragment across the redirect; the pathname router wins and scrubs it), so both /residency and /residency#residency land on the House of Collaboration page. Residency page code and content remain in the codebase, just unreachable at /residency.
 - Routing: back/forward now restores previous scroll position; new pages open at the top. Hero meta line already removed.
 - 2026-09-07: Routing audit - no /residency -> /hoc redirect exists in the codebase (server, client router, hosting config). Server redirects now return 302 with Cache-Control: no-store instead of a permanently cacheable 301, so a stale redirect can never be pinned in a browser cache again.
+
+- HoC speaker reel: updated founder entries for Yip Thy-Diep Ta and Kevin Varend (new role lines and bios). Restored /residency -> /hoc redirect (302, no-store) in src/lib/render-page.ts and made the client router replace /residency with /hoc via replaceState so Back/Forward never loop.
