@@ -1,5 +1,7 @@
 # Changelog
 
+- Estonian Leap presented as the 2026 edition only: events-card date now "Tue, 20 Jan 2026 - Past edition", confirmed-dates row moved from the 2027 group into 2026 with status "Delivered", and the case-study stack/summary tiles no longer claim a 2027 return. Delegate count standardised to 850+ site-wide (event card, platform card, recap chip, narrative, summary, vetting, outcomes stat, media report card, members directory).
+
 - Founder bios: updated Yip Thy-Diep Ta and Kevin Varend role lines and biographies in both the Team section and Media & PR press profiles; both blocks now carry identical bio text.
 
 - Routing: real URLs for every page with pushState navigation, popstate back/forward, per-page title + canonical sync, and new aliases /house-of-collaboration, /case-studies, /events, /foresight, /privacy; removed HoC hero meta line.
