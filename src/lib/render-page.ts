@@ -285,6 +285,7 @@ export const REDIRECTS: Record<string, string> = {
   "/cancellations": "/cancellation",
   "/impressum": "/imprint",
   "/house-of-collaboration": "/hoc",
+  "/residency": "/hoc",
   "/foresight": "/foresight-whitepaper",
   "/platforms": "/events",
 };

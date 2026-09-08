@@ -4237,6 +4237,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
   }
   window.go=function(page,noPush,scrollY){
     if(SLUG_IN[page])page=SLUG_IN[page];
+    /* /residency is an alias of /hoc: render HoC and replace the URL so
+       Back/Forward never trap the visitor in a redirect loop. */
+    if(page==='residency'){page='hoc';noPush='replace';}
     var _leaveY=window.scrollY||window.pageYOffset||0;
     /* Hide ALL .pg elements */
     document.querySelectorAll('.pg').forEach(function(el){
