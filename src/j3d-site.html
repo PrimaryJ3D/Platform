@@ -4260,7 +4260,9 @@ gtag('config','G-W18JEVSYFS',{anonymize_ip:true});
     var navEl=document.getElementById('nl-'+activeNav);
     if(navEl)navEl.classList.add('on');
     syncHead(page);
-    if(!noPush){
+    if(noPush==='replace'){
+      try{history.replaceState({page:page,scroll:0},'',pathFor(page));}catch(e){}
+    }else if(!noPush){
       try{
         /* remember where we were on the page we are leaving */
         var cur=history.state||{};
