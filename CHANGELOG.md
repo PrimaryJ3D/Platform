@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-29 - Media & PR: press@j3d.ai unified, "Featured in", media accreditation section + policy, Speaking Enquiry -> Calendly, WEF disclaimer; new /press redirect route.
+
+
 - Estonian Leap page copy moved fully into past tense and anchored to 2026: closing copy now states the programme ran on Tuesday 20 January 2026 and continues in a wider form under the New Nordics and NB8 track; hero description, intro paragraphs, feature bullets, programme label, and CTAs updated so nothing reads as an upcoming event. "Apply for 2026" buttons changed to "Enquire for future editions"; "Draft programme 2026 - subject to change" changed to "2026 programme archive"; "why attend" changed to "why it mattered".
 
 - Replaced every occurrence of "Davos Platz" with "Davos" across the site; "Davos Platz, CH" is now "Davos, CH" (events card, HoC hero, confirmed-dates table, Estonian Leap page).
